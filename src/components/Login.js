@@ -52,9 +52,9 @@ export default class Login extends Component {
                             </div>    
                                                       
                         </div> 
-                        <a href={'/register'} className="btn-login">
+                        <Link to='/register'className="btn-login">
                             <img src={require('../icons/entrarboton.png')} alt="siguiente"/>
-                        </a>
+                        </Link>
                     </div>     
                 </div>
             </div>
