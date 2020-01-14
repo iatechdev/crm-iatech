@@ -77,9 +77,9 @@ export default class Register_two extends Component {
                                 </div>
                             </div>                 
                         </form> 
-                        <a href={'/register_three'} className="btn-login">
+                        <Link to='/register_three'>
                             <img src={require('../icons/siguieteboton.png')} alt="next"/>
-                        </a>
+                        </Link>
                     </div>     
                 </div>
             </div>
