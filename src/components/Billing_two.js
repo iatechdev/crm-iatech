@@ -71,7 +71,7 @@ export default class Billing_two extends Component {
                                 </div>
                             </div> 
                         </div>
-                        <Link to='/' className="btn-link-billing2">
+                        <Link to='' className="btn-link-billing2">
                                 <button type="submit" className="btn btn-billing2-next"><img src={require('../icons/botonregistrar.png')} alt="siguiente"/></button>
                         </Link>
                     </div>  

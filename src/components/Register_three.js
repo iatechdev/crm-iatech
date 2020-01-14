@@ -79,7 +79,7 @@ export default class Register_three extends Component {
                                 </div>
                             </div>                 
                         </form> 
-                        <a href={`#`} className="btn-login">
+                        <a href={'/customerinfo'} className="btn-login">
                             <img src={require('../icons/entrarboton.png')} alt="next"/>
                         </a>
                     </div>     

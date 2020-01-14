@@ -90,7 +90,7 @@ export default class Billing extends Component {
                                         </div>                 
                                     </form> 
                         </div>
-                        <Link to='/billing_two' className="btn-link-billing">
+                        <Link to='' className="btn-link-billing">
                                 <button type="button" className="btn btn-billing-next">Registrar<img src={require('../icons/211607-24.png')} alt="siguiente"/></button>
                         </Link>
                     </div>  
