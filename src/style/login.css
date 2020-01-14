@@ -1,0 +1,146 @@
+
+.row-container{
+    margin: 5% 7% 5% 7%;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 31px;
+    opacity: 1;   
+}
+
+.login-container{
+    padding: 4% 0%;
+}
+
+.col,
+.col-8{
+  padding-left: 0px;
+  padding-right: 0px;
+
+}
+
+.col-container{
+    display: flex;
+    flex-direction: row;
+    border-radius: 31px;
+    padding: 0% 0%;
+}
+
+.form-login{
+    padding: 4% 15%;
+}
+
+.register-login{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 1%;
+    border-radius: 20px;
+    margin-bottom: 3%;
+    margin-right: 3%;
+}
+
+.register-login button{
+    border: 0;
+    margin-left: 4%;
+}
+
+.register-login button h2{
+    font-size: 20px;
+    font-family: 'Source Sans Pro';
+    font-weight: bold;
+    color: #534C65 !important;
+    padding: 0%;
+    margin: 0%;
+}
+
+
+.form-login  h1{
+    font-family: 'Source Sans Pro';
+    font-weight: bold;
+    color: #534C65 !important;
+    font-size: 40px;
+}
+
+.form-login  p{
+    font-family: 'Helvetica Neue';
+    font-weight: 100;
+    font-size: 16px;
+    color: #707070;
+    padding: 0;
+    margin: 0;
+}
+
+.icons-reds{
+    display: flex;
+    justify-content:space-around ; 
+    margin-top: 5%;
+    padding-bottom: 7%;
+    border-bottom: 1px solid #70707031;
+}
+
+
+.form-login .icons-reds img{
+    width: 85%;
+    background-color: #fff;
+    
+}
+
+.login-field{
+    margin-top:2%;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-field label{
+    font-size: 18px;
+    font-family: 'Source Sans Pro';
+    font-weight: bold;
+    color: #707070 !important;
+}
+
+.login-field input{
+   border: 0;
+   border-bottom: 2px solid #70707028;
+   padding-bottom: 5%;
+   font-family:  "Helvetica Neue";
+   font-weight: 400;
+   color: #707070 !important;
+}
+
+
+.password-forget{
+    margin-top: 4%;
+}
+
+.password-forget p{
+font-family: 'Helvetica Neue';
+font-size: 14px;
+color: #544B66;
+font-weight:bold;
+text-decoration: underline;
+}
+
+.login-register{
+    margin-top: 3%;
+}
+
+.login-register p{
+    font-weight: 400;
+    color: #544B66;
+    font-family:'Helvetica Neue';
+    font-size: 14px;
+}
+.login-register p span{
+    font-weight: 400;
+    color: #F08575;
+    font-family:'Helvetica Neue';
+    font-size: 14px;
+}
+
+.btn-login{
+    background-color: #e8e8e8;
+}
+
+.btn-login img{
+    width: 16%;
+    margin-left: 84%;
+}
