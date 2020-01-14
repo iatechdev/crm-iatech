@@ -66,7 +66,7 @@ export default class Customerinfocontinuo extends Component {
                             </ul>
                         </div>
                 
-                        <Link to='' className="btn-link-more">
+                        <Link to='/billing' className="btn-link-more">
                             <button type="button" className="btn btn-customerinfo-more">Guardar</button>
                         </Link>
                     </div>  
