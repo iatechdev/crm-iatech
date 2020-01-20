@@ -10,13 +10,6 @@
     padding: 4% 0%;
 }
 
-.col,
-.col-8{
-  padding-left: 0px;
-  padding-right: 0px;
-
-}
-
 .col-container{
     display: flex;
     flex-direction: row;
@@ -38,9 +31,9 @@
     margin-right: 3%;
 }
 
-.register-login button{
+.register-login .register-login-btn{
     border: 0;
-    margin-left: 4%;
+    margin-left: -24%;
 }
 
 .register-login button h2{
@@ -69,12 +62,12 @@
     margin: 0;
 }
 
-.icons-reds{
+.form-login .icons-reds{
     display: flex;
     justify-content:space-around ; 
     margin-top: 5%;
     padding-bottom: 7%;
-    border-bottom: 1px solid #70707031;
+    border-bottom: 1px solid #707070;
 }
 
 
@@ -84,39 +77,56 @@
     
 }
 
-.login-field{
+.form-login .login-field{
     margin-top:2%;
     display: flex;
     flex-direction: column;
 }
 
-.login-field label{
+.form-login .login-field label{
     font-size: 18px;
     font-family: 'Source Sans Pro';
     font-weight: bold;
     color: #707070 !important;
 }
 
-.login-field input{
+.form-login .login-field input{
    border: 0;
-   border-bottom: 2px solid #70707028;
-   padding-bottom: 5%;
+   border-bottom: 1px solid #707070;
+   padding-bottom: 3%;
    font-family:  "Helvetica Neue";
    font-weight: 400;
    color: #707070 !important;
 }
 
 
+.form-login .login-field input[type='number']{
+appearance: none;
+-webkit-appearance: none;
+ }
+
 .password-forget{
     margin-top: 4%;
 }
 
-.password-forget p{
+.password-forget button{
 font-family: 'Helvetica Neue';
 font-size: 14px;
 color: #544B66;
 font-weight:bold;
+border: 0;
 text-decoration: underline;
+}
+
+.checkbox-login{
+    margin-top: 3%;
+    display: flex;
+    flex-direction: row;
+    align-items: center
+}
+
+.checkbox-login input{
+    margin-right: 1%;  
 }
 
 .login-register{
@@ -130,7 +140,7 @@ text-decoration: underline;
     font-size: 14px;
 }
 .login-register p span{
-    font-weight: 400;
+    font-weight: bold;
     color: #F08575;
     font-family:'Helvetica Neue';
     font-size: 14px;
