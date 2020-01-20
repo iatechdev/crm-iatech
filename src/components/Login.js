@@ -63,7 +63,7 @@ export default class Login extends Component {
                         <div className="modal-header">
                           <button
                             type="button"
-                            className="close"
+                            className="btn-close"
                             data-dismiss="modal"
                             aria-label="Close"
                           >

@@ -36,8 +36,15 @@
     border-style: none;
     border-radius: 0px 20px 0px 0px;
     background-color: #f08575;
-    widows: 30%;
+    width: 70%;
 }
+
+.modal-header .btn-close{
+  padding: 16px ;
+  margin: -32px -37px -32px auto;
+  background-color: transparent;
+}
+
 
 .modal-body{
 padding: 0% 10%;
@@ -52,8 +59,7 @@ justify-content: center;
   margin-left: 40%;
 }
 
-.modal-body h2,
-.modal-body label{
+.modal-body h2{
 color: #707070;
 font-weight: bold;
 font-family: 'Source Sans Pro';
@@ -88,6 +94,14 @@ text-align: center;
   justify-content: center;
 }
 
+.modal-body .datas-email label{
+  color: #707070;
+  font-weight: bold;
+  font-family: 'Source Sans Pro';
+  font-size: 18px;
+  text-align: center;
+}
+
 .modal-body .datas-email input{
 border: 0;
 text-align: center;
@@ -103,7 +117,7 @@ padding-bottom: 2%;
 
 .modal-footer button{
   background-color: #F08575;
-  border-radius: 20px;
+  border-radius: 10px;
   color: #fff;
   text-align: center;
   font-family: 'Source Sans Pro';
@@ -111,182 +125,60 @@ padding-bottom: 2%;
   text-decoration: none;
   margin-top: 2%;
   font-size: 16px;
-
 }
-.modal-header .close {
+
+/*------- STYLE EDIT MODAL PROFILE------------- */
+.modal-header .btn-close-profile{
   padding: 16px ;
-  margin: -32px -32px -32px auto;
+  margin: -32px -8px -32px auto;
+  background-color: transparent;
+  border: 0;
 }
 
-
-
-/*------- STYLE EDIT PROFILE------------- */
-
-.EditOne{
-  background-color: #909090b9;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.modal-header .btn-close-profile img {
+  vertical-align: middle;
+  border-style: none;
+  border-radius: 0px 20px 0px 0px;
+  background-color: #f08575;
+  width: 70%;
+  height: 70%;
 }
 
-.EditTwo{
-background-color:#EFF1F8;
-border-radius: 20px;
-padding: 2%;
-width: 30%;
-}
-
-.EditThree{
-background-color: #ffffff;
-border-radius: 20px;
-
-}
-
-.EditThree_one{
-background-color: #ffffff;
-border-radius: 20px 20px 0px 0px;
-}
-
-.EditThree_one .btn-close{
-background-color: #f08575;
-border-radius: 0px 20px 0px 0px;
-padding: 1%;
-margin-left: 93%;
-}
-
-.EditThree_one .btn-close img{
-background-color: #f08575;
-width:70%;
-height: 60%;
-
-}
-.EditThree_two{
-display: flex;
-background-color: #ffffff;
-flex-direction: column;
-justify-content: center;
-padding: 0% 20%;
-border-radius: 0px 0px 20px 20px;
-}
-
-.EditThree_two_item{
-  background-color: #fff;
+.modal-body .form-group{
   display: flex;
   flex-direction: column;
-  margin-bottom: 3%;
-}
-
-.EditThree_two_item label,
-.EditThree_two_item input{
-  background-color: #fff;
-  
-}
-.EditThree_two_item label{
-  font-family:'Source Sans Pro' ;
-  font-size: 18px;
-  color: #707070;
-  text-align: center;
-  font-weight: bold;
-}
-
-.EditThree_two_item input{
-  border: 0;
-  border-bottom: 1px solid #707070;
-  color: #707070;
-  font-family: 'Helvetica Neue';
-  text-align: center;
-}
-
-.EditThree_two button{
-  margin: 5% 15%;
-  background-color: #fff;
-  width: 70%;
-  border: 0;
-}
-
-.EditThree_two button img{
-  background-color: #fff;
-  width: 90%;
-}
-
-/*------- STYLE TERM------------- */
-
-.TermOne{
-  background-color: #909090b9;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
   justify-content: center;
-  align-items: center;
 }
 
-.TermTwo{
-background-color:#EFF1F8;
-border-radius: 20px;
-padding: 2%;
-width: 70%;
+.modal-body .form-group label{
+  color: #707070;
+  font-weight: bold;
+  font-family: 'Source Sans Pro';
+  font-size: 18px;
+  text-align: center;
 }
 
-.TermThree{
-background-color: #ffffff;
-border-radius: 20px;
-
+.modal-body .form-group input{
+  color: #707070;
+  font-weight: 400;
+  border: none;
+  border-bottom: 1px solid #707070;
+  font-family: 'Source Sans Pro';
+  font-size: 18px;
+  text-align: center;
 }
+ 
 
-.TermThree_one{
-background-color: #ffffff;
-border-radius: 20px 20px 0px 0px;
-}
-
-.TermThree_one .btn-close{
-background-color: #f08575;
-border-radius: 0px 20px 0px 0px;
-padding: 1%;
-margin-left: 96%;
-}
-
-.TermThree_one .btn-close img{
-background-color: #f08575;
-width:70%;
-height: 60%;
-
-}
-.TermThree_two{
-display: flex;
-flex-direction: column;
-justify-content: center;
-background-color: #ffffff;
-padding: 0% 5%;
-border-radius: 0px 0px 20px 20px;
-}
-.TermThree_two h2,
-.TermThree_two label{
-  background-color: #ffffff;
-  }
-  .TermThree_two h2{
-    font-family:'Source Sans Pro' ;
-    font-size: 18px;
-    color: #707070;
-    font-weight: bold;
-  }
-
-  .TermThree_two label{
-    font-family:'Source Sans Pro' ;
-    font-size: 18px;
-    color: #707070;
-    font-weight: 400;
-  }
-.TermThree_two button{
-  margin: 3% 15%;
-  background-color: #fff;
-  width: 70%;
-  border: 0;
-}
-
-.TermThree_two button img{
-  background-color: #fff;
+.modal-footer .btn-footer-profile{
+  background-color: #f08476;
+  border-radius: 10px 10px 10px 10px;
   width: 30%;
+  color: #fff;
+  text-align: center;
+  font-family: 'Source Sans Pro';
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 2%;
+  font-size: 16px;
 }
 
