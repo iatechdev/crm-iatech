@@ -25,7 +25,7 @@ export default class Profileinfo extends Component {
                         <div className="modal-header">
                           <button
                             type="button"
-                            className="close"
+                            className="btn-close-profile"
                             data-dismiss="modal"
                             aria-label="Close"
                           >
@@ -33,18 +33,24 @@ export default class Profileinfo extends Component {
                           </button>
                         </div>
                         <div className="modal-body">
-                          <img className="img-pass" src={require("../../icons/password.png")} alt="" />
-                          <h2>Olvidaste tu contraseña</h2>
-                          <p className="text-pass">Ingresa tu nombre de usuario o correo electrónico y te enviaremos un enlace para recuperar el acceso a tu cuenta.</p>
-                          <div className="datas-email">
-                            <label>E-mail</label> 
-                            <input type="email" placeholder="email@informacion.com"/>                           
-                          </div>
-
+                         <form action="">
+                             <div className="form-group">
+                                <label>Nombre</label> 
+                                <input type="email" placeholder="Karen Lorena Ochoa Pineda"/>     
+                             </div>
+                             <div className="form-group">
+                                <label>Identificación</label> 
+                                <input type="number" placeholder="1140868529"/>     
+                             </div>
+                             <div className="form-group">
+                                <label>Celular</label> 
+                                <input type="number" placeholder="email@informacion.com"/>     
+                             </div>
+                         </form>
                         </div>
                         <div className="modal-footer">
-                          <button type="button" className="btn btn-footer">
-                            Enviar enlace de inicio de sesión
+                          <button type="button" className="btn btn-footer-profile">
+                           Guardar
                           </button>
                         </div>
                       </div>
