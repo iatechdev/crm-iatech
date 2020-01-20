@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Welcome from './shared/Welcome';
 import '../style/register.css';
+import { Link } from 'react-router-dom';
 
 export default class Register_three extends Component {
     render() {
@@ -79,9 +80,9 @@ export default class Register_three extends Component {
                                 </div>
                             </div>                 
                         </form> 
-                        <a href={'/customerinfo'} className="btn-login">
+                        <Link to='/customerinfo'>
                             <img src={require('../icons/entrarboton.png')} alt="next"/>
-                        </a>
+                        </Link>
                     </div>     
                 </div>
             </div>

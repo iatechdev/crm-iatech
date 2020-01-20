@@ -4,6 +4,7 @@ import Sidebar from '../components/shared/Sidebar'
 import { Link } from 'react-router-dom'
 import '../style/customerinfo.css'
 
+
 export default class Customerinfo extends Component {
     render() {
         return (
