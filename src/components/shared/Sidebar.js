@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default class Sidebar extends Component {
     render() {
         return (
-            <div className=" col col-1 container-sidebar">
+            <div className="col-1 container-sidebar">
             <Link to='/'>
                 <div className="container-sidebar-logo">
                     <img src={require('../../icons/logo.png')} alt=""/>

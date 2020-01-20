@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import Welcome from './shared/Welcome';
 import '../style/register.css'
+import { Link } from 'react-router-dom';
 
 
 export default class Register_two extends Component {
     render() {
         return (
-<div className="container">   
+        <div className="container">   
             <div className="row-container">
                 <div className="col-container">
                     <Welcome/>

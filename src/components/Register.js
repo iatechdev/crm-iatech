@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Welcome from './shared/Welcome';
 import '../style/register.css';
+import { Link } from 'react-router-dom';
+
 
 export default class Register extends Component {
     render() {
