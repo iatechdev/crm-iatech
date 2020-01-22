@@ -4,8 +4,22 @@ import "../style/login.css";
 import "../style/modal.css";
 import { Link } from "react-router-dom";
 
-
 export default class Login extends Component {
+  constructor() {
+    super();
+    this.state = {
+      showButton: true,
+      showButtonRegister: false
+    };
+  }
+
+  buttonShow() {
+    this.setState({
+      showButton: this.state.showButton,
+      showButtonRegister:this.state.showButtonRegister
+    });
+  }
+
   render() {
     return (
       <div className="container">
@@ -15,14 +29,35 @@ export default class Login extends Component {
             <div className="col-8 login-container">
               <div className="register-login">
                 <Link to="/">
-                  <button className="register-login-btn">
+                  <button
+                    className="register-login-btn"
+                    onClick={() => this.buttonShow()}
+                  >
                     <h2>Ingresar</h2>
                   </button>
+                  {this.state.showButton ? 
+                    <div className="img-circle">
+                      <img
+                        src={require("../icons/circle_gray.png")}
+                        width="8px"
+                        alt=""
+                      />
+                    </div>
+                   : null}
                 </Link>
                 <Link to="/register">
                   <button>
                     <h2>Register</h2>
                   </button>
+                  {this.state.showButtonRegister?
+                    <div className="img-circle-register">
+                      <img
+                        src={require("../icons/circle_gray.png")}
+                        width="8px"
+                        alt=""
+                      />
+                    </div>
+                  : null}
                 </Link>
               </div>
               <div className="form-login">
@@ -71,14 +106,24 @@ export default class Login extends Component {
                           </button>
                         </div>
                         <div className="modal-body">
-                          <img className="img-pass" src={require("../icons/password.png")} alt=""/>
+                          <img
+                            className="img-pass"
+                            src={require("../icons/password.png")}
+                            alt=""
+                          />
                           <h2>Olvidaste tu contraseña</h2>
-                          <p className="text-pass">Ingresa tu nombre de usuario o correo electrónico y te enviaremos un enlace para recuperar el acceso a tu cuenta.</p>
+                          <p className="text-pass">
+                            Ingresa tu nombre de usuario o correo electrónico y
+                            te enviaremos un enlace para recuperar el acceso a
+                            tu cuenta.
+                          </p>
                           <div className="datas-email">
-                            <label>E-mail</label> 
-                            <input type="email" placeholder="email@informacion.com"/>                           
+                            <label>E-mail</label>
+                            <input
+                              type="email"
+                              placeholder="email@informacion.com"
+                            />
                           </div>
-
                         </div>
                         <div className="modal-footer">
                           <button type="button" className="btn btn-footer">
@@ -95,7 +140,10 @@ export default class Login extends Component {
                 </div>
                 <div className="login-register">
                   <p>
-                    ¿No tienes una cuenta? <span>Regístrate</span>{" "}
+                    ¿No tienes una cuenta?{" "}
+                    <Link to="/register">
+                      <span>Regístrate</span>
+                    </Link>
                   </p>
                 </div>
               </div>

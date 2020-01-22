@@ -11,9 +11,7 @@ import Customerinfocontinuo from './components/Customerinfocontinuo';
 import Billing from './components/Billing';
 import Billing_two from './components/Billing_two';
 import Ticket from './components/Ticket';
-import Modal from './components/shared/Modal'
-import EditProfile from './components/shared/EditProfile'
-import Term from './components/shared/Term'
+
 
 function App() {
   return (
@@ -27,9 +25,6 @@ function App() {
       <Route path="/billing" exact component={Billing}/>
       <Route path="/billing_two" exact component={Billing_two}/>
       <Route path="/ticket" exact component={Ticket}/>
-      <Route path="/modal" exact component={Modal}/>
-      <Route path="/editprofile" exact component={EditProfile}/>
-      <Route path="/term" exact component={Term}/>
 
     </Router>
   );

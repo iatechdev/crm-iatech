@@ -147,7 +147,7 @@ padding-bottom: 2%;
 .modal-body .form-group{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+ justify-content: center;
 }
 
 .modal-body .form-group label{
@@ -166,8 +166,18 @@ padding-bottom: 2%;
   font-family: 'Source Sans Pro';
   font-size: 18px;
   text-align: center;
+  width: 100%;
 }
- 
+
+.modal-body .form-group  input[type='number']::-webkit-inner-spin-button, 
+.modal-body .form-group input[type='number']::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.modal-body .form-group  input[type=number] { 
+  -moz-appearance: textfield; 
+}
 
 .modal-footer .btn-footer-profile{
   background-color: #f08476;
@@ -182,3 +192,100 @@ padding-bottom: 2%;
   font-size: 16px;
 }
 
+
+/*------- STYLE EDIT MODAL TERM------------- */
+
+.modal-dialog-term{
+  margin: 10% 32%;
+  padding: 2%;
+  background-color:#EFF1F8;
+  border-radius: 20px;
+}
+.modal-header .btn-close-term{
+  padding: 16px;
+  margin: -32px -37px -32px auto;
+  background-color: transparent;
+  border: 0;
+}
+
+.modal-body-content-term h2{
+  text-align:left;
+}
+
+.modal-body-content-term {
+  padding: 0% 4%;
+  display: flex;
+  text-align: justify;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal-footer{
+  border-top: none;
+}
+
+/*------- STYLE EDIT MODAL BILLING------------- */
+
+.modal-body-billing{
+  display: flex;
+  flex-direction: row;
+  padding: 0%;
+  border-radius: 20px 20px 20px 20px;
+}
+
+.modal-dialog-billing{
+  margin: 10% 12% 10% 30%;
+}
+
+.modal-body-billing-one{
+  text-align: center;
+  border-right: 1px dashed #707070;
+  padding:8% 1% 2% 1%;
+  width: 40%;
+  border-radius: 20px 0px 0px 20px;
+}
+
+.modal-body-billing .modal-body-billing-one img{
+  margin-bottom: 4%;
+}
+
+.modal-body-billing-two{
+  border-radius: 0px 20px 20px 0px;
+}
+
+.modal-body-billing-two .btn-close-billing{
+  margin-left:90%;
+  background-color:transparent;
+  border: none;
+}
+.modal-body-billing-two button img{
+width: 70%;
+margin: -10% 0% 0% 28%;
+border-radius: 0px 10px 0px 0px;
+}
+
+.modal-body-billing-two-two{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2%;
+  padding: 0% 2% 3% 2%;
+}
+
+.modal-body-billing-two-one{
+  width: 50%;
+}
+
+.modal-body-billing-two-one label{
+  font-weight: 400;
+  font-size: 16px;
+  font-family: 'Source Sans Pro';
+  color: #707070;
+}
+
+
+.modal-body-billing .modal-body-billing-one h2{
+  font-size: 18px;
+}
+.modal-body-billing-two-two .modal-body-billing-two-one h2{
+  font-size: 18px;
+}

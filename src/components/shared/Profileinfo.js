@@ -4,20 +4,21 @@ import '../../style/modal.css'
 
 export default class Profileinfo extends Component {
     render() {
+      
         return (
             <div className="col-3 container-profile">
                 <div className="row-icons">
-                    <img src={require('../../icons/inicio.png')} alt=""/>
+                    <img src={require('../../icons/inicio.png')} alt="" />
                     <h2>Mauricio roldán</h2>
                 </div>
                 <div className="row row-information">
-                    <div className="row-information-icon">
-                         <img src={require('../../icons/edit.png')}  alt="" data-toggle="modal" data-target="#exampleModalLong"/>
-                    <div
+                  <div className="row-information-icon">
+                        <img src={require('../../icons/edit.png')}  alt="" data-toggle="modal" data-target="#modalProfile"/>
+                        <div
                     className="modal fade modalOne"
-                    id="exampleModalLong"
+                    id="modalProfile"
                     role="dialog"
-                    aria-labelledby="exampleModalLongTitle"
+                    aria-labelledby="modalProfileTitle"
                     aria-hidden="true"
                   >
                     <div className="modal-dialog " role="document">
@@ -44,7 +45,7 @@ export default class Profileinfo extends Component {
                              </div>
                              <div className="form-group">
                                 <label>Celular</label> 
-                                <input type="number" placeholder="email@informacion.com"/>     
+                                <input type="number" placeholder="3123452671"/>     
                              </div>
                          </form>
                         </div>

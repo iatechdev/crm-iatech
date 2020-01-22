@@ -13,7 +13,7 @@ export default class Sidebar extends Component {
             </Link>
             <Link to='/customerinfo'>
                 <div className="container-sidebar-item">
-                    <img src={require('../../icons/user.png')} alt=""/>
+                    <img src={require('../../icons/user.png')} alt=""  data-toggle="tooltip" data-placement="right" title="Perfil"/>
                 </div>
                 <div className="container-sidebar-item-circle">
                     <img src={require('../../icons/circle.png')} alt=""/>
@@ -21,7 +21,7 @@ export default class Sidebar extends Component {
             </Link>
             <Link to='/billing_two'>
                 <div className="container-sidebar-item">
-                    <img src={require('../../icons/register.png')} alt=""/>
+                    <img src={require('../../icons/register.png')} alt="" data-toggle="tooltip" data-placement="right" title="Facturas"/>
                 </div>
                 <div className="container-sidebar-item-circle">
                     <img src={require('../../icons/circle.png')} alt=""/>
@@ -77,15 +77,15 @@ export default class Sidebar extends Component {
             </Link>
             <Link to='/ticket'>
                 <div className="container-sidebar-item">
-                    <img src={require('../../icons/tag.png')} alt=""/>
+                    <img src={require('../../icons/tag.png')} alt="" data-toggle="tooltip" data-placement="right" title="Boletas"/>
                 </div>
                 <div className="container-sidebar-item-circle">
                     <img src={require('../../icons/circle.png')} alt=""/>
                 </div>
             </Link>
-            <Link to=''>
+            <Link to='/'>
                 <div className="container-sidebar-item">
-                    <img src={require('../../icons/logout.png')} alt=""/>
+                    <img src={require('../../icons/logout.png')} alt=""  data-toggle="tooltip" data-placement="right" title="Cerrar sesión"/>
                 </div>
                 <div className="container-sidebar-item-circle" >
                     <img src={require('../../icons/circle.png')} alt=""/>

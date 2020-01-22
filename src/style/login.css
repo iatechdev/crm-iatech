@@ -36,6 +36,10 @@
     margin-left: -24%;
 }
 
+.register-login .img-circle{
+    margin-left: 19%;
+}
+
 .register-login button h2{
     font-size: 20px;
     font-family: 'Source Sans Pro';
@@ -101,9 +105,12 @@
 
 
 .form-login .login-field input[type='number']{
-appearance: none;
 -webkit-appearance: none;
  }
+
+ .form-login .login-field input[type='number']{
+    -moz-appearance: textfield;
+     }
 
 .password-forget{
     margin-top: 4%;
@@ -126,7 +133,8 @@ text-decoration: underline;
 }
 
 .checkbox-login input{
-    margin-right: 1%;  
+    margin-right: 1%; 
+    border: 0; 
 }
 
 .login-register{
@@ -145,6 +153,11 @@ text-decoration: underline;
     font-family:'Helvetica Neue';
     font-size: 14px;
 }
+
+.login-register p a:hover{
+    text-decoration: none;
+}
+
 
 .btn-login{
     background-color: #e8e8e8;

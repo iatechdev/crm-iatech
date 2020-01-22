@@ -46,6 +46,9 @@
     margin: 0%;
 }
 
+.register-login .img-circle-register{
+    margin-left: 47%;
+}
 
 .form-login  h1{
     font-family: 'Source Sans Pro';
@@ -95,28 +98,35 @@
 .login-field input{
     appearance: none;
    border: 0;
-   border-bottom: 2px solid #70707028;
+   border-bottom: 1px solid #707070;
    padding-bottom: 5%;
    font-family:  "Helvetica Neue";
    font-weight: 400;
    color: #707070 !important;
 }
 
-.login-field input[type=number]::-webkit-inner-spin-button, 
-.login-field input[type=number]::-webkit-outer-spin-button { 
+.login-field input[type='number']::-webkit-inner-spin-button, 
+.login-field input[type='number']::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
 }
+ 
+.login-field  input[type='number'] {-moz-appearance: textfield;} 
 
 .login-field select{
     appearance: none;
     border: 0;
-    border-bottom: 2px solid #70707028;
+    border-bottom: 1px solid #707070;
     padding-bottom: 5%;
     font-family:  "Helvetica Neue";
     font-weight: 400;
     color: #707070 !important;
  }
+
+
+.direction{
+    padding-top: 0.8%;
+}
 
 .password-forget{
     margin-top: 4%;
@@ -155,11 +165,15 @@ text-decoration: underline;
 }
 
 
+
 .btn-login{
     background-color: #e8e8e8;
 }
 
-.btn-login img{
+.btn-login img,
+.btn-submit-two,
+.btn-submit-three{
     width: 16%;
     margin-left: 84%;
 }
+
