@@ -90,7 +90,7 @@
 @media (max-width: 767px){
   .container-welcome {
     background: url(/static/media/fotografia.e652748c.png) no-repeat center center scroll;
-    background-size: cover;
+    background-size: auto;
     padding: 0px 0px 0px 0px;
     margin: 0;
     border-radius: 0px 0px 0px 0px;
@@ -98,7 +98,7 @@
   
 .back2 {
   background: url(/static/media/morado.6f57bc40.png) no-repeat center center fixed;
-  background-size: cover;
+  background-size: auto;
   margin: 0;
   padding: 0;
   width: 100%;
