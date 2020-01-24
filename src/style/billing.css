@@ -368,13 +368,25 @@ margin-bottom: 0;
         justify-content: space-around;
     }
 
+    .billing-profile {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: #fff;
+        padding: 3%;
+        border-radius: 20px;
+        margin-bottom: 0%;
+        margin-right: 1%;
+    }
+
     .btn-billing-next {
         font-family: 'Source Sans Pro';
         font-weight: bold;
         color: #fff;
         background-color: #F08377;
         border-radius: 8px 0px 0px 0px;
-        margin-left: 41%;
+        margin-left: 33%;
+        margin-bottom: 5%;
         margin-top: 5%;
         display: flex;
         flex-direction: row;
@@ -394,6 +406,22 @@ margin-bottom: 0;
         display: flex;
         flex-direction: column;
     } 
+
+    .list-billing-items-general button {
+        border-radius: 0%;
+        padding: 1% 0% 0% 0%;
+        background-color: #FDF8ED;
+        border-radius: 0px 20px 20px 0px;
+    }
+
+     .btn-billing2-next img {
+        background-color: #F08377;
+        margin-left: 0%;
+        margin-right: 9%;
+        width: 65%;
+        margin-bottom: 5%;
+        padding: 0;
+    }
 
     .btn-link-billing2{
         margin-left: 8%;

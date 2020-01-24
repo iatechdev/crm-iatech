@@ -60,10 +60,10 @@
 .container-sidebar .container-sidebar-icons .container-sidebar-item:checked,
 .container-sidebar .container-sidebar-icons .container-sidebar-item:active{
    background-color: #201F24;
-   width: 100%;
+   width: 80%;
    border-radius: 10px;
-   margin-left: -3%;
-   padding: 17%;
+   margin-left: 10%;
+   padding: 10% 17% 10% 17%;
    margin-top: 40%;
    margin-bottom: 0;
    opacity: 0.69;
@@ -73,7 +73,7 @@
 .container-sidebar-item:hover ~ .container-sidebar-item-circle{
    display: block;
    margin-top: 0;
-
+   margin-left: 46%;
 }
 
 .container-sidebar-item img:focus,

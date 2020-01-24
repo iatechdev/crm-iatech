@@ -180,8 +180,7 @@ text-decoration: underline;
     margin-left: 81%;
 }
 
-@media (max-width: 767px){
-    
+@media (max-width: 767px){  
     .container .row-container{
         margin:0%;
         border-radius: 0px;
