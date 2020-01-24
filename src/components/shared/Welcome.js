@@ -36,9 +36,6 @@ export default class Welcome extends Component {
                         <a href="https://www.facebook.com/">
                         <img src={require('../../icons/facebook.png')} alt=""/>     
                         </a>
-                        <a href="https://twitter.com/">
-                        <img src={require('../../icons/twitter.png')} alt=""/>
-                        </a>
                         <a href="https://www.linkedin.com/">
                         <img src={require('../../icons/linkedin.png')} alt=""/>           
                         </a>
