@@ -23,10 +23,10 @@ export default class Login extends Component {
   render() {
     return (
       <div className="container">
-        <div className="row-container">
-          <div className="col-container">
+        <div className="row row-container">
+          <div className="col col-container">
             <Welcome />
-            <div className="col-8 login-container">
+            <div className="col-xs-12 col-md-8 login-container">
               <div className="register-login">
                 <Link to="/">
                   <button

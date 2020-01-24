@@ -25,7 +25,7 @@ export default class Register extends Component {
         <div className="row-container">
           <div className="col-container">
             <Welcome />
-            <div className="col-8 login-container">
+            <div className="col-xs-12 col-md-8 login-container">
             <div className="register-login">
                 <Link to="/">
                   <button

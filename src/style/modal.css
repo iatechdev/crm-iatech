@@ -289,3 +289,15 @@ border-radius: 0px 10px 0px 0px;
 .modal-body-billing-two-two .modal-body-billing-two-one h2{
   font-size: 18px;
 }
+
+@media (max-width: 767px){
+
+  .modal-dialog{
+    margin: 10% 9%;
+  }
+
+  #modalBilling{
+    margin-top: 50%;
+  }
+  
+}

@@ -208,8 +208,10 @@
     color: #fff;
     background-color: #F08377;
     border-radius: 8px 0px 0px 0px;
-    margin-left: 91%;
-    margin-top: 20%;
+    margin-left: 88%;
+    margin-top: 15%;
+    display: flex;
+    flex-direction: row;
 }
 
 
@@ -217,6 +219,136 @@
   background-color: #F08377;
 }
 
+.btn-customerinfo-more img{
+    background-color: #F08377;
+
+}
+
 .btn{
     color: #fff !important;
+    padding: 6px 8px;
+}
+@media (min-width: 1195px){
+    .btn-customerinfo {
+        font-family: 'Source Sans Pro';
+        font-weight: bold;
+        color: #fff;
+        background-color: #F08377;
+        border-radius: 8px 0px 0px 0px;
+        margin-left: 83%;
+        margin-top: 12%;
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 991px) and (max-width: 1194px){
+
+    .btn-customerinfo {
+        font-family: 'Source Sans Pro';
+        font-weight: bold;
+        color: #fff;
+        background-color: #F08377;
+        border-radius: 8px 0px 0px 0px;
+        margin-left: 80%;
+        margin-top: 6%;
+        display: flex;
+        flex-direction: row;
+    }
+    
+    
+    .btn-customerinfo-more {
+        font-family: 'Source Sans Pro';
+        font-weight: bold;
+        color: #fff;
+        background-color: #F08377;
+        border-radius: 8px 0px 0px 0px;
+        margin-left: 85%;
+        margin-top: 25%;
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 990px){
+    .row-container {
+        margin: 2% 0% 2% 0%;
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 31px;
+        opacity: 1;
+    }
+    
+    .btn-customerinfo {
+        font-family: 'Source Sans Pro';
+        font-weight: bold;
+        color: #fff;
+        background-color: #F08377;
+        border-radius: 8px 0px 0px 0px;
+        margin-left: 71%;
+        margin-top: 6%;
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .btn-customerinfo-more {
+        font-family: 'Source Sans Pro';
+        font-weight: bold;
+        color: #fff;
+        background-color: #F08377;
+        border-radius: 8px 0px 0px 0px;
+        margin-left: 81%;
+        margin-top: 17%;
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 767px){
+ 
+
+    .customerinfo-date {
+    background-color: #fff;
+    border-radius: 30px;
+    padding: 4% 4% 4% 9%;
+    margin-right: 3%;
+    }
+
+    .customerinfo-date .personal-information {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        background-color: #fff;
+    }
+
+    .customerinfo-date-one {
+        padding: 3% 4% 0% 9%;
+    }
+    .customerinfo-date-one .general-information {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    .customerinfo-date-one .general-information .general-information-item {
+        width: 51%;
+        margin-bottom: 4%;
+    }
+
+    .customerinfo-date .personal-information-more {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: #fff;
+        flex-direction: column;
+    }
+
+    .btn-customerinfo-more{
+        margin-left: 35%;
+        margin-top: 5%;
+        padding: 5;
+        padding: 2% 3%;
+        font-size: 18px;
+    }
+
+    .container-sidebar{
+        order: -1;
+    }
 }

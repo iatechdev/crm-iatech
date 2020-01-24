@@ -10,8 +10,8 @@ export default class Customerinfo extends Component {
       <div className="container">
         <div className="row-container">
           <div className="col-container">
-            <Profileinfo />
-            <div className="col-8 customerinfo-container">
+            <Profileinfo className="profile-info" />
+            <div className="col-xs-12 col-md-8 customerinfo-container">
               <div className="customerinfo-profile">
                 <img src={require("../icons/perfil.png")} alt="" />
                 <h2>Perfil</h2>
@@ -87,7 +87,7 @@ export default class Customerinfo extends Component {
                 </button>
               </Link>
             </div>
-            <Sidebar />
+            <Sidebar/>
           </div>
         </div>
       </div>

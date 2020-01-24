@@ -6,7 +6,7 @@ export default class Profileinfo extends Component {
     render() {
       
         return (
-            <div className="col-3 container-profile">
+            <div className="col-xs-12 col-md-3 container-profile">
                 <div className="row-icons">
                     <img src={require('../../icons/inicio.png')} alt="" />
                     <h2>Mauricio roldán</h2>

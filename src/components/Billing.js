@@ -9,9 +9,9 @@ export default class Billing extends Component {
         return (
             <div className="container">
             <div className="row-container">
-                <div className="col-container">
+                <div className="col-12 col-container">
                     <Profileinfo/>
-                    <div className="col-8 customerinfo-billing-container">
+                    <div className="col-xs-12 col-md-8 customerinfo-billing-container">
                         <div className="billing-profile">
                             <img src={require('../icons/billing2.png')} alt=""/>
                             <h2>Facturas</h2>
@@ -58,7 +58,7 @@ export default class Billing extends Component {
                                                 </select>               
                                             </div>  
                                             <div className="container-files">
-                                                <div className="saved-gallery col-5">
+                                                <div className="saved-gallery col-xs-12 col-md-5">
                                                     <div className="saved-gallery-img">
                                                         <img src={require('../icons/gallery.png')} alt=""/>
                                                     </div>
@@ -72,7 +72,7 @@ export default class Billing extends Component {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div className="saved-photo col-5">
+                                                <div className="saved-photo col-xs-12 col-md-5">
                                                     <div className="saved-photo-img">
                                                         <img src={require('../icons/camicon.png')} alt=""/>
                                                     </div>

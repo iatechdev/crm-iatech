@@ -131,3 +131,33 @@
 .btn{
     color: #fff !important;
 }
+
+
+@media (min-width: 990px){
+    .btn-ticket {
+        margin-left: 81%;
+        margin-top: 12%;
+
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+    .btn-ticket {
+        margin-left: 72%;
+        margin-top: 40%;
+    }
+}
+
+@media (max-width: 767px){
+    .ticket-date-one .general-information .general-information-item{
+        width: 100%;
+        margin-bottom: 6%;
+    }
+
+
+    .btn-ticket {
+        margin-left: 38%;
+        margin-top: 3%;
+    }
+}

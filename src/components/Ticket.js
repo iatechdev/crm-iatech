@@ -9,9 +9,9 @@ export default class Ticket extends Component {
         return (
             <div className="container">
             <div className="row-container">
-                <div className="col-container">
+                <div className="col-12 col-container">
                     <Profileinfo/>
-                    <div className="col-8 ticket-container">
+                    <div className="col-xs-12 col-md-8 ticket-container">
                         <div className="ticket-profile">
                             <img src={require('../icons/tag1.png')} alt=""/>
                             <h2>Boletas</h2>

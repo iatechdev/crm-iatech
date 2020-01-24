@@ -170,10 +170,41 @@ text-decoration: underline;
     background-color: #e8e8e8;
 }
 
-.btn-login img,
-.btn-submit-two,
-.btn-submit-three{
+.btn-submit-two{
     width: 16%;
     margin-left: 84%;
 }
 
+.btn-submit-three{
+    width: 19%;
+    margin-left: 81%;
+}
+
+@media (max-width: 767px){
+    
+    .container .row-container{
+        margin:0%;
+        border-radius: 0px;
+    }
+    .container .row-container .col-container{
+        flex-direction: column;
+    }
+
+    .register-login {
+        display: none !important;
+    }
+
+    .btn-login img,
+    .btn-submit-two,
+    .btn-submit-three {
+        width: 30%;
+        margin-left: 30%;
+        margin-top: 7%;
+    }
+
+    .form-login {
+        padding: 0% 7% !important;
+    }
+
+
+}

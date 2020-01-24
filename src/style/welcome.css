@@ -19,6 +19,10 @@
     border-radius: 31px 0px 0px 31px;
   }
 
+  .row-link{
+    display: none !important;
+  }
+
 
   .row-icons-logo{
       display: flex;
@@ -81,8 +85,89 @@
     margin-left: 5%;
     background-color: #5c556d00;
   }
-  
-  
 
   
+@media (max-width: 767px){
+  .container-welcome {
+    background: url(/static/media/fotografia.e652748c.png) no-repeat center center scroll;
+    background-size: cover;
+    padding: 0px 0px 0px 0px;
+    margin: 0;
+    border-radius: 0px 0px 0px 0px;
+}
+  
+.back2 {
+  background: url(/static/media/morado.6f57bc40.png) no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0px 0px 0px 0px;
+}
+
+
+.row-link{
+  display: flex !important;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #5c556d00;
+  margin-left: 30%;
+}
+
+.row-link button{
+  border: 0;
+  background-color: #5c556d00;
+  margin-left: 53%;
+}
+
+.row-link button h2{
+font-size: 20px;
+font-family: 'Source Sans Pro';
+font-weight: bold;
+color: #fff !important;
+background-color: #5c556d00;
+
+}
+
+.row-icons-logo {
+  padding: 5% 0% 0% 6%;
+  width: 65%;}
+
+.row-title-welcome {
+  margin-top: 10%;
+  padding: 0% 20% 0% 10%;
+  background-color: #5c556d00;
+  flex-direction: column;
+}
+
+.social-networks {
+  background-color: #5c556d00;
+  margin-top: 10%;
+}
+
+.form-login .icons-reds img {
+  width: 95%;
+  background-color: #fff;
+}
+  
+}
+  
+
+@media (max-width: 476px){
+  .row-link{
+    margin-left: 5%;
+  }
+
+  .row-link-button{
+    margin-left: 48%;
+  }
+}
+
+@media (max-width: 390px){
+  .row-link{
+    margin-top: 2%;
+  }
+}
+
  

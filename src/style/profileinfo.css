@@ -1,95 +1,135 @@
-.container-profile{
-    padding: 3%;  
-    background-color: #fff;
-    border-radius: 31px 0px 0px 31px;
-  } 
-  
-  
-  .row-icons{
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      background-color: #fff;
-      margin-bottom: 12%;
-      padding: 4%;
-  }
-  
-  .row-icons img{
-    background-color: #fff;
-    width: 25px;
-    height: 25px;
-    margin: 0;
-    padding: 0;
-  }
-  .row-icons h2{
-    font-size: 18px;
-    font-family: 'Source Sans Pro';
-    font-weight: bold;
-    color: #707070;
-    background-color: #fff;
-    margin: 0;
-    margin-left: 8%;
-    padding: 0;
-  }
-  
-  .row-information{
-    padding: 10% 15% 15% 15%;
+.container-profile {
+  padding: 3%;
+  background-color: #fff;
+  border-radius: 31px 0px 0px 31px;
+}
+
+.row-icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #fff;
+  margin-bottom: 12%;
+  padding: 4%;
+}
+
+.row-icons img {
+  background-color: #fff;
+  width: 25px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+}
+.row-icons h2 {
+  font-size: 18px;
+  font-family: "Source Sans Pro";
+  font-weight: bold;
+  color: #707070;
+  background-color: #fff;
+  margin: 0;
+  margin-left: 8%;
+  padding: 0;
+}
+
+.row-information {
+  padding: 10% 15% 15% 15%;
+  background-color: #fdf7ed !important;
+  border-radius: 45px;
+  flex-direction: column;
+}
+
+.row-information > div,
+.row-information > div > h2,
+.row-information > div > h1,
+.row-information > div > h3 {
+  background-color: #fdf7ed;
+}
+
+.row-information-icon {
+  margin-bottom: 10%;
+}
+
+.row-information-icon img {
+  background-color: #fdf7ed;
+  margin-left: 90%;
+  width: 25px;
+  height: 25px;
+}
+
+.row-information-customer h2,
+.row-information-email h2,
+.row-information-id h2,
+.row-information-phone h2 {
+  font-size: 18px;
+  font-family: "Source Sans Pro";
+  font-weight: bold;
+  color: #707070;
+}
+
+.row-information-customer h1 {
+  font-size: 30px;
+  font-family: "Helvetica Neue";
+  font-weight: 500;
+  color: #909090;
+}
+
+hr {
+  width: 15%;
+  color: #707070;
+  border-width: 2px;
+}
+
+.row-information-email h3,
+.row-information-id h3,
+.row-information-phone h3 {
+  font-size: 14px;
+  font-family: "Helvetica Neue";
+  font-weight: 400;
+  color: #707070;
+}
+
+.row-information-phone {
+  margin-bottom: 10%;
+}
+
+@media screen and (min-width: 768px) and (max-width: 990px){
+  .row-information {
+    padding: 10% 2% 15% 3%;
     background-color: #FDF7ED !important;
     border-radius: 45px;
     flex-direction: column;
-  }
-  
-  .row-information > div,
-  .row-information > div >h2,
-  .row-information > div >h1,
-  .row-information > div >h3{
-    background-color:#FDF7ED;
-  }
-  
-  .row-information-icon{
+}
+
+.row-information-icon {
     margin-bottom: 10%;
+    margin-top: 9%;
+    width: 87%;
+}
+
+}
+
+
+@media (max-width: 767px) {
+  .row-icons {
+    display: none;
   }
-  
-  .row-information-icon img{
-    background-color: #FDF7ED;
-    margin-left: 90%;
-    width: 25px;
-    height: 25px;
-  
+  .btn-customerinfo {
+    margin-left: 35%;
   }
-  
-  .row-information-customer h2,
-  .row-information-email h2,
-  .row-information-id h2,
-  .row-information-phone h2{
-    font-size: 18px;
-    font-family: 'Source Sans Pro';
-    font-weight: bold;
-    color: #707070;
+
+  .container-profile {
+    padding: 0%;
+    background-color: #fff;
+    border-radius: 0px;
   }
-  
-  .row-information-customer h1{
-    font-size: 30px;
-    font-family: 'Helvetica Neue';
-    font-weight: 500;
-    color: #909090;
+
+  .row-information {
+    padding: 10% 5% 5% 6%;
+    background-color: #fdf7ed !important;
+    border-radius: 21px;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    margin: 5% 5% 2% 5%;
   }
-  
-  hr{
-    width: 15%;
-    color: #707070;
-    border-width: 2px;
-  }
-  
-  .row-information-email h3,
-  .row-information-id h3,
-  .row-information-phone h3{
-    font-size: 14px;
-    font-family: 'Helvetica Neue';
-    font-weight: 400;
-    color: #707070;
-  }
-  
-  .row-information-phone{
-    margin-bottom: 10%;
-  }
+}

@@ -10,9 +10,9 @@ export default class Billing_two extends Component {
     return (
       <div className="container">
         <div className="row-container">
-          <div className="col-container">
+          <div className=" col-12 col-container">
             <Profileinfo />
-            <div className="col-8 customerinfo-billing-container">
+            <div className="col-xs-12 col-md-8 customerinfo-billing-container">
               <div className="billing-profile">
                 <img src={require("../icons/billing2.png")} alt="" />
                 <h2>Facturas</h2>
@@ -32,10 +32,14 @@ export default class Billing_two extends Component {
                 <div className="list-billing">
                   <div className="list-billing-items-general">
                     <div className="list-billing-items col-9">
-                      <img src={require("../icons/billing2.png")} alt="" />
-                      <p>Lorem ipsum</p>
-                      <p>Nro de factura</p>
-                      <p>0872</p>
+                      <div>
+                        <img src={require("../icons/billing2.png")} alt="" />
+                      </div>
+                      <div className="list-billing-items-info">
+                        <p>Lorem ipsum</p>
+                        <p>Nro de factura</p>
+                        <p>0872</p>
+                      </div>
                     </div>
                     <button
                       className="btn col-3"
@@ -106,59 +110,315 @@ export default class Billing_two extends Component {
                   </div>
                   <div className="list-billing-items-general">
                     <div className="list-billing-items col-9">
-                      <img src={require("../icons/billing2.png")} alt="" />
-                      <p>Lorem ipsum</p>
-                      <p>Nro de factura</p>
-                      <p>0872</p>
+                      <div>
+                        <img src={require("../icons/billing2.png")} alt="" />
+                      </div>
+                      <div className="list-billing-items-info">
+                        <p>Lorem ipsum</p>
+                        <p>Nro de factura</p>
+                        <p>0872</p>
+                      </div>
                     </div>
-                    <button className="btn col-3">
+                    <button
+                      className="btn col-3"
+                      data-toggle="modal"
+                      data-target="#modalBilling"
+                    >
                       <p>
                         Ver más{" "}
                         <img src={require("../icons/arrow_right.png")} alt="" />
                       </p>
-                    </button>
+                    </button>{" "}
+                    <div
+                      className="modal fade modalOne"
+                      id="modalBilling"
+                      role="dialog"
+                      aria-labelledby="modalBillingTitle"
+                      aria-hidden="true"
+                    >
+                      <div
+                        className="modal-dialog modal-dialog-billing"
+                        role="document"
+                      >
+                        <div className="modal-content">
+                          <div className="modal-body-billing">
+                            <div className="modal-body-billing-one">
+                              <img
+                                src={require("../icons/billing2.png")}
+                                alt=""
+                              />
+                              <h2>Nro de factura</h2>
+                              <h2>0872</h2>
+                            </div>
+                            <div className="modal-body-billing-two">
+                              <button
+                                type="button"
+                                className="btn-close-billing"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                              >
+                                <img
+                                  src={require("../icons/close.png")}
+                                  alt=""
+                                />
+                              </button>
+                              <div className="modal-body-billing-two-two">
+                                <div className="modal-body-billing-two-one">
+                                  <h2>Nombre de cliente</h2>
+                                  <label htmlFor="">Lorem ipsum</label>
+                                </div>
+                                <div className="modal-body-billing-two-one">
+                                  <h2>Centro Comercial</h2>
+                                  <label htmlFor="">Lorem ipsum</label>
+                                </div>
+                                <div className="modal-body-billing-two-one">
+                                  <h2>Sorteo</h2>
+                                  <label htmlFor="">Lorem ipsum</label>
+                                </div>
+                                <div className="modal-body-billing-two-one">
+                                  <h2>Monto de la factura </h2>
+                                  <label htmlFor="">Lorem ipsum</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div className="list-billing-items-general">
                     <div className="list-billing-items col-9">
-                      <img src={require("../icons/billing2.png")} alt="" />
-                      <p>Lorem ipsum</p>
-                      <p>Nro de factura</p>
-                      <p>0872</p>
+                      <div>
+                        <img src={require("../icons/billing2.png")} alt="" />
+                      </div>
+                      <div className="list-billing-items-info">
+                        <p>Lorem ipsum</p>
+                        <p>Nro de factura</p>
+                        <p>0872</p>
+                      </div>
                     </div>
-                    <button className="btn col-3">
+                    <button
+                      className="btn col-3"
+                      data-toggle="modal"
+                      data-target="#modalBilling"
+                    >
                       <p>
                         Ver más{" "}
                         <img src={require("../icons/arrow_right.png")} alt="" />
                       </p>
-                    </button>
+                    </button>{" "}
+                    <div
+                      className="modal fade modalOne"
+                      id="modalBilling"
+                      role="dialog"
+                      aria-labelledby="modalBillingTitle"
+                      aria-hidden="true"
+                    >
+                      <div
+                        className="modal-dialog modal-dialog-billing"
+                        role="document"
+                      >
+                        <div className="modal-content">
+                          <div className="modal-body-billing">
+                            <div className="modal-body-billing-one">
+                              <img
+                                src={require("../icons/billing2.png")}
+                                alt=""
+                              />
+                              <h2>Nro de factura</h2>
+                              <h2>0872</h2>
+                            </div>
+                            <div className="modal-body-billing-two">
+                              <button
+                                type="button"
+                                className="btn-close-billing"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                              >
+                                <img
+                                  src={require("../icons/close.png")}
+                                  alt=""
+                                />
+                              </button>
+                              <div className="modal-body-billing-two-two">
+                                <div className="modal-body-billing-two-one">
+                                  <h2>Nombre de cliente</h2>
+                                  <label htmlFor="">Lorem ipsum</label>
+                                </div>
+                                <div className="modal-body-billing-two-one">
+                                  <h2>Centro Comercial</h2>
+                                  <label htmlFor="">Lorem ipsum</label>
+                                </div>
+                                <div className="modal-body-billing-two-one">
+                                  <h2>Sorteo</h2>
+                                  <label htmlFor="">Lorem ipsum</label>
+                                </div>
+                                <div className="modal-body-billing-two-one">
+                                  <h2>Monto de la factura </h2>
+                                  <label htmlFor="">Lorem ipsum</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div className="list-billing-items-general">
                     <div className="list-billing-items col-9">
-                      <img src={require("../icons/billing2.png")} alt="" />
-                      <p>Lorem ipsum</p>
-                      <p>Nro de factura</p>
-                      <p>0872</p>
+                      <div>
+                        <img src={require("../icons/billing2.png")} alt="" />
+                      </div>
+                      <div className="list-billing-items-info">
+                        <p>Lorem ipsum</p>
+                        <p>Nro de factura</p>
+                        <p>0872</p>
+                      </div>
                     </div>
-                    <button className="btn col-3">
+                    <button
+                      className="btn col-3"
+                      data-toggle="modal"
+                      data-target="#modalBilling"
+                    >
                       <p>
                         Ver más{" "}
                         <img src={require("../icons/arrow_right.png")} alt="" />
                       </p>
-                    </button>
+                    </button>{" "}
+                    <div
+                      className="modal fade modalOne"
+                      id="modalBilling"
+                      role="dialog"
+                      aria-labelledby="modalBillingTitle"
+                      aria-hidden="true"
+                    >
+                      <div
+                        className="modal-dialog modal-dialog-billing"
+                        role="document"
+                      >
+                        <div className="modal-content">
+                          <div className="modal-body-billing">
+                            <div className="modal-body-billing-one">
+                              <img
+                                src={require("../icons/billing2.png")}
+                                alt=""
+                              />
+                              <h2>Nro de factura</h2>
+                              <h2>0872</h2>
+                            </div>
+                            <div className="modal-body-billing-two">
+                              <button
+                                type="button"
+                                className="btn-close-billing"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                              >
+                                <img
+                                  src={require("../icons/close.png")}
+                                  alt=""
+                                />
+                              </button>
+                              <div className="modal-body-billing-two-two">
+                                <div className="modal-body-billing-two-one">
+                                  <h2>Nombre de cliente</h2>
+                                  <label htmlFor="">Lorem ipsum</label>
+                                </div>
+                                <div className="modal-body-billing-two-one">
+                                  <h2>Centro Comercial</h2>
+                                  <label htmlFor="">Lorem ipsum</label>
+                                </div>
+                                <div className="modal-body-billing-two-one">
+                                  <h2>Sorteo</h2>
+                                  <label htmlFor="">Lorem ipsum</label>
+                                </div>
+                                <div className="modal-body-billing-two-one">
+                                  <h2>Monto de la factura </h2>
+                                  <label htmlFor="">Lorem ipsum</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div className="list-billing-items-general">
                     <div className="list-billing-items col-9">
-                      <img src={require("../icons/billing2.png")} alt="" />
-                      <p>Lorem ipsum</p>
-                      <p>Nro de factura</p>
-                      <p>0872</p>
+                      <div>
+                        <img src={require("../icons/billing2.png")} alt="" />
+                      </div>
+                      <div className="list-billing-items-info">
+                        <p>Lorem ipsum</p>
+                        <p>Nro de factura</p>
+                        <p>0872</p>
+                      </div>
                     </div>
-                    <button className="btn col-3">
+                    <button
+                      className="btn col-3"
+                      data-toggle="modal"
+                      data-target="#modalBilling"
+                    >
                       <p>
                         Ver más{" "}
                         <img src={require("../icons/arrow_right.png")} alt="" />
                       </p>
-                    </button>
+                    </button>{" "}
+                    <div
+                      className="modal fade modalOne"
+                      id="modalBilling"
+                      role="dialog"
+                      aria-labelledby="modalBillingTitle"
+                      aria-hidden="true"
+                    >
+                      <div
+                        className="modal-dialog modal-dialog-billing"
+                        role="document"
+                      >
+                        <div className="modal-content">
+                          <div className="modal-body-billing">
+                            <div className="modal-body-billing-one">
+                              <img
+                                src={require("../icons/billing2.png")}
+                                alt=""
+                              />
+                              <h2>Nro de factura</h2>
+                              <h2>0872</h2>
+                            </div>
+                            <div className="modal-body-billing-two">
+                              <button
+                                type="button"
+                                className="btn-close-billing"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                              >
+                                <img
+                                  src={require("../icons/close.png")}
+                                  alt=""
+                                />
+                              </button>
+                              <div className="modal-body-billing-two-two">
+                                <div className="modal-body-billing-two-one">
+                                  <h2>Nombre de cliente</h2>
+                                  <label htmlFor="">Lorem ipsum</label>
+                                </div>
+                                <div className="modal-body-billing-two-one">
+                                  <h2>Centro Comercial</h2>
+                                  <label htmlFor="">Lorem ipsum</label>
+                                </div>
+                                <div className="modal-body-billing-two-one">
+                                  <h2>Sorteo</h2>
+                                  <label htmlFor="">Lorem ipsum</label>
+                                </div>
+                                <div className="modal-body-billing-two-one">
+                                  <h2>Monto de la factura </h2>
+                                  <label htmlFor="">Lorem ipsum</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
