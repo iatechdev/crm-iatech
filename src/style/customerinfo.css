@@ -1,362 +1,354 @@
-
-.row-container{
-    margin: 5% 7% 5% 7%;
-    box-shadow: 0px 3px 6px #00000029;
-    border-radius: 31px;
-    opacity: 1;   
-
+.row-container {
+  margin: 5% 7% 5% 7%;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 31px;
+  opacity: 1;
 }
 
-.col-container{
-    display: flex;
-    flex-direction: row;
-    border-radius: 31px;
-    padding: 0;
+.col-container {
+  display: flex;
+  flex-direction: row;
+  border-radius: 31px;
+  padding: 0;
 }
 
-.customerinfo-container{
-    padding: 2% 0% 0% 3%;
+.customerinfo-container {
+  padding: 2% 0% 0% 3%;
 }
 
-.customerinfo-container-more{
-    padding: 3% 3% 0% 3%;
+.customerinfo-container-more {
+  padding: 3% 3% 0% 3%;
 }
 
-.customerinfo-profile{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: #fff;
-    padding: 2%;
-    border-radius: 20px;
-    margin-bottom: 3%;
-    margin-right: 3%;
+.customerinfo-profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #fff;
+  padding: 2%;
+  border-radius: 20px;
+  margin-bottom: 3%;
+  margin-right: 3%;
 }
 
-.customerinfo-profile img{
-    background-color: #fff;
-    width: 25px;
-    height: 27px;
-    margin-left: 3%;
+.customerinfo-profile img {
+  background-color: #fff;
+  width: 25px;
+  height: 27px;
+  margin-left: 3%;
 }
 
-.customerinfo-profile h2{
-    font-size: 18px;
-    font-family: 'Source Sans Pro';
-    font-weight: bold;
-    color: #707070;
-    background-color: #fff;
-    padding: 0%;
-    margin: 0%;
-    margin-left: 2%;
+.customerinfo-profile h2 {
+  font-size: 18px;
+  font-family: "Source Sans Pro";
+  font-weight: bold;
+  color: #707070;
+  background-color: #fff;
+  padding: 0%;
+  margin: 0%;
+  margin-left: 2%;
 }
 
-.customerinfo-date{
-    background-color: #fff;
-    border-radius: 30px;
-    padding: 4% 4% 4% 6%;
-    margin-right: 3%;
+.customerinfo-date {
+  background-color: #fff;
+  border-radius: 30px;
+  padding: 4% 4% 4% 6%;
+  margin-right: 3%;
 }
 
-.customerinfo-date-one{
-    padding: 3% 4% 0% 6%;
+.customerinfo-date-one {
+  padding: 3% 4% 0% 6%;
 }
 
-.customerinfo-date ul li{
-    background-color: #fff;
+.customerinfo-date ul li {
+  background-color: #fff;
 }
-
 
 .customerinfo-date .personal-information .gender,
 .customerinfo-date .personal-information .phone,
-.customerinfo-date .personal-information .marital-status{
- width: 50%;
- margin-bottom: 2%;
+.customerinfo-date .personal-information .marital-status {
+  width: 50%;
+  margin-bottom: 2%;
 }
 
-.customerinfo-date .personal-information-more .more-information-item{
-    width: 50%;
-    margin-bottom: 2%;
-   }
-
-.customerinfo-date-one .general-information .general-information-item{
-    width: 50%;
-    margin-bottom: 1%;
+.customerinfo-date .personal-information-more .more-information-item {
+  width: 50%;
+  margin-bottom: 2%;
 }
 
-.customerinfo-date-one h2{
-    font-size: 20px;
-    font-family: 'Source Sans Pro';
-    font-weight: bold;
-    color: #707070;
-    padding: 0%;
-    margin: 0%;
-    margin-bottom: 2%;
+.customerinfo-date-one .general-information .general-information-item {
+  width: 50%;
+  margin-bottom: 1%;
 }
 
-.customerinfo-date-one h3{
-    font-size: 18px;
-    font-family: 'Source Sans Pro';
-    font-weight: bold;
-    color: #707070;
-    padding: 0%;
-    margin: 0%;
+.customerinfo-date-one h2 {
+  font-size: 20px;
+  font-family: "Source Sans Pro";
+  font-weight: bold;
+  color: #707070;
+  padding: 0%;
+  margin: 0%;
+  margin-bottom: 2%;
 }
 
-.customerinfo-date-one p{
-    font-size: 16px;
-    font-family: 'Helvetica Neue';
-    font-weight: 400;
-    color: #707070;
-    padding: 0%;
-    margin: 0%;
+.customerinfo-date-one h3 {
+  font-size: 18px;
+  font-family: "Source Sans Pro";
+  font-weight: bold;
+  color: #707070;
+  padding: 0%;
+  margin: 0%;
 }
 
-.customerinfo-date-one .general-information{
-    display: flex;
-    flex-wrap: wrap;
+.customerinfo-date-one p {
+  font-size: 16px;
+  font-family: "Helvetica Neue";
+  font-weight: 400;
+  color: #707070;
+  padding: 0%;
+  margin: 0%;
 }
 
-.customerinfo-date .personal-information{
+.customerinfo-date-one .general-information {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.customerinfo-date .personal-information {
   display: flex;
   flex-wrap: wrap;
   background-color: #fff;
-
 }
-.customerinfo-date .personal-information-more{
-    display: flex;
-    flex-wrap: wrap;
-    background-color: #fff;
-  }
-
-.customerinfo-date h2{
-    font-size: 20px;
-    font-family: 'Source Sans Pro';
-    font-weight: bold;
-    color: #707070;
-    padding: 0%;
-    margin: 0%;
-    background-color: #fff;
-    margin-bottom: 2%;
+.customerinfo-date .personal-information-more {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
 }
 
-.customerinfo-date h3{
-    font-size: 18px;
-    font-family: 'Source Sans Pro';
-    font-weight: bold;
-    color: #707070;
-    padding: 0%;
-    margin: 0%;
-    background-color: #fff;
+.customerinfo-date h2 {
+  font-size: 20px;
+  font-family: "Source Sans Pro";
+  font-weight: bold;
+  color: #707070;
+  padding: 0%;
+  margin: 0%;
+  background-color: #fff;
+  margin-bottom: 2%;
 }
 
-.customerinfo-date p{
-    font-size: 16px;
-    font-family: 'Helvetica Neue';
-    font-weight: 400;
-    color: #707070;
-    padding: 0%;
-    margin: 0%;
-    background-color: #fff;
+.customerinfo-date h3 {
+  font-size: 18px;
+  font-family: "Source Sans Pro";
+  font-weight: bold;
+  color: #707070;
+  padding: 0%;
+  margin: 0%;
+  background-color: #fff;
 }
 
-.checkbox{
-    margin-top: 0;
-    padding-top: 0;
-    margin-left: 6%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
+.customerinfo-date p {
+  font-size: 16px;
+  font-family: "Helvetica Neue";
+  font-weight: 400;
+  color: #707070;
+  padding: 0%;
+  margin: 0%;
+  background-color: #fff;
 }
 
-.checkbox p{
-    text-decoration: underline;
-    font-size: 18px;
-    font-family: 'Source Sans Pro';
-    font-weight: 100 !important;
-    color: #707070 !important;
-    margin: 0;
-    width: 100%;
-
+.checkbox {
+  margin-top: 0;
+  padding-top: 0;
+  margin-left: 6%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.checkbox input{
-    margin-left: 2%;
+.checkbox p {
+  text-decoration: underline;
+  font-size: 18px;
+  font-family: "Source Sans Pro";
+  font-weight: 100 !important;
+  color: #707070 !important;
+  margin: 0;
+  width: 100%;
+}
+
+.checkbox input {
+  margin-left: 2%;
 }
 
 .btn-link:hover,
-.btn-link-more:hover{
-    text-decoration: none;
+.btn-link-more:hover {
+  text-decoration: none;
 }
 
-.btn-customerinfo{
-    font-family: 'Source Sans Pro';
+.btn-customerinfo {
+  font-family: "Source Sans Pro";
+  font-weight: bold;
+  color: #fff;
+  background-color: #f08377;
+  border-radius: 8px 0px 0px 0px;
+  margin-left: 83%;
+  margin-top: 6%;
+  display: flex;
+  flex-direction: row;
+}
+
+.btn-customerinfo-more {
+  font-family: "Source Sans Pro";
+  font-weight: bold;
+  color: #fff;
+  background-color: #f08377;
+  border-radius: 8px 0px 0px 0px;
+  margin-left: 88%;
+  margin-top: 15%;
+  display: flex;
+  flex-direction: row;
+}
+
+.btn-customerinfo img {
+  background-color: #f08377;
+}
+
+.btn-customerinfo-more img {
+  background-color: #f08377;
+}
+
+.btn {
+  color: #fff !important;
+  padding: 6px 8px;
+}
+@media (min-width: 1195px) {
+  .btn-customerinfo {
+    font-family: "Source Sans Pro";
     font-weight: bold;
     color: #fff;
-    background-color: #F08377;
+    background-color: #f08377;
     border-radius: 8px 0px 0px 0px;
     margin-left: 83%;
+    margin-top: 12%;
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 991px) and (max-width: 1194px) {
+  .btn-customerinfo {
+    font-family: "Source Sans Pro";
+    font-weight: bold;
+    color: #fff;
+    background-color: #f08377;
+    border-radius: 8px 0px 0px 0px;
+    margin-left: 80%;
     margin-top: 6%;
     display: flex;
     flex-direction: row;
-}
+  }
 
-.btn-customerinfo-more{
-    font-family: 'Source Sans Pro';
+  .btn-customerinfo-more {
+    font-family: "Source Sans Pro";
     font-weight: bold;
     color: #fff;
-    background-color: #F08377;
+    background-color: #f08377;
     border-radius: 8px 0px 0px 0px;
-    margin-left: 88%;
-    margin-top: 15%;
+    margin-left: 85%;
+    margin-top: 25%;
     display: flex;
     flex-direction: row;
+  }
 }
 
+@media screen and (min-width: 768px) and (max-width: 990px) {
+  .row-container {
+    margin: 2% 0% 2% 0%;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 31px;
+    opacity: 1;
+  }
 
-.btn-customerinfo img{
-  background-color: #F08377;
+  .btn-customerinfo {
+    font-family: "Source Sans Pro";
+    font-weight: bold;
+    color: #fff;
+    background-color: #f08377;
+    border-radius: 8px 0px 0px 0px;
+    margin-left: 71%;
+    margin-top: 6%;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .btn-customerinfo-more {
+    font-family: "Source Sans Pro";
+    font-weight: bold;
+    color: #fff;
+    background-color: #f08377;
+    border-radius: 8px 0px 0px 0px;
+    margin-left: 81%;
+    margin-top: 17%;
+    display: flex;
+    flex-direction: row;
+  }
 }
 
-.btn-customerinfo-more img{
-    background-color: #F08377;
-
-}
-
-.btn{
-    color: #fff !important;
-    padding: 6px 8px;
-}
-@media (min-width: 1195px){
-    .btn-customerinfo {
-        font-family: 'Source Sans Pro';
-        font-weight: bold;
-        color: #fff;
-        background-color: #F08377;
-        border-radius: 8px 0px 0px 0px;
-        margin-left: 83%;
-        margin-top: 12%;
-        display: flex;
-        flex-direction: row;
-    }
-}
-
-@media (min-width: 991px) and (max-width: 1194px){
-
-    .btn-customerinfo {
-        font-family: 'Source Sans Pro';
-        font-weight: bold;
-        color: #fff;
-        background-color: #F08377;
-        border-radius: 8px 0px 0px 0px;
-        margin-left: 80%;
-        margin-top: 6%;
-        display: flex;
-        flex-direction: row;
-    }
-    
-    
-    .btn-customerinfo-more {
-        font-family: 'Source Sans Pro';
-        font-weight: bold;
-        color: #fff;
-        background-color: #F08377;
-        border-radius: 8px 0px 0px 0px;
-        margin-left: 85%;
-        margin-top: 25%;
-        display: flex;
-        flex-direction: row;
-    }
-}
-
-@media screen and (min-width: 768px) and (max-width: 990px){
-    .row-container {
-        margin: 2% 0% 2% 0%;
-        box-shadow: 0px 3px 6px #00000029;
-        border-radius: 31px;
-        opacity: 1;
-    }
-    
-    .btn-customerinfo {
-        font-family: 'Source Sans Pro';
-        font-weight: bold;
-        color: #fff;
-        background-color: #F08377;
-        border-radius: 8px 0px 0px 0px;
-        margin-left: 71%;
-        margin-top: 6%;
-        display: flex;
-        flex-direction: row;
-    }
-    
-    .btn-customerinfo-more {
-        font-family: 'Source Sans Pro';
-        font-weight: bold;
-        color: #fff;
-        background-color: #F08377;
-        border-radius: 8px 0px 0px 0px;
-        margin-left: 81%;
-        margin-top: 17%;
-        display: flex;
-        flex-direction: row;
-    }
-}
-
-@media (max-width: 767px){
-    .container .row-container {
-        margin: 0%;
-        border-radius: 0px;
-    }
-    .customerinfo-date {
+@media (max-width: 767px) {
+  .container .row-container {
+    margin: 0%;
+    border-radius: 0px;
+  }
+  .customerinfo-date {
     background-color: #fff;
     border-radius: 30px;
     padding: 4% 4% 4% 9%;
     margin-right: 3%;
-    }
+  }
 
-    .customerinfo-date .personal-information {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        background-color: #fff;
-    }
+  .customerinfo-date .personal-information {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: #fff;
+  }
 
-    .customerinfo-date-one {
-        padding: 3% 4% 0% 9%;
-    }
-    .customerinfo-date-one .general-information {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-    }
-    .customerinfo-date-one .general-information .general-information-item {
-        width: 51%;
-        margin-bottom: 4%;
-    }
+  .customerinfo-date-one {
+    padding: 3% 4% 0% 9%;
+  }
+  .customerinfo-date-one .general-information {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  .customerinfo-date-one .general-information .general-information-item {
+    width: 51%;
+    margin-bottom: 4%;
+  }
 
-    .customerinfo-date .personal-information-more {
-        display: flex;
-        flex-wrap: wrap;
-        background-color: #fff;
-        flex-direction: column;
-    }
+  .customerinfo-date .personal-information-more {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fff;
+    flex-direction: column;
+  }
 
-    .btn-customerinfo {
-        margin-left: 33%;
-        margin-bottom: 5%;
-        margin-top: 6%;
-    }
+  .btn-customerinfo {
+    margin-left: 33%;
+    margin-bottom: 5%;
+    margin-top: 6%;
+  }
 
-    .btn-customerinfo-more{
-        margin-left: 35%;
-        margin-top: 5%;
-        padding: 5;
-        padding: 2% 3%;
-        font-size: 18px;
-    }
+  .btn-customerinfo-more {
+    margin-left: 35%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 5;
+    padding: 2% 3%;
+    font-size: 18px;
+    
+  }
 
-    .container-sidebar{
-        order: -1;
-    }
+  .container-sidebar {
+    order: -1;
+  }
 }
