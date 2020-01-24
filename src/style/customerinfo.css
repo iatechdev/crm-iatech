@@ -72,8 +72,9 @@
 }
 
 .customerinfo-date .personal-information-more .more-information-item {
-  width: 50%;
-  margin-bottom: 2%;
+    width: 50%;
+    margin-bottom: 2%;
+    background-color: #fff;
 }
 
 .customerinfo-date-one .general-information .general-information-item {
