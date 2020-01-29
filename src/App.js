@@ -16,7 +16,7 @@ import Ticket from './components/Ticket';
 function App() {
   return (
     <Router> 
-      <Route path="/" exact component={Login}/>
+      <Route exact path="/" exact component={Login}/>
       <Route path="/register" exact component={Register}/>
       <Route path="/register_two" exact component={Register_two}/>
       <Route path="/register_three" exact component={Register_three}/>
@@ -25,7 +25,6 @@ function App() {
       <Route path="/billing" exact component={Billing}/>
       <Route path="/billing_two" exact component={Billing_two}/>
       <Route path="/ticket" exact component={Ticket}/>
-
     </Router>
   );
 }
