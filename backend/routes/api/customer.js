@@ -9,7 +9,14 @@ const dbconnect = require('../../lib/dbConnect')
 router.get('/customer', async(req, res) => {
     let doc = req.query.doc;
     const customer = await dbconnect.query("SELECT * FROM accounts LEFT JOIN accounts_cstm ON accounts.id = accounts_cstm.id_c  WHERE accounts.sic_code ="+doc);
-    res.json({'responde': customer});
+
+    if(customer.length > 0){
+        res.json({'responde': customer});
+    }else{
+        let respuesta = {"id":"0","status":"error"};
+        res.json({'responde': respuesta});
+    }
+    
 });
 
 
