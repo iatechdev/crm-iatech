@@ -14,6 +14,7 @@ app.use(morgan('dev'));
 
 //routes
 app.use(require('./routes/api/customer'));
+app.use("api/test",require('./routes/api/billings'));
 
 //start the server
 app.listen(app.get('port'), () => {

@@ -1,7 +1,12 @@
-const mysql = require('mysql');
 const { promisify } = require('util');
-const { database } = require('../config/keys');
-const mysqlPool = mysql.createPool(database);
+const mysql = require('mysql');
+const mysqlPool = mysql.createPool({
+        host :'127.0.0.1',
+        user :'andres',
+        password : '1',
+        database : 'db_pruebas_crmmall',
+    }
+);
 
 mysqlPool.getConnection((err, connection) => {
     if (err) {

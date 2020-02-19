@@ -17,7 +17,7 @@ router.post("/nameclientbilling", async (req, res) => {
 
 router.get("/numberbilling", async (req, res) => {
     try {
-      const numberbilling = await dbconnect.query("SELECT * FROM (name_table)");
+      const numberbilling = await dbconnect.query("SELECT * FROM accounts limit 10");
       res.json({ numberbilling });
     } catch (error) {
       console.log(error);
@@ -35,7 +35,7 @@ router.get("/numberbilling", async (req, res) => {
 
   router.get("/amountbilling", async (req, res) => {
     try {
-      const amountbilling = await dbconnect.query("SELECT * FROM (name_table)");
+      const amountbilling = await dbconnect.query("SELECT * FROM accounts");
       res.json({ amountbilling });
     } catch (error) {
       console.log(error);
