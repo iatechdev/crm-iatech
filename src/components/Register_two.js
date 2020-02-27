@@ -8,7 +8,8 @@ export default class Register_two extends Component {
     super();
     this.state = {
       showButton: false,
-      showButtonRegister: true
+      showButtonRegister: true,
+     
     };
   }
 
@@ -58,8 +59,10 @@ export default class Register_two extends Component {
               </div>
               <form className="form-login">
                 <div className="form-row">
+                <div>
                   <h1>Registrarse</h1>
                   <p>Regístrate con tu correo o red social</p>
+                </div>
                   <div className="icons-reds form-group">
                     <a href={`#`}>
                       <img src={require("../icons/google.png")} alt="" />
@@ -72,11 +75,21 @@ export default class Register_two extends Component {
                     </a>
                   </div>
                   <div className="login-field col-md-6 form-group ">
+                    <label htmlFor="typeidentificacion">Tipo de Identificación</label>
+                    <select name="typeid" id="">
+                      <option value="">CC</option>
+                    </select>
+                  </div>
+                  <div className="login-field col-md-6 form-group ">
                     <label htmlFor="identificacion">Identificación</label>
                     <input type="number" placeholder="1111111111" />
                   </div>
                   <div className="login-field col-md-6 form-group">
-                    <label htmlFor="phone">Teléfono</label>
+                    <label htmlFor="phone">Teléfono Fijo</label>
+                    <input type="number" placeholder="+57 222222" />
+                  </div>
+                  <div className="login-field col-md-6 form-group">
+                    <label htmlFor="movilphone">Celular</label>
                     <input type="number" placeholder="3155555555" />
                   </div>
                   <div className="login-field col-md-6 form-group ">
@@ -103,13 +116,21 @@ export default class Register_two extends Component {
                       <option value="">Lorem ipsum</option>
                     </select>
                   </div>
+                  <div className="login-field col-md-6 form-group other_input">
+                    <label htmlFor="othercity">Otra ciudad</label>
+                    <input type="text"/>
+                  </div>
                   <div className="login-field col-md-6 form-group">
                     <label htmlFor="neighboard">Barrio</label>
                     <select name="neighboard" id="">
                       <option value="">Lorem ipsum</option>
                     </select>
                   </div>
-                  <div className="login-field col-md-6 form-group direction ">
+                  <div className="login-field col-md-6 form-group other_input">
+                    <label htmlFor="neighboard">Otro barrio</label>
+                    <input type="text"/>
+                  </div>
+                  <div className="login-field col-md-6 form-group other_input ">
                     <label htmlFor="address">Direccción</label>
                     <input type="string" placeholder="Cra 00 #00-00" />
                   </div>

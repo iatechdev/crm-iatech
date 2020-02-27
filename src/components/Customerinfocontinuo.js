@@ -1,11 +1,22 @@
 import React, { Component } from "react";
-import Profileinfo from "../components/shared/Profileinfo";
-import Sidebar from "../components/shared/Sidebar";
+import Profileinfo from "./shared/Profileinfo";
+import Sidebar from "./shared/Sidebar";
 import { Link } from "react-router-dom";
 import "../style/customerinfo.css";
 
 export default class Customerinfocontinuo extends Component {
+  constructor(props) {
+    super(props);
+    this.state={
+      data: {}
+    }
+  }
+
+  componentDidMount(){
+      this.setState({data : JSON.parse(localStorage.getItem('response'))});
+  }
   render() {
+    const { data } = this.state;
     return (
       <div className="container">
         <div className="row row-container d-flex">
@@ -23,43 +34,44 @@ export default class Customerinfocontinuo extends Component {
                     <div className="personal-information-more">
                       <div className="more-information-item">
                         <h3>Fecha de nacimiento</h3>
-                        <p>18/03/1988</p>
+                        <p>{data.fecha_cumoleanos_c}</p>
                       </div>
                       <div className="more-information-item">
                         <h3>Profesión</h3>
-                        <p>Ingeniero de sistemas</p>
+                        <p>I{data.profesion_c}</p>
                       </div>
                       <div className="more-information-item">
                         <h3>Medio de transporte</h3>
-                        <p>Lorem ipsum</p>
+                        <p>{data.medio_transporte_c}</p>
                       </div>
                       <div className="more-information-item">
                         <h3>Mascota</h3>
-                        <p>Ninguna</p>
+                        <p>{data.mascotas_c}</p>
                       </div>
                       <div className="more-information-item">
                         <h3>Ocupación</h3>
-                        <p>Desarrollador de software</p>
+                        <p>{data.ocupacion_c}
+                        </p>
                       </div>
                       <div className="more-information-item">
                         <h3>Tipo de mascota</h3>
-                        <p>Lorem ipsum</p>
+                        <p>{data.tipodemascotas_c}</p>
                       </div>
                       <div className="more-information-item">
                         <h3>Otra profesión</h3>
-                        <p>Lorem ipsum</p>
+                        <p>{data.otraprofesion_c}</p>
                       </div>
                       <div className="more-information-item">
                         <h3>Red social</h3>
-                        <p>Lorem ipsum</p>
+                        <p>{data.redes_sociales_c}</p>
                       </div>
                       <div className="more-information-item">
                         <h3>Centro comercial</h3>
-                        <p>Lorem ipsum</p>
+                        <p>{data.id_mall_id_c}</p>
                       </div>
                       <div className="more-information-item">
                         <h3>Asignado a</h3>
-                        <p>Lorem ipsum</p>
+                        <p>{data.tipodehabeasdata_c}</p>
                       </div>
                     </div>
                   </li>

@@ -60,8 +60,10 @@ export default class Register extends Component {
               </div>
               <form className="form-login">
                 <div className="form-row">
+                <div>
                   <h1>Registrarse</h1>
                   <p>Regístrate con tu correo o red social</p>
+                </div>
                   <div className="icons-reds form-group">
                     <a href={`#`}>
                       <img src={require("../icons/google.png")} alt="" />
@@ -91,8 +93,8 @@ export default class Register extends Component {
                   </div>
                 </div>
               </form>
-              <Link to="/register_two" className="btn-login">
-                <img src={require("../icons/siguieteboton.png")} alt="next" />
+              <Link to="/register_two">
+                <img  className="btn-submit-two" src={require("../icons/siguieteboton.png")} alt="next" />
               </Link>
             </div>
           </div>

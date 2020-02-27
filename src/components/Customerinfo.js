@@ -1,11 +1,25 @@
 import React, { Component } from "react";
-import Profileinfo from "../components/shared/Profileinfo";
-import Sidebar from "../components/shared/Sidebar";
+import Profileinfo from "./shared/Profileinfo";
+import Sidebar from "./shared/Sidebar";
 import { Link } from "react-router-dom";
 import "../style/customerinfo.css";
 
 export default class Customerinfo extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state={
+      data: {}
+    }
+  }
+
+  componentDidMount(){
+      this.setState({data : JSON.parse(localStorage.getItem('response'))});
+      
+  
+  }
   render() {
+    const { data } = this.state;
     return (
       <div className="container">
         <div className="row-container">
@@ -23,15 +37,19 @@ export default class Customerinfo extends Component {
                     <div className="personal-information">
                       <div className="gender">
                         <h3>Género</h3>
-                        <p>Masculino</p>
+                        <p>{data.genero_c}</p>
                       </div>
                       <div className="phone">
-                        <h3>Teléfono fijo</h3>
-                        <p>+57 234567</p>
+                        <h3>Teléfono Fijo</h3>
+                        <p>{data.phone_office}</p>
+                      </div>
+                      <div className="phone">
+                        <h3>Celular</h3>
+                        <p>{data.celular_c}</p>
                       </div>
                       <div className="marital-status">
                         <h3>Estado civil</h3>
-                        <p>Soltero</p>
+                        <p>{data.estadocivil_c}</p>
                       </div>
                     </div>
                   </li>
@@ -44,23 +62,23 @@ export default class Customerinfo extends Component {
                     <div className="general-information">
                       <div className="general-information-item">
                         <h3>Departamento</h3>
-                        <p>Antioquia</p>
+                        <p>{data.departamento_c}</p>
                       </div>
                       <div className="general-information-item">
                         <h3>Barrio</h3>
-                        <p>lorem ipsum</p>
+                        <p>{data.cualbarrio_c}</p>
                       </div>
                       <div className="general-information-item">
                         <h3>Dirección</h3>
-                        <p>Calle 23 #23-12</p>
+                        <p>{data.direccion_c}</p>
                       </div>
                       <div className="general-information-item">
                         <h3>Otro barrio</h3>
-                        <p>ninguno</p>
+                        <p>{data.barriodinamico_c}</p>
                       </div>
                       <div className="general-information-item">
                         <h3>Ciudad / Municipio</h3>
-                        <p>Sabaneta</p>
+                        <p>{data.ciudad_c}</p>
                       </div>
                       <div className="general-information-item">
                         <h3>Tipo habeas data</h3>

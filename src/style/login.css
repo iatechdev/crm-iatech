@@ -159,13 +159,14 @@ text-decoration: underline;
 }
 
 
-.btn-login{
-    background-color: #e8e8e8;
-}
 
-.btn-login img{
-    width: 19%;
-    margin-left: 81%;
+.btn-login{
+    background-color:#F08575 !important;
+    width: 30%;
+    margin-left: 92%;
+    color: #ffff;
+    padding: 2% 0%;
+    border-radius: 10px 0px 0px 10px;
 }
 
 @media (max-width: 767px){

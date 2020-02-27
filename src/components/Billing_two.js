@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Profileinfo from "../components/shared/Profileinfo";
-import Sidebar from "../components/shared/Sidebar";
+import Profileinfo from "./shared/Profileinfo";
+import Sidebar from "./shared/Sidebar";
 import { Link } from "react-router-dom";
 import "../style/billing.css";
 import "../style/modal.css";

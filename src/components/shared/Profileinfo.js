@@ -3,13 +3,26 @@ import '../../style/profileinfo.css'
 import '../../style/modal.css'
 
 export default class Profileinfo extends Component {
-    render() {
+  constructor(props) {
+    super(props);
+    this.state={
+      data: {}
+    }
+  }
+
+  componentDidMount(){
+      this.setState({data : JSON.parse(localStorage.getItem('response'))});
       
+  
+  }
+    render() {
+      //console.log(data)
+      const { data } = this.state;
         return (
             <div className="col-xs-12 col-md-3 container-profile">
                 <div className="row-icons">
                     <img src={require('../../icons/inicio.png')} alt="" />
-                    <h2>Mauricio roldán</h2>
+                    <h2>{data.name}</h2>
                 </div>
                 <div className="row row-information">
                   <div className="row-information-icon">
@@ -37,15 +50,15 @@ export default class Profileinfo extends Component {
                          <form action="">
                              <div className="form-group">
                                 <label>Nombre</label> 
-                                <input type="email" placeholder="Karen Lorena Ochoa Pineda"/>     
+                                <input type="email" placeholder= {data.name}/>     
                              </div>
                              <div className="form-group">
                                 <label>Identificación</label> 
-                                <input type="number" placeholder="1140868529"/>     
+                                <input type="number" placeholder={data.sic_code}/>     
                              </div>
                              <div className="form-group">
                                 <label>Celular</label> 
-                                <input type="number" placeholder="3123452671"/>     
+                                <input type="number" placeholder={data.celular_c}/>     
                              </div>
                          </form>
                         </div>
@@ -60,20 +73,20 @@ export default class Profileinfo extends Component {
                     </div>
                      <div className="row-information-customer">
                         <h2>Nombre</h2>
-                        <h1>Mauricio Roldán Bernal</h1>
+                        <h1>{data.name}</h1>
                     </div>
                     <hr/>
                     <div className="row-information-email" >
                         <h2>Correo</h2>
-                        <h3>mauroroldan@gmail.com</h3>
+                        <h3>{data.email_address}</h3>
                     </div>
                     <div className="row-information-id" >
                         <h2>Identificación</h2>
-                        <h3>1128272550</h3>
+                        <h3>{data.sic_code}</h3>
                     </div>
                     <div className="row-information-phone" >
                         <h2>Celular</h2>
-                        <h3>3004942626</h3>
+                        <h3>{data.celular_c}</h3>
                     </div>
                 </div>
             </div>

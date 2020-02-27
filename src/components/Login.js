@@ -2,22 +2,62 @@ import React, { Component } from "react";
 import Welcome from "./shared/Welcome";
 import "../style/login.css";
 import "../style/modal.css";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 export default class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       showButton: true,
-      showButtonRegister: false
+      showButtonRegister: false,
+      sic_code: '',
+      password: ''
     };
+   
   }
+
+
 
   buttonShow() {
     this.setState({
       showButton: this.state.showButton,
-      showButtonRegister:this.state.showButtonRegister
+      showButtonRegister: this.state.showButtonRegister
     });
+  }
+
+  onInputChange = (eventObject) => {
+    this.setState({
+      [eventObject.target.name]: eventObject.target.value
+    });
+  }
+
+  onSubmit = async (e) => {
+    e.preventDefault();
+    const { sic_code, password } = this.state;
+
+    if (sic_code == password) {
+      await axios.get('http://master.iatech.com.co:4000/api/customer/authcustomer?doc='+sic_code)
+        .then((response) => {
+          console.log(response)
+          if (response.data.responde.length >= 1) {
+            localStorage.setItem('response', JSON.stringify(response.data.responde[0]));
+            return (
+              this.props.history.push('/customerinfo')
+            )
+      
+          } else {
+            return (alert('Identificación no esta registrada'),
+              console.log('error'));
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+
+    } else {
+      return (alert('Contraseña no coinciden'))
+    };
   }
 
   render() {
@@ -25,7 +65,7 @@ export default class Login extends Component {
       <div className="container">
         <div className="row row-container">
           <div className="col col-container">
-            <Welcome />
+            <Welcome/>
             <div className="col-xs-12 col-md-8 login-container">
               <div className="register-login">
                 <Link to="/">
@@ -35,7 +75,7 @@ export default class Login extends Component {
                   >
                     <h2>Ingresar</h2>
                   </button>
-                  {this.state.showButton ? 
+                  {this.state.showButton ?
                     <div className="img-circle">
                       <img
                         src={require("../icons/circle_gray.png")}
@@ -43,13 +83,13 @@ export default class Login extends Component {
                         alt=""
                       />
                     </div>
-                   : null}
+                    : null}
                 </Link>
                 <Link to="/register">
                   <button>
                     <h2>Register</h2>
                   </button>
-                  {this.state.showButtonRegister?
+                  {this.state.showButtonRegister ?
                     <div className="img-circle-register">
                       <img
                         src={require("../icons/circle_gray.png")}
@@ -57,10 +97,10 @@ export default class Login extends Component {
                         alt=""
                       />
                     </div>
-                  : null}
+                    : null}
                 </Link>
               </div>
-              <div className="form-login">
+              <form className="form-login" onSubmit={this.onSubmit} >
                 <h1>Ingresar</h1>
                 <p>ingesar con tu correo o red social</p>
                 <div className="icons-reds">
@@ -76,11 +116,11 @@ export default class Login extends Component {
                 </div>
                 <div className="login-field">
                   <label htmlFor="id">Identidad</label>
-                  <input type="number" placeholder="1124657890" />
+                  <input type="number" name="sic_code" value={this.state.sic_code} onChange={this.onInputChange} />
                 </div>
                 <div className="login-field">
                   <label htmlFor="password">Contraseña</label>
-                  <input type="password" placeholder="Lorem ipsum" />
+                  <input type="password" name="password" value={this.state.password} onChange={this.onInputChange} />
                 </div>
                 <div className="password-forget">
                   <button data-toggle="modal" data-target="#exampleModalLong">
@@ -146,13 +186,12 @@ export default class Login extends Component {
                     </Link>
                   </p>
                 </div>
-              </div>
-              <Link to="/register" className="btn-login">
-                <img
-                  src={require("../icons/entrarboton.png")}
-                  alt="siguiente"
-                />
-              </Link>
+                <button className="btn-login">
+                  Entrar
+              </button>
+              </form>
+
+
             </div>
           </div>
         </div>

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Welcome from "./shared/Welcome";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import "../style/register.css";
 import "../style/modal.css";
 import { Link } from "react-router-dom";
@@ -9,9 +11,16 @@ export default class Register_three extends Component {
     super();
     this.state = {
       showButton: false,
-      showButtonRegister: true
+      showButtonRegister: true,
+      startDate: new Date()
     };
   }
+
+  handleChange = date => {
+    this.setState({
+      startDate: date
+    });
+  };
 
   buttonShowRegister() {
     this.setState({
@@ -33,12 +42,12 @@ export default class Register_three extends Component {
                   </button>
                   {this.state.showButton ? (
                     <div className="img-circle-register">
-                    <img
-                      src={require("../icons/circle_gray.png")}
-                      width="8px"
-                      alt=""
-                    />
-                  </div>
+                      <img
+                        src={require("../icons/circle_gray.png")}
+                        width="8px"
+                        alt=""
+                      />
+                    </div>
                   ) : null}
                 </Link>
                 <Link to="/register">
@@ -58,8 +67,10 @@ export default class Register_three extends Component {
               </div>
               <form className="form-login">
                 <div className="form-row">
+                <div>
                   <h1>Registrarse</h1>
                   <p>Regístrate con tu correo o red social</p>
+                </div>
                   <div className="icons-reds form-group">
                     <a href={`#`}>
                       <img src={require("../icons/google.png")} alt="" />
@@ -73,12 +84,21 @@ export default class Register_three extends Component {
                   </div>
                   <div className="login-field col-md-6 form-group ">
                     <label htmlFor="Fecha">Fecha de nacimiento</label>
+                    <DatePicker
+                      selected={this.state.startDate}
+                      onChange={this.handleChange}
+                      locale="es-CO"
+                    />
                   </div>
                   <div className="login-field col-md-6 form-group">
                     <label htmlFor="profession">Profesión</label>
-                    <select >
+                    <select>
                       <option value="">Lorem ipsum</option>
                     </select>
+                  </div>
+                  <div className="login-field col-md-6 form-group other_input">
+                    <label htmlFor="otherprofession">Otra profesión</label>
+                    <input type="text" />
                   </div>
                   <div className="login-field col-md-6 form-group ">
                     <label htmlFor="conveyance">Medio de transporte</label>
@@ -94,7 +114,7 @@ export default class Register_three extends Component {
                   </div>
                   <div className="login-field col-md-6 form-group">
                     <label htmlFor="type_pet">Tipo de mascota</label>
-                  <select >
+                    <select>
                       <option value="">Lorem ipsum</option>
                     </select>
                   </div>
@@ -111,7 +131,7 @@ export default class Register_three extends Component {
                     </select>{" "}
                   </div>
                   <div className="login-field col-md-6 form-group ">
-                    <label htmlFor="mall">Centro comercial</label>
+                    <label htmlFor="centrocomercial">Centro Comercial</label>
                     <select>
                       <option value="">Lorem ipsum</option>
                     </select>
