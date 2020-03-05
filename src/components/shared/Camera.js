@@ -16,6 +16,34 @@ function dataURItoBlob (dataURI) {
     let blob = new Blob([ab], {type: mimeString});
     return blob;
   }
+
+
+ const promisifiedOldGUM = function(constraints, successCallback, errorCallback) {
+
+    // First get ahold of getUserMedia, if present
+    var getUserMedia = (navigator.getUserMedia ||
+        navigator.webkitGetUserMedia ||
+        navigator.mozGetUserMedia);
+  
+    // Some browsers just don't implement it - return a rejected promise with an error
+    // to keep a consistent interface
+    if(!getUserMedia) {
+      return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+    }
+  
+    // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
+    return new Promise(function(successCallback, errorCallback) {
+      getUserMedia.call(navigator, constraints, successCallback, errorCallback);
+    });
+      
+  }
+  
+
+  /*function enableCamera(){
+    const front =false;
+    document.getElementById('camera').onclick= function(){front =! front;}
+
+  }*/
   
   function padWithZeroNumber (number, width) {
     number = number + '';
@@ -33,11 +61,15 @@ function dataURItoBlob (dataURI) {
     }
     return extention;
   }
+
+
+
   
   function getFileName (imageNumber, blobType) {
     const prefix = 'photo';
     const photoNumber = padWithZeroNumber(imageNumber, 4);
     const extention = getFileExtention(blobType);
+    promisifiedOldGUM ();
   
     return `${prefix}-${photoNumber}.${extention}`;
   }
@@ -68,6 +100,7 @@ function dataURItoBlob (dataURI) {
   
     return (
       <Camera
+       id="camera"
         onTakePhoto = { (dataUri) => { handleTakePhoto(dataUri); } }
         imageType={IMAGE_TYPES.PNG}
       />

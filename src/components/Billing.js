@@ -99,7 +99,7 @@ export default class Billing extends Component {
                                         </div>
                                         <div className="billing-field col-md-6   form-group ">
                                             <label htmlFor="mall">Centro comercial</label>
-                                            <input type="text" placeholder="Lorem ipsum" />
+                                            <input type="text" value={this.state.data.ia_mall_id_c} placeholder="Lorem ipsum" />
                                         </div>
                                         <div className="billing-field col-md-6 form-group ">
                                             <label htmlFor="amount_billing">Monto de la factura</label>
