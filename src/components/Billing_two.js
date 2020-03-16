@@ -3,7 +3,6 @@ import Profileinfo from "./shared/Profileinfo";
 import Sidebar from "./shared/Sidebar";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import Slider from 'infinite-react-carousel';
 import "../style/billing.css";
 import "../style/modal.css";
 
@@ -31,7 +30,6 @@ export default class Billing_two extends Component {
   async componentDidMount() {
     const { currentPage,todosPerPage }= this.state;
     const all_billing = await axios.get(`http://master.iatech.com.co:4000/api/billings//infobilling?doc=${this.state.doc}`);
-    //console.log(all_billing)
    this.setState({
       billings: all_billing.data.responde,
       currentTodos: all_billing.data.responde.slice((currentPage * todosPerPage)-todosPerPage, (currentPage * todosPerPage))
@@ -50,30 +48,10 @@ export default class Billing_two extends Component {
     });
   }
 
-  /*handleClick = e => {
-    let value = e.target.getAttribute('data-value')
-    if (value !== null) {
-      this.setState({
-        selected: value
-      });
-    }
-  };*/
-
 
   render() {
 
-    const { billings, currentPage, todosPerPage } = this.state;
-
-    /*const {selected} = this.setState;
-
-  
-    const style =this.state.selected >= 1 ? { transform: `translateX(-${selected})`} : {};
-    const renderIndicator = []
-    for (let i = 0; i < 3; i++) {
-      renderIndicator.push(
-        <li data-value={i} key={i} className={selected == i ? 'active' : ''}></li>
-      )
-    }*/
+    const { billings,todosPerPage } = this.state;
 
     const pageNumbers = [];
         for (let i = 1; i <= Math.ceil(billings.length/ todosPerPage); i++) {
@@ -201,7 +179,7 @@ export default class Billing_two extends Component {
               {renderPageNumbers}
             </ul>
               </div>
-              <Link to="" className="btn-link-billing2">
+              <Link to="/billing" className="btn-link-billing2">
                 <button type="submit" className="btn btn-billing2-next">
                   <img
                     src={require("../icons/botonregistrar.png")}
