@@ -8,27 +8,92 @@ import "../style/billing.css";
 import "../style/modal.css";
 
 export default class Billing_two extends Component {
-
-  constructor() {
-    super()
+  constructor(props) {
+    super(props);
+    const data = JSON.parse(localStorage.getItem('response'))
+    this.state = {
+      doc: data.sic_code,
+      billings: [],
+      selected: 0,
+      currentPage: 1,
+      todosPerPage: 5,
+      currentTodos: []
+    };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   onInputChange = (eventObject) => {
     this.setState({
       [eventObject.target.name]: eventObject.target.value
-    });
+    })
   }
 
   async componentDidMount() {
-    const { doc } = this.state;
+    const { currentPage,todosPerPage }= this.state;
     const all_billing = await axios.get(`http://master.iatech.com.co:4000/api/billings//infobilling?doc=${this.state.doc}`);
-    console.log(all_billing)
+    //console.log(all_billing)
+   this.setState({
+      billings: all_billing.data.responde,
+      currentTodos: all_billing.data.responde.slice((currentPage * todosPerPage)-todosPerPage, (currentPage * todosPerPage))
 
+    }) 
+  
   }
+
+
+  handleClick(event) {
+    const current =  Number(event.target.id);
+    const { todosPerPage }= this.state;
+    this.setState({
+      currentPage: current,
+      currentTodos: this.state.billings.slice((current * todosPerPage)-todosPerPage, (current * todosPerPage))
+    });
+  }
+
+  /*handleClick = e => {
+    let value = e.target.getAttribute('data-value')
+    if (value !== null) {
+      this.setState({
+        selected: value
+      });
+    }
+  };*/
+
 
   render() {
 
+    const { billings, currentPage, todosPerPage } = this.state;
+
+    /*const {selected} = this.setState;
+
+  
+    const style =this.state.selected >= 1 ? { transform: `translateX(-${selected})`} : {};
+    const renderIndicator = []
+    for (let i = 0; i < 3; i++) {
+      renderIndicator.push(
+        <li data-value={i} key={i} className={selected == i ? 'active' : ''}></li>
+      )
+    }*/
+
+    const pageNumbers = [];
+        for (let i = 1; i <= Math.ceil(billings.length/ todosPerPage); i++) {
+          pageNumbers.push(i);
+        }
+
+        const renderPageNumbers = pageNumbers.map(number => {
+          return (
+            <li
+              key={number}
+              id={number}
+              onClick={this.handleClick}
+            >
+              {number}
+            </li>
+          );
+        });
+
     return (
+
       <div className="container">
         <div className="row-container">
           <div className=" col-12 col-container">
@@ -51,21 +116,22 @@ export default class Billing_two extends Component {
                   </li>
                 </ul>
                 <div className="list-billing">
-                    <div className="list-billing-items-general">
+                  {this.state.currentTodos.map(billing => (
+                    <div className="list-billing-items-general" key={billing.id} >
                       <div className="list-billing-items col-9">
                         <div>
                           <img src={require("../icons/billing2.png")} alt="" />
                         </div>
                         <div className="list-billing-items-info">
-                          <p>Lorem ipsum</p>
+                          <p>{billing.name_cliente}</p>
                           <p>Nro de factura</p>
-                          <p>0872</p>
+                          <p>{billing.number_factura.substr(0,4)}</p>
                         </div>
                       </div>
                       <button
                         className="btn col-3"
                         data-toggle="modal"
-                        data-target="#modalBilling"
+                        data-target={"#modlBilling" + billing.number_factura}
                       >
                         <p>
                           Ver más{" "}
@@ -74,7 +140,7 @@ export default class Billing_two extends Component {
                       </button>{" "}
                       <div
                         className="modal fade modalOne"
-                        id="modalBilling"
+                        id={"modlBilling" + billing.number_factura}
                         role="dialog"
                         aria-labelledby="modalBillingTitle"
                         aria-hidden="true"
@@ -91,7 +157,7 @@ export default class Billing_two extends Component {
                                   alt=""
                                 />
                                 <h2>Nro de factura</h2>
-                                <h2>0872</h2>
+                                <h2>{billing.number_factura}</h2>
                               </div>
                               <div className="modal-body-billing-two">
                                 <button
@@ -108,19 +174,19 @@ export default class Billing_two extends Component {
                                 <div className="modal-body-billing-two-two">
                                   <div className="modal-body-billing-two-one">
                                     <h2>Nombre de cliente</h2>
-                                    <label htmlFor="">Lorem ipsum</label>
+                                    <label htmlFor="">{billing.name_cliente}</label>
                                   </div>
                                   <div className="modal-body-billing-two-one">
                                     <h2>Centro Comercial</h2>
-                                    <label htmlFor="">Lorem ipsum</label>
+                                    <label htmlFor="">{billing.name_mall}</label>
                                   </div>
                                   <div className="modal-body-billing-two-one">
                                     <h2>Sorteo</h2>
-                                    <label htmlFor="">Lorem ipsum</label>
+                                    <label htmlFor="">{billing.name_sorteo}</label>
                                   </div>
                                   <div className="modal-body-billing-two-one">
                                     <h2>Monto de la factura </h2>
-                                    <label htmlFor="">Lorem ipsum</label>
+                                    <label htmlFor="">{billing.Monto}</label>
                                   </div>
                                 </div>
                               </div>
@@ -129,7 +195,11 @@ export default class Billing_two extends Component {
                         </div>
                       </div>
                     </div>
+                  ))}
                 </div>
+                <ul id="page-numbers">
+              {renderPageNumbers}
+            </ul>
               </div>
               <Link to="" className="btn-link-billing2">
                 <button type="submit" className="btn btn-billing2-next">

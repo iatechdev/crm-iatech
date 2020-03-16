@@ -37,7 +37,7 @@ export default class Customerinfo extends Component {
                     <div className="personal-information">
                       <div className="gender">
                         <h3>Género</h3>
-                        <p>{data.genero_c}</p>
+                        <p>{data.genero}</p>
                       </div>
                       <div className="phone">
                         <h3>Teléfono Fijo</h3>
@@ -45,11 +45,11 @@ export default class Customerinfo extends Component {
                       </div>
                       <div className="phone">
                         <h3>Celular</h3>
-                        <p>{data.celular_c}</p>
+                        <p>{data.celular}</p>
                       </div>
                       <div className="marital-status">
                         <h3>Estado civil</h3>
-                        <p>{data.estadocivil_c}</p>
+                        <p>{data.estado_civil}</p>
                       </div>
                     </div>
                   </li>
@@ -66,11 +66,11 @@ export default class Customerinfo extends Component {
                       </div>
                       <div className="general-information-item">
                         <h3>Barrio</h3>
-                        <p>{data.cualbarrio_c}</p>
+                        <p>{data.cual_barrio}</p>
                       </div>
                       <div className="general-information-item">
                         <h3>Dirección</h3>
-                        <p>{data.direccion_c}</p>
+                        <p>{data.direccion}</p>
                       </div>
                       <div className="general-information-item">
                         <h3>Otro barrio</h3>
@@ -78,7 +78,7 @@ export default class Customerinfo extends Component {
                       </div>
                       <div className="general-information-item">
                         <h3>Ciudad / Municipio</h3>
-                        <p>{data.ciudad_c}</p>
+                        <p>{data.ciudad}</p>
                       </div>
                       <div className="general-information-item">
                         <h3>Tipo habeas data</h3>

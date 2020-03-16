@@ -22,7 +22,7 @@ export default class Profileinfo extends Component {
             <div className="col-xs-12 col-md-3 container-profile">
                 <div className="row-icons">
                     <img src={require('../../icons/inicio.png')} alt="" />
-                    <h2>{data.name}</h2>
+                    <h2>{data.name_cliente}</h2>
                 </div>
                 <div className="row row-information">
                   <div className="row-information-icon">
@@ -50,7 +50,7 @@ export default class Profileinfo extends Component {
                          <form action="">
                              <div className="form-group">
                                 <label>Nombre</label> 
-                                <input type="email" placeholder= {data.name}/>     
+                                <input type="text" placeholder= {data.name_cliente}/>     
                              </div>
                              <div className="form-group">
                                 <label>Identificación</label> 
@@ -58,7 +58,7 @@ export default class Profileinfo extends Component {
                              </div>
                              <div className="form-group">
                                 <label>Celular</label> 
-                                <input type="number" placeholder={data.celular_c}/>     
+                                <input type="number" placeholder={data.celular}/>     
                              </div>
                          </form>
                         </div>
@@ -73,7 +73,7 @@ export default class Profileinfo extends Component {
                     </div>
                      <div className="row-information-customer">
                         <h2>Nombre</h2>
-                        <h1>{data.name}</h1>
+                        <h1>{data.name_cliente}</h1>
                     </div>
                     <hr/>
                     <div className="row-information-email" >
@@ -86,7 +86,7 @@ export default class Profileinfo extends Component {
                     </div>
                     <div className="row-information-phone" >
                         <h2>Celular</h2>
-                        <h3>{data.celular_c}</h3>
+                        <h3>{data.celular}</h3>
                     </div>
                 </div>
             </div>

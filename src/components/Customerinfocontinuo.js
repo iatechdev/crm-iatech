@@ -34,23 +34,23 @@ export default class Customerinfocontinuo extends Component {
                     <div className="personal-information-more">
                       <div className="more-information-item">
                         <h3>Fecha de nacimiento</h3>
-                        <p>{data.fecha_cumoleanos_c}</p>
+                        <p>{data.cumpleaños}</p>
                       </div>
                       <div className="more-information-item">
                         <h3>Profesión</h3>
-                        <p>I{data.profesion_c}</p>
+                        <p>I{data.profesion}</p>
                       </div>
                       <div className="more-information-item">
                         <h3>Medio de transporte</h3>
-                        <p>{data.medio_transporte_c}</p>
+                        <p>{data.medio_transporte}</p>
                       </div>
                       <div className="more-information-item">
                         <h3>Mascota</h3>
-                        <p>{data.mascotas_c}</p>
+                        <p>{data.mascota}</p>
                       </div>
                       <div className="more-information-item">
                         <h3>Ocupación</h3>
-                        <p>{data.ocupacion_c}
+                        <p>{data.ocupacion}
                         </p>
                       </div>
                       <div className="more-information-item">
@@ -59,19 +59,19 @@ export default class Customerinfocontinuo extends Component {
                       </div>
                       <div className="more-information-item">
                         <h3>Otra profesión</h3>
-                        <p>{data.otraprofesion_c}</p>
+                        <p>{data.otra_profesion}</p>
                       </div>
                       <div className="more-information-item">
                         <h3>Red social</h3>
-                        <p>{data.redes_sociales_c}</p>
+                        <p>{data.redes_sociales}</p>
                       </div>
                       <div className="more-information-item">
                         <h3>Centro comercial</h3>
-                        <p>{data.id_mall_id_c}</p>
+                        <p>{data.mall_cliente}</p>
                       </div>
                       <div className="more-information-item">
                         <h3>Asignado a</h3>
-                        <p>{data.tipodehabeasdata_c}</p>
+                        <p>{data.tipo_habeas_data}</p>
                       </div>
                     </div>
                   </li>

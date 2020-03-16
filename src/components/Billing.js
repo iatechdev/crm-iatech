@@ -22,7 +22,6 @@ export default class Billing extends Component {
 
     onInputChange = (eventObject) => {
         const id_mall = this.searchId(this.state.mall,eventObject.target.value)
-        //console.log(id_mall,eventObject.target.name, eventObject.target.value)
         this.setState({
             id_mall,
             [eventObject.target.name]: eventObject.target.value
@@ -91,15 +90,15 @@ export default class Billing extends Component {
                                     <div className="form-row">
                                         <div className="billing-field col-md-6 form-group ">
                                             <label htmlFor="name">Nombre de cliente</label>
-                                            <input type="text" value={this.state.data.name} placeholder="Lorem ipsum" />
+                                            <input type="text" name="name_cliente" value={this.state.data.name_cliente} onChange={this.onInputChange} placeholder="Lorem ipsum" />
                                         </div>
                                         <div className="billing-field col-md-6 form-group">
                                             <label htmlFor="number_billing">Nro de factura</label>
                                             <input type="number" placeholder="Nro de factura" />
                                         </div>
-                                        <div className="billing-field col-md-6   form-group ">
+                                        <div className="billing-field col-md-6 form-group">
                                             <label htmlFor="mall">Centro comercial</label>
-                                            <input type="text" value={this.state.data.ia_mall_id_c} placeholder="Lorem ipsum" />
+                                            <input type="text" name="mall_cliente" value={this.state.data.mall_cliente} onChange={this.onInputChange} placeholder="Lorem ipsum" />
                                         </div>
                                         <div className="billing-field col-md-6 form-group ">
                                             <label htmlFor="amount_billing">Monto de la factura</label>
