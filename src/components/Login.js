@@ -16,9 +16,6 @@ export default class Login extends Component {
     };
    
   }
-
-
-
   buttonShow() {
     this.setState({
       showButton: this.state.showButton,

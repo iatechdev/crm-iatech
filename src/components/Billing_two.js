@@ -52,6 +52,7 @@ export default class Billing_two extends Component {
   render() {
 
     const { billings,todosPerPage } = this.state;
+    //console.log(billings)
 
     const pageNumbers = [];
         for (let i = 1; i <= Math.ceil(billings.length/ todosPerPage); i++) {

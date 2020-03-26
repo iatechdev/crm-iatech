@@ -28,6 +28,7 @@ app.use((req,res,next)=>{
 //routes
 app.use('/api/customer',require('./routes/api/customer')),
 app.use('/api/billings',require('./routes/api/billings')),
+app.use('/api/tickets',require('./routes/api/tickets'))
 
 //start the server
 app.listen(app.get('port'), () => {
