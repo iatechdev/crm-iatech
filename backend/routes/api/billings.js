@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const dbconnect = require("../../lib/dbConnect");
+const uuid = require("uuid").v4
 
 // View One /billing
 
@@ -14,7 +15,7 @@ const dbconnect = require("../../lib/dbConnect");
     }
   });
 
-  // Obtener Sorteos con respecto a los centros comerciales
+  // Obtener Sorteos con respecto a los centros comerciales vista billing_two
   router.get("/rafflemall", async (req, res) => {
     let id_mall = req.query.id_mall;
       const raffle = await dbconnect.query("SELECT * FROM ia_sorteos_ia_mall_1_c LEFT JOIN ia_sorteos ON ia_sorteos.id=ia_sorteos_ia_mall_1_c.ia_sorteos_ia_mall_1ia_sorteos_ida WHERE ia_sorteos_ia_mall_1_c.ia_sorteos_ia_mall_1ia_mall_idb= ?", id_mall);
@@ -40,6 +41,43 @@ router.get('/infobilling', async(req, res) => {
   }
 
 });
+
+
+// Registar factiras en la vista billing_two
+
+router.post('/billing_register',async(req,res) => {
+  const id = uuid()
+  const id_notes = uuid()
+  const {
+    billing_number,
+    amount_billing,
+    mall_name,
+    sorteo_name,
+    event_information,
+    file
+  } = req.body
+
+  
+  try{
+    const billing_form = await dbconnect.query ('INSERT INTO opportunities (id,name,amount) VALUES (?,?,?)',[id, billing_number, amount_billing]);
+    const billing_form2 =await dbconnect.query ('INSERT INTO opportunities_cstm (id_c,ia_mall_id_c,ia_sorteos_id_c,enterastedelenevento_c) VALUES (?,?,?,?)',[id, mall_name, sorteo_name,event_information]);
+    const files = await dbconnect.query ('INSERT INTO notes (id,filename) VALUES(?,?)',[id_notes,file])
+  
+    res.json({
+      'responde': 
+        billing_form,
+        billing_form2,
+        files,
+      ok: true
+    });
+  } catch(error){
+    console.log(error);
+    res.json(error)
+  }
+});
+
+
+
 
 module.exports = router;
 

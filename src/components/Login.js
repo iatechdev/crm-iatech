@@ -34,7 +34,7 @@ export default class Login extends Component {
     const { sic_code, password } = this.state;
 
     if (sic_code == password) {
-      await axios.get('http://master.iatech.com.co:4000/api/customer/authcustomer?doc='+sic_code)
+      await axios.get('https://master.iatech.com.co:4000/api/customer/authcustomer?doc='+sic_code)
         .then((response) => {
           console.log(response)
           if (response.data.responde.length >= 1) {

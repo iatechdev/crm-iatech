@@ -28,7 +28,7 @@ export default class Ticket extends Component {
 
   async componentDidMount() {
     const { currentTicket, currentPage, todosPerPage } = this.state;
-    const ticket_all = await axios.get(`http://master.iatech.com.co:4000/api/tickets/tickets_office?doc=${this.state.doc}`);
+    const ticket_all = await axios.get(`https://master.iatech.com.co:4000/api/tickets/tickets_office?doc=${this.state.doc}`);
     console.log(ticket_all)
     this.setState({
       tickets: ticket_all.data.responde,

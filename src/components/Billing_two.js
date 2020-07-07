@@ -29,7 +29,7 @@ export default class Billing_two extends Component {
 
   async componentDidMount() {
     const { currentPage,todosPerPage }= this.state;
-    const all_billing = await axios.get(`http://master.iatech.com.co:4000/api/billings//infobilling?doc=${this.state.doc}`);
+    const all_billing = await axios.get(`https://master.iatech.com.co:4000/api/billings//infobilling?doc=${this.state.doc}`);
    this.setState({
       billings: all_billing.data.responde,
       currentTodos: all_billing.data.responde.slice((currentPage * todosPerPage)-todosPerPage, (currentPage * todosPerPage))

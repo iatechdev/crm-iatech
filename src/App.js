@@ -11,7 +11,7 @@ import Customerinfocontinuo from './components/Customerinfocontinuo';
 import Billing from './components/Billing';
 import Billing_two from './components/Billing_two';
 import Ticket from './components/Ticket';
-import Camera from './components/shared/Camera';
+import TakePhoto from './components/shared/TakePhoto';
 
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
         <Route path="/billing" exact component={Billing}/>
         <Route path="/billing_two" exact component={Billing_two}/>
         <Route path="/ticket" exact component={Ticket}/>
-        <Route path="/camera" exact component={Camera}/>
+        <Route path="/takephoto" exact component={TakePhoto}/>
       </Switch>
     </BrowserRouter>
    

@@ -1,10 +1,13 @@
 const db = require('./lib/dbConnect');
+const https = require('https');
+const fs = require('fs');
 
 const express = require('express');
 const morgan = require('morgan');
 
 //Initialization
 const app = express();
+const http = require('http').Server(app);
 
 //Setting
 app.set('port', process.env.PORT || 4000);
@@ -13,6 +16,13 @@ app.set('port', process.env.PORT || 4000);
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+const key = fs.readFileSync('/etc/ssl/iatech.key');
+const cert = fs.readFileSync('/etc/ssl/certs/iatech.crt'); 
+const options = {
+    key:key,    
+    cert:cert
+};
 
 
 app.use((req,res,next)=>{
@@ -31,6 +41,9 @@ app.use('/api/billings',require('./routes/api/billings')),
 app.use('/api/tickets',require('./routes/api/tickets'))
 
 //start the server
-app.listen(app.get('port'), () => {
-    console.log(`Server On Port ${app.get('port')}`);
-});
+
+https.createServer(options, app).listen(4000);
+
+//app.listen(app.get('port'), () => {
+//    console.log(`Server On Port ${app.get('port')}`);
+//});
