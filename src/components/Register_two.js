@@ -1,23 +1,69 @@
 import React, { Component } from "react";
 import Welcome from "./shared/Welcome";
 import "../style/register.css";
+import ApiExter from "../API/apiexter";
 import { Link } from "react-router-dom";
 
 export default class Register_two extends Component {
   constructor() {
     super();
+    const data_one = JSON.parse(localStorage.getItem("data_one"))
     this.state = {
       showButton: false,
       showButtonRegister: true,
-     
+      api: ApiExter,
+      cities_deparment: ApiExter.data.cities[ApiExter.data.department],
+      tipo_identificacion_c:'',
+      sic_code:'',
+      phone_office:'',
+      celular_c:'',
+      estadocivil_c:'',
+      pais_c:'',
+      departamento_c:'',
+      ciudad_c:'',  
+      barrio_c:'',
+      cualbarrio_c:'',
+      direccion_c:'',
+      habeasdata_c:''
+      // errors = {
+      // tipo_identificacion_c:'',
+      // sic_code:'',
+      // phone_office:'',
+      // celular_c:'',
+      // estadocivil_c:'',
+      // pais_c:'',
+      // departamento_c:'',
+      // ciudad_c:'',  
+      // barrio_c:'',
+      // cualbarrio_c:'',
+      // direccion_c:'',
+      // habeasdata_c:''
+      // }
     };
   }
+
+
 
   buttonShowRegister() {
     this.setState({
       showButtonRegister: !this.state.showButtonRegister,
       showButton: this.state.showButton
     });
+  }
+
+  handleChange = (e) => {
+    const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+
+    this.setState({ ...this.state, [e.target.name]: value })
+  }
+
+  cities(deparment) {
+    let data = "";
+    if (deparment != null) {
+      data = this.state.api.data.cities[deparment];
+    } else {
+      data = [];
+    }
   }
 
   render() {
@@ -48,21 +94,21 @@ export default class Register_two extends Component {
                   </button>
                   {this.state.showButtonRegister ? (
                     <div className="img-circle-register">
-                    <img
-                      src={require("../icons/circle_gray.png")}
-                      width="8px"
-                      alt=""
-                    />
-                  </div>
+                      <img
+                        src={require("../icons/circle_gray.png")}
+                        width="8px"
+                        alt=""
+                      />
+                    </div>
                   ) : null}
                 </Link>
               </div>
               <form className="form-login">
                 <div className="form-row">
-                <div>
-                  <h1>Registrarse</h1>
-                  <p>Regístrate con tu correo o red social</p>
-                </div>
+                  <div>
+                    <h1>Registrarse</h1>
+                    <p>Regístrate con tu correo o red social</p>
+                  </div>
                   <div className="icons-reds form-group">
                     <a href={`#`}>
                       <img src={require("../icons/google.png")} alt="" />
@@ -77,62 +123,87 @@ export default class Register_two extends Component {
                   <div className="login-field col-md-6 form-group ">
                     <label htmlFor="typeidentificacion">Tipo de Identificación</label>
                     <select name="typeid" id="">
-                      <option value="">CC</option>
+                      <option value="">-</option>
+                      <option value="CC">Cédula de Ciudadanía</option>
+                      <option value="CEX">Cédula DE Extranjería</option>
+                      <option value="NIT">Nit</option>
+                      <option value="PAS">Pasaporte</option>
+                      <option value="NIUP">Registro Civil</option>
                     </select>
                   </div>
                   <div className="login-field col-md-6 form-group ">
                     <label htmlFor="identificacion">Identificación</label>
-                    <input type="number" placeholder="1111111111" />
+                    <input type="number" placeholder="identificación" />
                   </div>
                   <div className="login-field col-md-6 form-group">
                     <label htmlFor="phone">Teléfono Fijo</label>
-                    <input type="number" placeholder="+57 222222" />
+                    <input type="number" placeholder="Teléfono fijo" />
                   </div>
                   <div className="login-field col-md-6 form-group">
                     <label htmlFor="movilphone">Celular</label>
-                    <input type="number" placeholder="3155555555" />
+                    <input type="number" placeholder="celular" />
                   </div>
                   <div className="login-field col-md-6 form-group ">
                     <label htmlFor="gender">Género</label>
                     <select name="gender" id="">
-                      <option value="">Lorem ipsum</option>
+                      <option value="">-</option>
+                      <option value="F">Femenino</option>
+                      <option value="M">Masculino</option>
                     </select>
                   </div>
                   <div className="login-field col-md-6 form-group ">
                     <label htmlFor="nombre">Estado Civil</label>
                     <select name="state" id="">
-                      <option value="">Lorem ipsum</option>
+                      <option value="">-</option>
+                      <option value="soltero">Soltero(a)</option>
+                      <option value="casado">Casado(a)</option>
+                      <option value="unionlibre">Union Libre</option>
+                      <option value="viudo">Viudo(a)</option>
+                    </select>
+                  </div>
+                  <div className="login-field col-md-6 form-group">
+                    <label htmlFor="departamento">País</label>
+                    <select name="department" onChange={this.handleChange} value={this.state.value} id="">
+                      <option value="">-</option>
+                        <option value="">COLOMBIA</option>
                     </select>
                   </div>
                   <div className="login-field col-md-6 form-group">
                     <label htmlFor="departamento">Departamento</label>
-                    <select name="apartment" id="">
-                      <option value="">Lorem ipsum</option>
+                    <select name="department" onChange={this.handleChange} value={this.state.value} id="">
+                      <option value="">-</option>
+                      {this.state.api.data.deparment.map((deparment, index) =>
+                        <option key={index} value={deparment.departamento_c}>{deparment.deparment}</option>
+                      )}
                     </select>
                   </div>
                   <div className="login-field col-md-6 form-group">
                     <label htmlFor="city">Ciudad</label>
-                    <select name="city" id="">
-                      <option value="">Lorem ipsum</option>
+                    <select name="ciudad_c" onChange={this.handleChange} value={this.state.value} id="">
+                      <option value="">-</option>
+                      {
+                        this.state.cities_deparment ?
+                          this.state.cities_deparment.map((city, index) =>
+                            <option key={index} value={city}>{city}</option>
+                          )
+                          :
+                          ""
+                      }
                     </select>
-                  </div>
-                  <div className="login-field col-md-6 form-group other_input">
-                    <label htmlFor="othercity">Otra ciudad</label>
-                    <input type="text"/>
                   </div>
                   <div className="login-field col-md-6 form-group">
                     <label htmlFor="neighboard">Barrio</label>
                     <select name="neighboard" id="">
-                      <option value="">Lorem ipsum</option>
+                      <option value="">-</option>
                     </select>
                   </div>
                   <div className="login-field col-md-6 form-group other_input">
-                    <label htmlFor="neighboard">Otro barrio</label>
-                    <input type="text"/>
+                    <label htmlFor="neighboard">Cual otro barrio</label>
+                    <input type="text" />
                   </div>
                   <div className="login-field col-md-6 form-group other_input ">
                     <label htmlFor="address">Direccción</label>
-                    <input type="string" placeholder="Cra 00 #00-00" />
+                    <input type="text" placeholder="Cra 00 #00-00" />
                   </div>
                   <div className="checkbox-register col-12">
                     <input type="checkbox" required />

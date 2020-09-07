@@ -37,25 +37,12 @@ export default class Customerinfocontinuo extends Component {
                         <p>{data.cumpleaños}</p>
                       </div>
                       <div className="more-information-item">
+                        <h3>Edad</h3>
+                        <p>{data.edad}</p>
+                      </div>
+                      <div className="more-information-item">
                         <h3>Profesión</h3>
-                        <p>I{data.profesion}</p>
-                      </div>
-                      <div className="more-information-item">
-                        <h3>Medio de transporte</h3>
-                        <p>{data.medio_transporte}</p>
-                      </div>
-                      <div className="more-information-item">
-                        <h3>Mascota</h3>
-                        <p>{data.mascota}</p>
-                      </div>
-                      <div className="more-information-item">
-                        <h3>Ocupación</h3>
-                        <p>{data.ocupacion}
-                        </p>
-                      </div>
-                      <div className="more-information-item">
-                        <h3>Tipo de mascota</h3>
-                        <p>{data.tipodemascotas_c}</p>
+                        <p>{data.profesion}</p>
                       </div>
                       <div className="more-information-item">
                         <h3>Otra profesión</h3>

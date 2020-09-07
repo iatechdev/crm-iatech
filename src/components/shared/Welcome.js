@@ -10,7 +10,7 @@ export default class Welcome extends Component {
             <div className=" col-xs-12 col-md-4 container-welcome">
             <div className="back2">
                 <div className="row-icons-logo">
-                    <img src={require('../../icons/logo.png')} alt=""/>
+                    <img src={require('../../icons/logo_AVENTURA.png')} alt=""/>
                     <div className="row-link">
                     <Link to="/">
                     <button

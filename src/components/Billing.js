@@ -12,21 +12,27 @@ import '../style/billing.css'
 export default class Billing extends Component {
     constructor(props) {
         super(props);
+        const id = JSON.parse(localStorage.getItem('response'))
+        console.log(id.id_user)
         this.state = {
+            id_user:id.id_user,
             data: {},
             mall: [],
             mall_name:'',
             amount_billing:'',
             billing_number:'',
-            id_mall: null,
+            mall_id: '',
             sorteos: [],
             sorteo_name:'',
+            sorteo_id:'',
             event_information:'',
             showCamera: false,
             dataUri:'',
-           
+            error: false,
            
         }
+        this.sorteoRequest = this.sorteoRequest.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     searchId = (data, name) => {
@@ -36,82 +42,131 @@ export default class Billing extends Component {
             }
         }
     }
+    searchId_sorteo = (data, name) => {
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].name === name) {
+                return data[i].id
+            }
+        }
+    }
 
     onInputChange = (eventObject) => {
-        const id_mall = this.searchId(this.state.mall,eventObject.target.value)
+        const mall_id = this.searchId(this.state.mall , eventObject.target.value)
+        console.log(mall_id)
         this.setState({
-            id_mall,
+            mall_id: mall_id,
             [eventObject.target.name]: eventObject.target.value
+        }, ()=>{this.sorteoRequest(mall_id)});
+    }
+
+    onSorteoChange = (eventObject) => {
+        const sorteo_id = this.searchId_sorteo(this.state.sorteos , eventObject.target.value)
+        console.log(eventObject.target.value)
+        this.setState({
+            sorteo_id: sorteo_id,
+            sorteo_name: eventObject.target.value
         });
+    }
+
+    OnEventChange = (eventObject) => {
+        this.setState({
+            event_information: eventObject.target.value
+        })
+
     }
 
     async componentDidMount() {
         //e.preventDefault();
         const typeMall = await axios.get('https://master.iatech.com.co:4000/api/billings/mall');
-        //console.log(typeMall)
+        console.log(typeMall.data)
         this.setState({
             data: JSON.parse(localStorage.getItem('response')),
             mall: typeMall.data.mall,
             mall_name: typeMall.data.mall[0].name,
-            id_mall: typeMall.data.mall[0].id
+            mall_id: typeMall.data.mall[0].id
         });
     }
     
 
  
 
-    async componentDidUpdate(prevState) {
-        if (prevState.mall_name !== this.state.mall_name) {
-            const typestore = await axios.get(`https://master.iatech.com.co:4000/api/billings/rafflemall?id_mall=${this.state.id_mall}`);
-            console.log(typestore);
-
-            if (typestore.data.responde && !!typestore.data.responde.length) {
-                //console.log(this.state.sorteos)
-
-                this.setState({
-                    sorteos: typestore.data.responde,
-                    sorteo_name: typestore.data.responde[0].name  
-                }) 
-            }
-        }
-
+    async sorteoRequest(mall_id) {
+        await axios.get(`https://master.iatech.com.co:4000/api/billings/rafflemall?id_mall=${mall_id}`).then((response) => {
+                if (response.data.responde && response.data.responde.length >= 1) {
+                    this.setState({
+                        sorteos: response.data.responde,
+                        sorteo_name: response.data.responde[0].name,
+                        sorteo_id: response.data.responde[0].id   
+                    }) 
+                }
+    
+            }).catch((error) => {
+                console.log(error);
+            });
     }
 
-    handleTakePhotoAnimationDone = (dataUri) =>{
-        // Do stuff with the photo...
-        this.setState(
-            {dataUri, showCamera:false}
-        )
+    async handleSubmit(){
+        if( this.state.billing_number === "" || this.state.amount_billing === "" || this.state.mall_id === "" || this.state.sorteo_id === "" || this.state.event_information === "")
+        {
+           this.setState({
+               error: true,
+           })
 
-        
+        } else {
+            await axios.post(`https://master.iatech.com.co:4000/api/billings/billing_register`, 
+            {
+                id_user: this.state.id_user,
+                billing_number: this.state.billing_number,
+                amount_billing: this.state.amount_billing,
+                mall_id: this.state.mall_id,
+                sorteo_id: this.state.sorteo_id,
+                event_information: this.state.event_information 
+    
+            })
+              .then((response) => {
+                    console.log(response)
+                    this.props.history.push('/customerinfo')
+              }).catch((error) => {
+                console.log(error);
+            });
+
+        }
+       
       }
 
-    renderCamera= () =>{
-        return (
-            <Camera
-        onTakePhotoAnimationDone = { (dataUri) => { this.handleTakePhotoAnimationDone(dataUri); } }
-        idealFacingMode = {FACING_MODES.ENVIRONMENT}
-        idealResolution = {{width: 640, height: 480}}
-        imageType = {IMAGE_TYPES.JPG}
-        imageCompression = {0.97}
-        isMaxResolution = {true}
-        isImageMirror = {true}
-        isSilentMode = {false}
-        isDisplayStartCameraError = {true}
-        isFullscreen = {true}
-        sizeFactor = {1}
+    // handleTakePhotoAnimationDone = (dataUri) =>{
+    //     // Do stuff with the photo...
+    //     this.setState(
+    //         {dataUri, showCamera:false}
+    //     )
 
-      />
-        )
-    }
+        
+    //   }
+
+    // renderCamera= () =>{
+    //     return (
+    //         <Camera
+    //     onTakePhotoAnimationDone = { (dataUri) => { this.handleTakePhotoAnimationDone(dataUri); } }
+    //     idealFacingMode = {FACING_MODES.ENVIRONMENT}
+    //     idealResolution = {{width: 640, height: 480}}
+    //     imageType = {IMAGE_TYPES.JPG}
+    //     imageCompression = {0.97}
+    //     isMaxResolution = {true}
+    //     isImageMirror = {true}
+    //     isSilentMode = {false}
+    //     isDisplayStartCameraError = {true}
+    //     isFullscreen = {true}
+    //     sizeFactor = {1}
+
+    //   />
+    //     )
+    // }
 
     
     render(){
         const { data,showCamera} = this.state;
         return (
             <div>
-                {
-                    !showCamera &&
                     <div className="container">
                     <div className="row-container">
                         <div className="col-12 col-container">
@@ -127,23 +182,27 @@ export default class Billing extends Component {
                                             <h2>Registrar factura</h2>
                                         </li>
                                     </ul>
-                                    <form className="form-billing">
+                                    <form className="form-billing" onSubmit={this.handleSubmit.bind(this)}>
                                         <div className="form-row">
                                             <div className="billing-field col-md-6 form-group ">
                                                 <label htmlFor="name">Nombre de cliente</label>
-                                                <input type="text" name="name_cliente" value={this.state.data.name_cliente} onChange={this.onInputChange} placeholder="Lorem ipsum" />
+                                                <input type="text" name="name_cliente" value={this.state.data.name_cliente || ''} onChange={this.onInputChange} placeholder="Lorem ipsum" />
                                             </div>
                                             <div className="billing-field col-md-6 form-group">
                                                 <label htmlFor="number_billing">Nro de factura</label>
                                                 <input type="number" name="billing_number" value={this.state.value} onChange={this.onInputChange} placeholder="Nro de factura" />
-                                            </div>
+                                                {this.state.error ? <div className="error-data"> Campo Obligatorio</div> : null }
+                                                   
+                                        </div>
                                             <div className="billing-field col-md-6 form-group">
                                                 <label htmlFor="mall">Centro comercial</label>
-                                                <input type="text" name="mall_cliente" value={this.state.data.mall_cliente} onChange={this.onInputChange} placeholder="Lorem ipsum" />
+                                                <input type="text" name="mall_cliente" value={this.state.data.mall_cliente || ''} onChange={this.onInputChange} placeholder="Lorem ipsum" />
+                                                {this.state.error ? <div className="error-data"> Campo Obligatorio</div> : null }
                                             </div>
                                             <div className="billing-field col-md-6 form-group ">
                                                 <label htmlFor="amount_billing">Monto de la factura</label>
                                                 <input type="number" name="amount_billing" value={this.state.value} onChangeCapture={this.onInputChange} placeholder="Monto de la factura" />
+                                                {this.state.error ? <div className="error-data"> Campo Obligatorio</div> : null }
                                             </div>
                                             <div className="billing-field col-md-6 form-group">
                                                 <label>Centro Comercial</label>
@@ -154,10 +213,11 @@ export default class Billing extends Component {
                                                         </option>)
                                                     }
                                                 </select>
+                                                {this.state.error ? <div className="error-data"> Campo Obligatorio</div> : null }
                                             </div>
                                             <div className="billing-field col-md-6 form-group">
                                                 <label htmlFor="occupation">Sorteo</label>
-                                                <select name="sorteo_name" value={this.state.value} onChange={this.onInputChange} >
+                                                <select name="sorteo_name" value={this.state.value} onChange={this.onSorteoChange} >
                                                     {this.state.sorteos.map(sorteo_name =>
                                                         <option key={sorteo_name.name} value={sorteo_name.name}>
                                                         {sorteo_name.name}     
@@ -165,19 +225,21 @@ export default class Billing extends Component {
                                                     )
                                                     }
                                                 </select>
+                                                {this.state.error ? <div className="error-data"> Campo Obligatorio</div> : null }
                                             </div>
                                             <div className="billing-field billing-field-netword col-12 form-group">
-                                            <label htmlFor="occupation">¿Cómo te enteraste de nuestro evento?</label>
-                                                <select name="event_information" onChange={this.onInputChange} id="" placeholder="">
+                                            <label htmlFor="event_information">¿Cómo te enteraste de nuestro evento?</label>
+                                                <select name="event_information" onChange={this.OnEventChange} id="" placeholder="">
                                                     <option value={"La marca me lo comunicó"}>La marca me lo comunicó</option>
-                                                    <option value={"Radio"}>Radio</option>
-                                                    <option value={"Redes Sociales"}>Redes Sociales</option>
-                                                    <option value={"Volantes"}>Volantes</option>
-                                                    <option value={"Mail"}>Mail</option>
+                                                    <option value={"radio"}>Radio</option>
+                                                    <option value={"volante"}>Volante</option>
+                                                    <option value={"registro_factura"}>Registro Factura</option>
+                                                    <option value={"e_mail"}>E-mail</option>
     
                                                 </select>
+                                                {this.state.error ? <div className="error-data"> Campo Obligatorio</div> : null }
                                             </div>
-                                            <div className="container-files">
+                                            {/* <div className="container-files">
                                                 <div className="saved-gallery col-xs-12 col-md-5">
                                                     <div className="saved-gallery-img">
                                                         <img src={require('../icons/gallery.png')} alt="" />
@@ -207,22 +269,20 @@ export default class Billing extends Component {
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> */}
                                         </div>
+                                        <button type="button" className="btn btn-billing-next" onClick={this.handleSubmit.bind(this)}>Registrar<img src={require('../icons/211607-24.png')} alt="siguiente"/></button>
                                     </form>
                                 </div>
-                                <Link to='/billing_two' className="btn-link-billing">
-                                    <button type="button" className="btn btn-billing-next">Registrar<img src={require('../icons/211607-24.png')} alt="siguiente" /></button>
-                                </Link>
+                               
                             </div>
                             <Sidebar />
                         </div>
                     </div>
                 </div>
-                }
-                {
+                {/* {
                     showCamera && this.renderCamera()
-                }
+                } */}
             </div>
            )
     }

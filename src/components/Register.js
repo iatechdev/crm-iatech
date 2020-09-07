@@ -3,12 +3,34 @@ import Welcome from "./shared/Welcome";
 import "../style/register.css";
 import { Link } from "react-router-dom";
 
+const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
+const validateForm = (errors) => {
+  let valid = true;
+  Object.values(errors).forEach(
+    (val) => val.length > 0 && (valid = false)
+  );
+  return valid;
+}
+
+
 export default class Register extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       showButton: false,
-      showButtonRegister: true
+      showButtonRegister: true,
+      error: false,
+      name: null,
+      apellido_c: null,
+      email_address: null,
+      password_c: null,
+      errors: {
+        name: '',
+        apellido_c: '',
+        email_address:'',
+        password_c: '',
+        confirm_password:''
+      }
     };
   }
 
@@ -18,8 +40,69 @@ export default class Register extends Component {
       showButton:this.state.showButton
     });
   }
-    
+
+
+  handleChange = (event) => {
+    event.preventDefault();
+    const { name, value } = event.target;
+    let errors = this.state.errors;
+
+    switch (name) {
+      case 'name': 
+        errors.name = 
+          value.length < 3
+            ? 'nombre debe ser mayor a 3 caracteres!'
+            : '';
+        break;
+        case 'apellido_c': 
+        errors.apellido_c = 
+          value.length < 3
+            ? 'apellido debe ser mayor a 3 caracteres!'
+            : '';
+        break;
+      case 'email_address': 
+        errors.email_address = 
+          validEmailRegex.test(value)
+            ? ''
+            : 'email no es valido!';
+        break;
+      case 'password_c': 
+        errors.password_c = 
+          value.length < 8
+            ? 'contraseña debe ser mayor a 8 caracteres!'
+            : '';
+        break;
+        // case 'confirm_password': 
+        // errors.confirm_password = 
+        //   value.length != value.length.password_c
+        //     ? 'contraseña incorrecta!'
+        //     : '';
+        // break;
+      default:
+        break;
+    }
+    this.setState({errors, [name]: value});
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    if(validateForm(this.state.errors)) {
+      console.info('Valid Form')
+      const data_one = {
+        name: this.state.name,
+        apellido_c: this.state.apellido_c,
+        email_address: this.state.email_address,
+        password_c: this.state.password_c
+      }
+      localStorage.setItem('data_one', JSON.stringify(data_one));
+      this.history.push('/register_two')
+    }else{
+      console.error('Invalid Form')
+    }
+  }
+
   render() {
+    const {errors} = this.state;
     return (
       <div className="container">
         <div className="row-container">
@@ -58,7 +141,7 @@ export default class Register extends Component {
                   : null}
                 </Link>
               </div>
-              <form className="form-login">
+              <form className="form-login" onSubmit={this.handleSubmit}>
                 <div className="form-row">
                 <div>
                   <h1>Registrarse</h1>
@@ -77,25 +160,34 @@ export default class Register extends Component {
                   </div>
                   <div className="login-field col-md-6 form-group ">
                     <label htmlFor="nombre">Nombre</label>
-                    <input type="text" placeholder="Lorem ipsum" />
+                    <input type="text" placeholder="Nombre" name="name" onChange={this.handleChange} noValidate/>
+                    {errors.name.length > 0 && <span className='error-data'>{errors.name}</span>}
                   </div>
                   <div className="login-field col-md-6 form-group">
                     <label htmlFor="apellido">Apellido</label>
-                    <input type="text" placeholder="Lorem ipsum" />
+                    <input type="text" placeholder="Apellido" name="apellido_c" onChange={this.handleChange} noValidate/>
+                    {errors.apellido_c.length > 0 && <span className='error-data'>{errors.apellido_c}</span>}
                   </div>
                   <div className="login-field col-12 form-group">
                     <label htmlFor="email">E-mail</label>
-                    <input type="email" placeholder="email@informacion.com" />
+                    <input type="email" placeholder="email" name="email_address" onChange={this.handleChange} noValidate />
+                    {errors.email_address.length > 0 && <span className='error-data'>{errors.email_address}</span>}
                   </div>
                   <div className="login-field col-12 form-group ">
                     <label htmlFor="password">Contraseña</label>
-                    <input type="password" placeholder="Lorem ipsum" />
+                    <input type="password" placeholder="contraseña" name="password_c" onChange={this.handleChange}  noValidate/>
+                    {errors.password_c.length > 0 && <span className='error-data'>{errors.password_c}</span>}
                   </div>
+                  {/* <div className="login-field col-12 form-group ">
+                    <label htmlFor="password"> Confirmar Contraseña</label>
+                    <input type="password" placeholder="confirmar contraseña" name="confirm_password" onChange={this.handleChange} noValidate/>
+                    {errors.confirm_password.length > 0 && <span className='error-data'>{errors.confirm_password}</span>}
+                  </div> */}
                 </div>
+                <button>
+                  <img  className="btn-submit-two" src={require("../icons/siguieteboton.png")} alt="next" />
+                </button>
               </form>
-              <Link to="/register_two">
-                <img  className="btn-submit-two" src={require("../icons/siguieteboton.png")} alt="next" />
-              </Link>
             </div>
           </div>
         </div>

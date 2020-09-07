@@ -194,6 +194,11 @@
     border-radius: 0px 20px 20px 0px;
 }
 
+.error-data{
+    color: #FF0000;
+    font-size: 14px;
+
+}
 .list-billing-items-general button p{
     color: #ED8275;
     font-weight: bold;

@@ -34,12 +34,12 @@
   }
   
   .row-icons-logo img{
-    width: 40%;
+    width: 50%;
     background-color: #5c556d00;
   }
   
   .row-title-welcome{
-    margin-top: 70%;
+    margin-top: 50%;
     padding: 0% 20% 0% 20%;
     background-color: #5c556d00;
     flex-direction: column;
@@ -134,12 +134,12 @@ background-color: #5c556d00;
   padding: 5% 0% 0% 6%;
   width: 65%;}
 
-.row-title-welcome {
+/* .row-title-welcome {
   margin-top: 10%;
   padding: 0% 20% 0% 10%;
   background-color: #5c556d00;
   flex-direction: column;
-}
+} */
 
 .social-networks {
   background-color: #5c556d00;

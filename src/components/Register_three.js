@@ -91,49 +91,43 @@ export default class Register_three extends Component {
                     />
                   </div>
                   <div className="login-field col-md-6 form-group">
+                    <label htmlFor="edad">Edad</label>
+                    <select>
+                      <option value="">-</option>
+                      <option value="18_24">18-24</option>
+                      <option value="25_34">25-34</option>
+                      <option value="35_44">35-44</option>
+                      <option value="45_54">45-54</option>
+                      <option value="55_64">55-64</option>
+                      <option value="Mayores_65">Mayores de 65</option>
+                    </select>{" "}
+                  </div>
+                  <div className="login-field col-md-6 form-group">
                     <label htmlFor="profession">Profesión</label>
                     <select>
-                      <option value="">Lorem ipsum</option>
+                      <option value="">-</option>
                     </select>
                   </div>
                   <div className="login-field col-md-6 form-group other_input">
                     <label htmlFor="otherprofession">Otra profesión</label>
                     <input type="text" />
                   </div>
-                  <div className="login-field col-md-6 form-group ">
-                    <label htmlFor="conveyance">Medio de transporte</label>
-                    <select>
-                      <option value="">Lorem ipsum</option>
-                    </select>
-                  </div>
-                  <div className="login-field col-md-6 form-group ">
-                    <label htmlFor="pet">Mascota</label>
-                    <select>
-                      <option value="">Lorem ipsum</option>
-                    </select>
-                  </div>
-                  <div className="login-field col-md-6 form-group">
-                    <label htmlFor="type_pet">Tipo de mascota</label>
-                    <select>
-                      <option value="">Lorem ipsum</option>
-                    </select>
-                  </div>
-                  <div className="login-field col-md-6 form-group">
-                    <label htmlFor="occupation">Ocupación</label>
-                    <select>
-                      <option value="">Lorem ipsum</option>
-                    </select>{" "}
-                  </div>
                   <div className="login-field col-md-6 form-group">
                     <label htmlFor="social_netword">Red social</label>
                     <select>
-                      <option value="">Lorem ipsum</option>
+                      <option value="">-</option>
+                      <option value="facebook">Facebook</option>
+                      <option value="twitter">Twitter</option>
+                      <option value="linkedin">LinkedIn</option>
+                      <option value="instagram">Instagram</option>
                     </select>{" "}
                   </div>
                   <div className="login-field col-md-6 form-group ">
                     <label htmlFor="centrocomercial">Centro Comercial</label>
                     <select>
-                      <option value="">Lorem ipsum</option>
+                      <option value="">-</option>
+                      <option value="ia_mall_id_c">Aventura CC</option>
+                      
                     </select>
                   </div>
                   <div className="checkbox-register col-12">
