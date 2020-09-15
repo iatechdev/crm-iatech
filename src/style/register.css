@@ -177,6 +177,13 @@ text-decoration: underline;
     margin-left: 84%;
 }
 
+.btn-submit-register-container{
+    border: none;
+    margin-left: 80%;
+}
+.btn-submit-register{
+    width: 90px;
+}
 .btn-submit-three{
     width: 19%;
     margin-left: 81%;
@@ -201,6 +208,14 @@ text-decoration: underline;
         width: 30%;
         margin-left: 30%;
         margin-top: 3%;
+    }
+    .btn-submit-register-container{
+        border: none;
+        margin-left: 45%;
+        margin-top: 10px;
+    }
+    .btn-submit-register{
+        width: 100px;
     }
 
     .form-login {

@@ -15,7 +15,8 @@ export default class Ticket extends Component {
       tickets: [],
       currentTicket: [],
       currentPage: 1,
-      todosPerPage: 5
+      todosPerPage: 5,
+      dataticket: false
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -29,11 +30,17 @@ export default class Ticket extends Component {
   async componentDidMount() {
     const { currentTicket, currentPage, todosPerPage } = this.state;
     const ticket_all = await axios.get(`https://master.iatech.com.co:4000/api/tickets/tickets_office?doc=${this.state.doc}`);
-    console.log(ticket_all)
-    this.setState({
-      tickets: ticket_all.data.responde,
-      currentTicket: ticket_all.data.responde.slice((currentPage * todosPerPage) - todosPerPage, (currentPage * todosPerPage))
-    })
+    if (ticket_all.data != '') {
+      this.setState({
+        tickets: ticket_all.data.responde,
+        currentTicket: ticket_all.data.responde.slice((currentPage * todosPerPage) - todosPerPage, (currentPage * todosPerPage))
+      })
+    } else {
+      this.setState({
+        dataticket: true
+      })
+    }
+
 
   }
 
@@ -84,91 +91,98 @@ export default class Ticket extends Component {
                     <h2>Boletas</h2>
                   </li>
                 </ul>
-                <div className="list-billing">
-                  {this.state.currentTicket.map(ticket => (
-                    <div className="list-billing-items-general" key={ticket.id} >
-                      <div className="list-billing-items col-9">
-                        <div>
-                          <img src={require("../icons/tag1.png")} alt="" />
-                        </div>
-                        <div className="list-billing-items-info">
-                          <p>{ticket.name_cliente}</p>
-                          <p>{ticket.description}</p>
-                        </div>
-                      </div>
-                      <button
-                        className="btn col-3"
-                        data-toggle="modal"
-                        data-target= {"#modalTicket" + ticket.id}
-                      >
-                        <p>
-                          Ver más{" "}
-                          <img src={require("../icons/arrow_right.png")} alt="" />
-                        </p>
-                      </button>{" "}
-                      <div
-                        className="modal fade modalOne"
-                        id={"modalTicket" + ticket.id}
-                        role="dialog"
-                        aria-labelledby="modalTicketTitle"
-                        aria-hidden="true"
-                      >
-                        <div
-                          className="modal-dialog modal-dialog-ticket"
-                          role="document"
-                        >
-                          <div className="modal-content-ticket">
-                            <div className="modal-body-ticket">
-                              <div className="modal-body-ticket-two">
-                                <button
-                                  type="button"
-                                  className="btn-close-ticket"
-                                  data-dismiss="modal"
-                                  aria-label="Close"
-                                >
-                                  <img
-                                    src={require("../icons/close.png")}
-                                    alt=""
-                                  />
-                                </button>
-                                <div className="modal-body-ticket-two-two">
-                                  <div className="modal-body-ticket-two-one">
-                                    <h2>Nombre de cliente</h2>
-                                    <label htmlFor="">{ticket.name_cliente}</label>
-                                  </div>
-                                  <div className="modal-body-ticket-two-one">
-                                    <h2>Almacén</h2>
-                                    <label htmlFor="">{ticket.almacen}</label>
-                                  </div>
-                                  <div className="modal-body-ticket-two-one">
-                                    <h2>Sorteo</h2>
-                                    <label htmlFor="">{ticket.name_sorteo}</label>
-                                  </div>
-                                  <div className="modal-body-ticket-two-one">
-                                    <h2>Fecha de emisión</h2>
-                                    <label htmlFor="">{ticket.fecha_emision.substr(0,10)}</label>
-                                  </div>
-                                  <div className="modal-body-ticket-two-one">
-                                    <h2>Factura</h2>
-                                    <label htmlFor="">{ticket.number_factura}</label>
-                                  </div>
-                                  <div className="modal-body-ticket-two-one">
-                                    <h2>Descripción</h2>
-                                    <label htmlFor="">{ticket.description}</label>
+                {
+                  this.state.dataticket ?
+                  <div className="billing-stop">NO TIENE BOLETAS REGISTRADAS</div>
+                    :
+                    <div>
+                      <div className="list-billing">
+                        {this.state.currentTicket.map(ticket => (
+                          <div className="list-billing-items-general" key={ticket.id} >
+                            <div className="list-billing-items col-9">
+                              <div>
+                                <img src={require("../icons/tag1.png")} alt="" />
+                              </div>
+                              <div className="list-billing-items-info">
+                                <p>{ticket.name_cliente}</p>
+                                <p>{ticket.description}</p>
+                              </div>
+                            </div>
+                            <button
+                              className="btn col-3"
+                              data-toggle="modal"
+                              data-target={"#modalTicket" + ticket.id}
+                            >
+                              <p>
+                                Ver más{" "}
+                                <img src={require("../icons/arrow_right.png")} alt="" />
+                              </p>
+                            </button>{" "}
+                            <div
+                              className="modal fade modalOne"
+                              id={"modalTicket" + ticket.id}
+                              role="dialog"
+                              aria-labelledby="modalTicketTitle"
+                              aria-hidden="true"
+                            >
+                              <div
+                                className="modal-dialog modal-dialog-ticket"
+                                role="document"
+                              >
+                                <div className="modal-content-ticket">
+                                  <div className="modal-body-ticket">
+                                    <div className="modal-body-ticket-two">
+                                      <button
+                                        type="button"
+                                        className="btn-close-ticket"
+                                        data-dismiss="modal"
+                                        aria-label="Close"
+                                      >
+                                        <img
+                                          src={require("../icons/close.png")}
+                                          alt=""
+                                        />
+                                      </button>
+                                      <div className="modal-body-ticket-two-two">
+                                        <div className="modal-body-ticket-two-one">
+                                          <h2>Nombre de cliente</h2>
+                                          <label htmlFor="">{ticket.name_cliente}</label>
+                                        </div>
+                                        <div className="modal-body-ticket-two-one">
+                                          <h2>Almacén</h2>
+                                          <label htmlFor="">{ticket.almacen}</label>
+                                        </div>
+                                        <div className="modal-body-ticket-two-one">
+                                          <h2>Sorteo</h2>
+                                          <label htmlFor="">{ticket.name_sorteo}</label>
+                                        </div>
+                                        <div className="modal-body-ticket-two-one">
+                                          <h2>Fecha de emisión</h2>
+                                          <label htmlFor="">{ticket.fecha_emision.substr(0, 10)}</label>
+                                        </div>
+                                        <div className="modal-body-ticket-two-one">
+                                          <h2>Factura</h2>
+                                          <label htmlFor="">{ticket.number_factura}</label>
+                                        </div>
+                                        <div className="modal-body-ticket-two-one">
+                                          <h2>Descripción</h2>
+                                          <label htmlFor="">{ticket.description}</label>
+                                        </div>
+                                      </div>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </div>
 
-                  ))}
-                </div>
-                <ul id="page-numbers">
-                {renderPageNumbers}
-                </ul>
+                        ))}
+                      </div>
+                      <ul id="page-numbers">
+                        {renderPageNumbers}
+                      </ul>
+                    </div>
+                }
               </div>
             </div>
             <Sidebar />

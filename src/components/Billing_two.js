@@ -16,7 +16,8 @@ export default class Billing_two extends Component {
       selected: 0,
       currentPage: 1,
       todosPerPage: 5,
-      currentTodos: []
+      currentTodos: [],
+      databilling: false
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -28,51 +29,58 @@ export default class Billing_two extends Component {
   }
 
   async componentDidMount() {
-    const { currentPage,todosPerPage }= this.state;
-    const all_billing = await axios.get(`https://master.iatech.com.co:4000/api/billings//infobilling?doc=${this.state.doc}`);
-   this.setState({
-      billings: all_billing.data.responde,
-      currentTodos: all_billing.data.responde.slice((currentPage * todosPerPage)-todosPerPage, (currentPage * todosPerPage))
-
-    }) 
-  
+    const { currentPage, todosPerPage } = this.state;
+    await axios.get(`https://master.iatech.com.co:4000/api/billings/infobilling?doc=${this.state.doc}`).then(res =>{
+    console.log(res)  
+    if(res.data != ''){
+        this.setState({
+          billings: res.data.responde,
+          currentTodos: res.data.responde.slice((currentPage * todosPerPage) - todosPerPage, (currentPage * todosPerPage)),
+          databilling: false
+        })
+      } else {
+        this.setState({
+          databilling: true
+        })
+      }
+    })
+      console.log(this.state.databilling)
   }
 
 
   handleClick(event) {
-    const current =  Number(event.target.id);
-    const { todosPerPage }= this.state;
+    const current = Number(event.target.id);
+    const { todosPerPage } = this.state;
     this.setState({
       currentPage: current,
-      currentTodos: this.state.billings.slice((current * todosPerPage)-todosPerPage, (current * todosPerPage))
+      currentTodos: this.state.billings.slice((current * todosPerPage) - todosPerPage, (current * todosPerPage))
     });
   }
 
 
   render() {
 
-    const { billings,todosPerPage } = this.state;
+    const { billings, todosPerPage } = this.state;
     //console.log(billings)
 
     const pageNumbers = [];
-        for (let i = 1; i <= Math.ceil(billings.length/ todosPerPage); i++) {
-          pageNumbers.push(i);
-        }
+    for (let i = 1; i <= Math.ceil(billings.length / todosPerPage); i++) {
+      pageNumbers.push(i);
+    }
 
-        const renderPageNumbers = pageNumbers.map(number => {
-          return (
-            <li
-              key={number}
-              id={number}
-              onClick={this.handleClick}
-            >
-              {number}
-            </li>
-          );
-        });
+    const renderPageNumbers = pageNumbers.map(number => {
+      return (
+        <li
+          key={number}
+          id={number}
+          onClick={this.handleClick}
+        >
+          {number}
+        </li>
+      );
+    });
 
     return (
-
       <div className="container">
         <div className="row-container">
           <div className=" col-12 col-container">
@@ -94,78 +102,84 @@ export default class Billing_two extends Component {
                     <h2>Facturas registradas</h2>
                   </li>
                 </ul>
-                <div className="list-billing">
-                  {this.state.currentTodos.map(billing => (
-                    <div className="list-billing-items-general" key={billing.id} >
-                      <div className="list-billing-items col-9">
-                        <div>
-                          <img src={require("../icons/billing2.png")} alt="" />
+                {
+                  this.state.databilling == true ?
+                  <div className="billing-stop">NO TIENE FACTURAS REGISTRADAS</div>
+                  :
+                  <div>
+                  <div className="list-billing">
+                    {this.state.currentTodos.map(billing => (
+                      <div className="list-billing-items-general" key={billing.id} >
+                        <div className="list-billing-items col-9">
+                          <div>
+                            <img src={require("../icons/billing2.png")} alt="" />
+                          </div>
+                          <div className="list-billing-items-info">
+                            <p>{billing.name_cliente}</p>
+                            <p>Nro de factura</p>
+                            <p>{billing.number_factura.substr(0, 4)}</p>
+                          </div>
                         </div>
-                        <div className="list-billing-items-info">
-                          <p>{billing.name_cliente}</p>
-                          <p>Nro de factura</p>
-                          <p>{billing.number_factura.substr(0,4)}</p>
-                        </div>
-                      </div>
-                      <button
-                        className="btn col-3"
-                        data-toggle="modal"
-                        data-target={"#modlBilling" + billing.number_factura}
-                      >
-                        <p>
-                          Ver más{" "}
-                          <img src={require("../icons/arrow_right.png")} alt="" />
-                        </p>
-                      </button>{" "}
-                      <div
-                        className="modal fade modalOne"
-                        id={"modlBilling" + billing.number_factura}
-                        role="dialog"
-                        aria-labelledby="modalBillingTitle"
-                        aria-hidden="true"
-                      >
-                        <div
-                          className="modal-dialog modal-dialog-billing"
-                          role="document"
+                        <button
+                          className="btn col-3"
+                          data-toggle="modal"
+                          data-target={"#modlBilling" + billing.number_factura}
                         >
-                          <div className="modal-content">
-                            <div className="modal-body-billing">
-                              <div className="modal-body-billing-one">
-                                <img
-                                  src={require("../icons/billing2.png")}
-                                  alt=""
-                                />
-                                <h2>Nro de factura</h2>
-                                <h2>{billing.number_factura}</h2>
-                              </div>
-                              <div className="modal-body-billing-two">
-                                <button
-                                  type="button"
-                                  className="btn-close-billing"
-                                  data-dismiss="modal"
-                                  aria-label="Close"
-                                >
+                          <p>
+                            Ver más{" "}
+                            <img src={require("../icons/arrow_right.png")} alt="" />
+                          </p>
+                        </button>{" "}
+                        <div
+                          className="modal fade modalOne"
+                          id={"modlBilling" + billing.number_factura}
+                          role="dialog"
+                          aria-labelledby="modalBillingTitle"
+                          aria-hidden="true"
+                        >
+                          <div
+                            className="modal-dialog modal-dialog-billing"
+                            role="document"
+                          >
+                            <div className="modal-content">
+                              <div className="modal-body-billing">
+                                <div className="modal-body-billing-one">
                                   <img
-                                    src={require("../icons/close.png")}
+                                    src={require("../icons/billing2.png")}
                                     alt=""
                                   />
-                                </button>
-                                <div className="modal-body-billing-two-two">
-                                  <div className="modal-body-billing-two-one">
-                                    <h2>Nombre de cliente</h2>
-                                    <label htmlFor="">{billing.name_cliente}</label>
-                                  </div>
-                                  <div className="modal-body-billing-two-one">
-                                    <h2>Centro Comercial</h2>
-                                    <label htmlFor="">{billing.name_mall}</label>
-                                  </div>
-                                  <div className="modal-body-billing-two-one">
-                                    <h2>Sorteo</h2>
-                                    <label htmlFor="">{billing.name_sorteo}</label>
-                                  </div>
-                                  <div className="modal-body-billing-two-one">
-                                    <h2>Monto de la factura </h2>
-                                    <label htmlFor="">{billing.Monto}</label>
+                                  <h2>Nro de factura</h2>
+                                  <h2>{billing.number_factura}</h2>
+                                </div>
+                                <div className="modal-body-billing-two">
+                                  <button
+                                    type="button"
+                                    className="btn-close-billing"
+                                    data-dismiss="modal"
+                                    aria-label="Close"
+                                  >
+                                    <img
+                                      src={require("../icons/close.png")}
+                                      alt=""
+                                    />
+                                  </button>
+                                  <div className="modal-body-billing-two-two">
+                                    <div className="modal-body-billing-two-one">
+                                      <h2>Nombre de cliente</h2>
+                                      <label htmlFor="">{billing.name_cliente}</label>
+                                    </div>
+                                    <div className="modal-body-billing-two-one">
+                                      <h2>Centro Comercial</h2>
+                                      <label htmlFor="">{billing.name_mall}</label>
+                                    </div>
+                                    <div className="modal-body-billing-two-one">
+                                      <h2>Sorteo</h2>
+                                      <label htmlFor="">{billing.name_sorteo}</label>
+                                    </div>
+                                    <div className="modal-body-billing-two-one">
+                                      <h2>Monto de la factura </h2>
+                                      <label htmlFor="">{billing.Monto}</label>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
@@ -173,13 +187,15 @@ export default class Billing_two extends Component {
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
-                <ul id="page-numbers">
-              {renderPageNumbers}
-            </ul>
-              </div>
+                    ))}
+                  </div>
+                  <ul id="page-numbers">
+                    {renderPageNumbers}
+                  </ul>
+                  </div>
+              
+                }
+            </div>
               <Link to="/billing" className="btn-link-billing2">
                 <button type="submit" className="btn btn-billing2-next">
                   <img

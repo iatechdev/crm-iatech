@@ -1,181 +1,66 @@
 const { Router } = require("express");
 const router = Router();
-const dbconnect = require("../../lib/dbConnect");
+const bcrypt = require('bcryptjs');
+const User = require('./user');
+const jwt = require('jwt-simple');
+const moment = require('moment');
 
-// View One  of the register
-router.post("/register_one", async (req, res) => {
-  //RECORDAR un metodo para encriptar
-  let { name, secondName, email, password } = req.body;
-
-  const newUser = {
-    name,
-    secondName,
-    email,
-    password
-  };
+router.post("/registerformtwo",async(req, res) => {
 
   try {
-    /* Antes de guardar el usuario cifro la contraseña */
-    // newUser.password = await encryptPassword(password);
-    const registerOne = await dbconnect.query("INSERT INTO (name_table) SET ?", [newUser]);
-    newUser.id = registerOne.insertId;
+    const salt = await bcrypt.genSalt(10);
+    req.body.password_c = await bcrypt.hash(req.body.password_c, salt);
+    console.log(req.body.password_c)
+
+    const result = User.insert(req.body);
+
+    res.status(200).json(result);
+
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+const createToken = (user) =>{
+  let payload = {
+    userId: user.id,
+    createdAt : moment().unix(),
+    expiresAt : moment().add(1, 'day').unix()
+  }
+  return jwt.encode(payload, "Token-Auth")
+}
+
+router.post("/login", async(req,res) =>{
+  // let doc = req.query.doc;
+  const {
+    sic_code,
+    password_c
+  } = req.body
+  const user = await dbconnect.query("SELECT a.id as 'id_user',a.name as 'name_cliente',a.sic_code as 'sic_code', a.password_c as 'password_c',a.phone_office as 'phone_office',ac.pais_c as 'pais', ac.ciudad_c as 'ciudad',ac.departamento_c as 'departamento_c', ac.barrio_c as 'barrio', ac.direccion_c as 'direccion', ac.profesion_c as 'profesion', ac.otraprofesion_c as 'otra_profesion', ac.cualbarrio_c as 'cual_barrio', ac.habeasdata_c as 'habeasdata', ac.tipo_identificacion_c as 'tipo_identificacion', ac.genero_c as 'genero', ac.estadocivil_c as 'estado_civil', ac.celular_c as 'celular', ac.fecha_cumpleanos_c as 'cumpleaños', ac.tipohabeasdata_c as 'tipo_habeas_data', ac.ocupacion_c as 'ocupacion', ac.redes_sociales_c as 'redes_sociales',ac.edades_c as 'edad', ac.ia_mall_id_c as 'ia_mall_id_c', ea.email_address as 'email_address',im.name as 'mall_cliente',u.user_name as 'user.name' FROM accounts as a LEFT JOIN accounts_cstm as ac ON a.id = ac.id_c LEFT JOIN email_addr_bean_rel as eabr ON a.id = eabr.bean_id LEFT JOIN email_addresses as ea ON eabr.email_address_id = ea.id LEFT JOIN ia_mall as im ON ac.ia_mall_id_c = im.id LEFT JOIN users as u ON a.assigned_user_id = u.id WHERE a.sic_code = ?",[sic_code])
+
+  if(user === undefined){
     res.json({
-      ok: true,
-      newUser
-    });
-
-  } catch (error) {
-    console.log(error);
+      error : 'Error,email or password not found'
+    })
+  } else{
+    const equals = bcrypt.compareSync(password_c,user.password_c);
+    if(!equals){
+      res.json({
+        error : 'Error,email or password not found'
+      });
+    } else {
+      res.json({
+        sucesfull : createToken(user),
+        done: 'Login correct'
+      });
+    }
   }
-});
+})  
 
-//Con esta ruta (/genders) obtengo el genero
-router.get("/genders", async (req, res) => {
-  try {
-    const genders = await dbconnect.query("SELECT * FROM (name_table)");
-    res.json({ genders });
-  } catch (error) {
-    console.log(error);
-  }
-});
 
-//Con esta ruta (/genders) obtengo el genero
-router.get("/genders", async (req, res) => {
-  try {
-    const genders = await dbconnect.query("SELECT * FROM (name_table)");
-    res.json({ genders });
-  } catch (error) {
-    console.log(error);
-  }
-});
 
-//Con esta ruta (/statecivil) obtengo el estadocivil
-router.get("/statecivil", async (req, res) => {
-  try {
-    const statecivil = await dbconnect.query("SELECT * FROM (name_table)");
-    res.json({ statecivil });
-  } catch (error) {
-    console.log(error);
-  }
-});
 
-//Con esta ruta (/deparments) obtengo el departamentos
-router.get("/deparments", async (req, res) => {
-  try {
-    const deparments = await dbconnect.query("SELECT * FROM (name_table)");
-    res.json({ deparments });
-  } catch (error) {
-    console.log(error);
-  }
-});
 
-router.get("/cities", async (req, res) => {
-  try {
-    const cities = await dbconnect.query("SELECT * FROM (name_table)");
-    res.json({ cities });
-  } catch (error) {
-    console.log(error);
-  }
-});
 
-router.get("/neighborhoods", async (req, res) => {
-  try {
-    const neighborhoods = await dbconnect.query("SELECT * FROM (name_table)");
-    res.json({ neighborhoods });
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-//View Two of register
-
-router.post("/register_two", async (req, res) => {
-  let { identification, phone,direction,checkbox } = req.body;
-  const registerTwo={identification, phone,direction,checkbox};
-
-try {
-  const registersTwo = await dbconnect.query("INSERT INTO (name_table) SET ?", [registerTwo]);
-  res.json({ registersTwo });
-} catch (error) {
-  console.log(error);
-}
-});
-
-//View Three of register
-
-router.get("/profession", async (req, res) => {
-  try {
-    const profession = await dbconnect.query("SELECT * FROM (name_table)");
-    res.json({ profession });
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-router.get("/transport", async (req, res) => {
-  try {
-    const transport = await dbconnect.query("SELECT * FROM (name_table)");
-    res.json({ transport });
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-router.get("/pets", async (req, res) => {
-  try {
-    const pets = await dbconnect.query("SELECT * FROM (name_table)");
-    res.json({ pets });
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-router.get("/typepets", async (req, res) => {
-  try {
-    const typepets = await dbconnect.query("SELECT * FROM (name_table)");
-    res.json({ typepets });
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-router.get("/occupation", async (req, res) => {
-  try {
-    const occupation = await dbconnect.query("SELECT * FROM (name_table)");
-    res.json({ occupation });
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-router.get("/socialnetwork", async (req, res) => {
-  try {
-    const socialnetwork = await dbconnect.query("SELECT * FROM (name_table)");
-    res.json({ socialnetwork });
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-router.get("/malls", async (req, res) => {
-  try {
-    const malls = await dbconnect.query("SELECT * FROM (name_table)");
-    res.json({ malls });
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-router.post("/register_three", async (req, res) => {
-  let { term,checkbox2 } = req.body;
-  const registerThree={term,checkbox2};
-
-try {
-  const registersThree = await dbconnect.query("INSERT INTO (name_table) SET ?", [registerThree]);
-  res.json({ registersThree });
-} catch (error) {
-  console.log(error);
-}
-});
 
 module.exports = router;

@@ -1,14 +1,18 @@
 import React, { Component } from "react";
+import * as moment from 'moment';
 import Profileinfo from "./shared/Profileinfo";
 import Sidebar from "./shared/Sidebar";
 import { Link } from "react-router-dom";
 import "../style/customerinfo.css";
+import ApiExter from "../API/apiexter";
+
 
 export default class Customerinfocontinuo extends Component {
   constructor(props) {
     super(props);
     this.state={
-      data: {}
+      data: {},
+      api: ApiExter,
     }
   }
 
@@ -34,11 +38,12 @@ export default class Customerinfocontinuo extends Component {
                     <div className="personal-information-more">
                       <div className="more-information-item">
                         <h3>Fecha de nacimiento</h3>
-                        <p>{data.cumpleaños}</p>
+                        <p>{moment(data.cumpleaños).format('DD/MM/YYYY')}</p>
                       </div>
                       <div className="more-information-item">
                         <h3>Edad</h3>
-                        <p>{data.edad}</p>
+
+                        <p>{this.state.api.data.edad[data.edad]}</p>
                       </div>
                       <div className="more-information-item">
                         <h3>Profesión</h3>

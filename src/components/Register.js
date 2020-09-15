@@ -51,13 +51,13 @@ export default class Register extends Component {
       case 'name': 
         errors.name = 
           value.length < 3
-            ? 'nombre debe ser mayor a 3 caracteres!'
+            ? 'Debe ser mayor a 3 caracteres!'
             : '';
         break;
         case 'apellido_c': 
         errors.apellido_c = 
           value.length < 3
-            ? 'apellido debe ser mayor a 3 caracteres!'
+            ? 'Debe ser mayor a 3 caracteres!'
             : '';
         break;
       case 'email_address': 
@@ -69,7 +69,7 @@ export default class Register extends Component {
       case 'password_c': 
         errors.password_c = 
           value.length < 8
-            ? 'contraseña debe ser mayor a 8 caracteres!'
+            ? 'Debe ser mayor a 8 caracteres!'
             : '';
         break;
         // case 'confirm_password': 
@@ -84,6 +84,8 @@ export default class Register extends Component {
     this.setState({errors, [name]: value});
   }
 
+  // 'https://master.iatech.com.co:4000/api/customer/authcustomer?doc='+sic_code
+
   handleSubmit = (event) => {
     event.preventDefault();
     if(validateForm(this.state.errors)) {
@@ -95,7 +97,7 @@ export default class Register extends Component {
         password_c: this.state.password_c
       }
       localStorage.setItem('data_one', JSON.stringify(data_one));
-      this.history.push('/register_two')
+      this.props.history.push('/register_two')
     }else{
       console.error('Invalid Form')
     }
@@ -184,8 +186,8 @@ export default class Register extends Component {
                     {errors.confirm_password.length > 0 && <span className='error-data'>{errors.confirm_password}</span>}
                   </div> */}
                 </div>
-                <button>
-                  <img  className="btn-submit-two" src={require("../icons/siguieteboton.png")} alt="next" />
+                <button className="btn-submit-register-container">
+                  <img  className="btn-submit-register" src={require("../icons/siguieteboton.png")} alt="next" />
                 </button>
               </form>
             </div>

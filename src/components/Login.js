@@ -12,7 +12,10 @@ export default class Login extends Component {
       showButton: true,
       showButtonRegister: false,
       sic_code: '',
-      password: ''
+      password: '',
+      error: false,
+      inValid: false,
+      inValidPass:false
     };
    
   }
@@ -29,31 +32,38 @@ export default class Login extends Component {
     });
   }
 
-  onSubmit = async (e) => {
+  onSubmit = (e) => {
     e.preventDefault();
-    const { sic_code, password } = this.state;
+    if (this.state.sic_code != "" && this.state.password!= "") {
+       axios.post(`https://master.iatech.com.co:4000/api/register/login`,{
+        sic_code : this.state.sic_code,
+        password_c : this.state.password
 
-    if (sic_code == password) {
-      await axios.get('https://master.iatech.com.co:4000/api/customer/authcustomer?doc='+sic_code)
+      })
         .then((response) => {
           console.log(response)
-          if (response.data.responde.length >= 1) {
-            localStorage.setItem('response', JSON.stringify(response.data.responde[0]));
+          if (response.data.done === 'Login correct') {
+            localStorage.setItem('response', JSON.stringify(response.data.user[0]));
             return (
               this.props.history.push('/customerinfo')
             )
-      
-          } else {
-            return (alert('Identificación no esta registrada'),
-              console.log('error'));
+          } else if((response.data.done === 'Error,email not found')){
+            this.setState({
+              inValid: true,
+            })
+          }else if((response.data.done === 'Error,password not found')){
+            this.setState({
+              inValidPass: true,
+            })
           }
         })
         .catch(function (error) {
           console.log(error);
         })
-
     } else {
-      return (alert('Contraseña no coinciden'))
+      this.setState({
+        error: true,
+      })
     };
   }
 
@@ -114,10 +124,14 @@ export default class Login extends Component {
                 <div className="login-field">
                   <label htmlFor="id">Identidad</label>
                   <input type="number" name="sic_code" value={this.state.sic_code} onChange={this.onInputChange} />
+                  {this.state.error ? <span className='error-data'>Campo Obligatorio</span> : null}
+                  {this.state.inValid ? <span className='error-data'>Identificación incorrecta</span> : null}
                 </div>
                 <div className="login-field">
                   <label htmlFor="password">Contraseña</label>
                   <input type="password" name="password" value={this.state.password} onChange={this.onInputChange} />
+                  {this.state.error ? <span className='error-data'>Campo Obligatorio</span> : null}
+                  {this.state.inValidPass ? <span className='error-data'>Contraseña incorrecta</span> : null}
                 </div>
                 <div className="password-forget">
                   <button data-toggle="modal" data-target="#exampleModalLong">
@@ -171,10 +185,10 @@ export default class Login extends Component {
                     </div>
                   </div>
                 </div>
-                <div className="checkbox-login">
+                {/* <div className="checkbox-login">
                   <input type="checkbox" />
                   <p>Mantener activo</p>
-                </div>
+                </div> */}
                 <div className="login-register">
                   <p>
                     ¿No tienes una cuenta?{" "}

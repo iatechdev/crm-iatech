@@ -1,12 +1,15 @@
-const { promisify } = require('util');
 const mysql = require('mysql');
+
+const { promisify } = require('util');
+
+//const { database } = require('../config/keys');
+
 const mysqlPool = mysql.createPool({
-        host :'127.0.0.1',
-        user :'andres',
-        password : '1',
-        database : 'db_pruebas_crmmall',
-    }
-);
+    host :'127.0.0.1',
+    user :'root',
+    password : 'C4l4mb33..',
+    database : 'db_aventura'
+});
 
 mysqlPool.getConnection((err, connection) => {
     if (err) {
@@ -31,4 +34,5 @@ mysqlPool.getConnection((err, connection) => {
 mysqlPool.query = promisify(mysqlPool.query);
 
 module.exports = mysqlPool;
+
 

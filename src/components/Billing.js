@@ -16,7 +16,7 @@ export default class Billing extends Component {
         console.log(id.id_user)
         this.state = {
             id_user:id.id_user,
-            data: {},
+            data:{},
             mall: [],
             mall_name:'',
             amount_billing:'',
@@ -31,7 +31,7 @@ export default class Billing extends Component {
             error: false,
            
         }
-        this.sorteoRequest = this.sorteoRequest.bind(this);
+        // this.sorteoRequest = this.sorteoRequest.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -56,9 +56,34 @@ export default class Billing extends Component {
         this.setState({
             mall_id: mall_id,
             [eventObject.target.name]: eventObject.target.value
-        }, ()=>{this.sorteoRequest(mall_id)});
+        }, );
     }
 
+    async componentDidMount() {
+        //e.preventDefault();
+        const typeMall = await axios.get('https://master.iatech.com.co:4000/api/billings/mall');
+        console.log(typeMall.data)
+        this.setState({
+            data: JSON.parse(localStorage.getItem('response')),
+            mall: typeMall.data.mall,
+            mall_name: typeMall.data.mall[0].name,
+            mall_id: typeMall.data.mall[0].id
+        });
+
+            await axios.get(`https://master.iatech.com.co:4000/api/billings/rafflemall?id_mall=${this.state.mall_id}`).then((response) => {
+                    if (response.data.responde && response.data.responde.length >= 1) {
+                        this.setState({
+                            sorteos: response.data.responde,
+                            sorteo_name: response.data.responde[0].name,
+                            sorteo_id: response.data.responde[0].id   
+                        }) 
+                    }
+        
+                }).catch((error) => {
+                    console.log(error);
+                });
+    }
+    
     onSorteoChange = (eventObject) => {
         const sorteo_id = this.searchId_sorteo(this.state.sorteos , eventObject.target.value)
         console.log(eventObject.target.value)
@@ -75,61 +100,30 @@ export default class Billing extends Component {
 
     }
 
-    async componentDidMount() {
-        //e.preventDefault();
-        const typeMall = await axios.get('https://master.iatech.com.co:4000/api/billings/mall');
-        console.log(typeMall.data)
-        this.setState({
-            data: JSON.parse(localStorage.getItem('response')),
-            mall: typeMall.data.mall,
-            mall_name: typeMall.data.mall[0].name,
-            mall_id: typeMall.data.mall[0].id
-        });
-    }
-    
-
- 
-
-    async sorteoRequest(mall_id) {
-        await axios.get(`https://master.iatech.com.co:4000/api/billings/rafflemall?id_mall=${mall_id}`).then((response) => {
-                if (response.data.responde && response.data.responde.length >= 1) {
-                    this.setState({
-                        sorteos: response.data.responde,
-                        sorteo_name: response.data.responde[0].name,
-                        sorteo_id: response.data.responde[0].id   
-                    }) 
-                }
-    
-            }).catch((error) => {
-                console.log(error);
-            });
-    }
-
-    async handleSubmit(){
+   handleSubmit = e => {
+    e.preventDefault();
         if( this.state.billing_number === "" || this.state.amount_billing === "" || this.state.mall_id === "" || this.state.sorteo_id === "" || this.state.event_information === "")
         {
            this.setState({
-               error: true,
+               error: true, 
            })
-
         } else {
-            await axios.post(`https://master.iatech.com.co:4000/api/billings/billing_register`, 
+            console.log(this.state)
+           axios.post(`https://master.iatech.com.co:4000/api/billings/billing_register`,
             {
                 id_user: this.state.id_user,
                 billing_number: this.state.billing_number,
                 amount_billing: this.state.amount_billing,
-                mall_id: this.state.mall_id,
+                mall_id: this.state.mall[0].id,
                 sorteo_id: this.state.sorteo_id,
                 event_information: this.state.event_information 
-    
             })
-              .then((response) => {
-                    console.log(response)
-                    this.props.history.push('/customerinfo')
-              }).catch((error) => {
-                console.log(error);
+            .then((response) => {
+                console.log(response)
+                this.props.history.push('/billing_two')
+            }).catch((error) => {
+              console.log(error);
             });
-
         }
        
       }
@@ -164,7 +158,7 @@ export default class Billing extends Component {
 
     
     render(){
-        const { data,showCamera} = this.state;
+        // const { data,showCamera} = this.state;
         return (
             <div>
                     <div className="container">
@@ -182,7 +176,7 @@ export default class Billing extends Component {
                                             <h2>Registrar factura</h2>
                                         </li>
                                     </ul>
-                                    <form className="form-billing" onSubmit={this.handleSubmit.bind(this)}>
+                                    <form className="form-billing" >
                                         <div className="form-row">
                                             <div className="billing-field col-md-6 form-group ">
                                                 <label htmlFor="name">Nombre de cliente</label>
@@ -230,6 +224,7 @@ export default class Billing extends Component {
                                             <div className="billing-field billing-field-netword col-12 form-group">
                                             <label htmlFor="event_information">¿Cómo te enteraste de nuestro evento?</label>
                                                 <select name="event_information" onChange={this.OnEventChange} id="" placeholder="">
+                                                <option value="">-</option>
                                                     <option value={"La marca me lo comunicó"}>La marca me lo comunicó</option>
                                                     <option value={"radio"}>Radio</option>
                                                     <option value={"volante"}>Volante</option>
@@ -271,7 +266,7 @@ export default class Billing extends Component {
                                                 </div>
                                             </div> */}
                                         </div>
-                                        <button type="button" className="btn btn-billing-next" onClick={this.handleSubmit.bind(this)}>Registrar<img src={require('../icons/211607-24.png')} alt="siguiente"/></button>
+                                            <button type="button" className="btn btn-billing-next" onClick={this.handleSubmit}>Registrar<img src={require('../icons/211607-24.png')} alt="siguiente"/></button>
                                     </form>
                                 </div>
                                

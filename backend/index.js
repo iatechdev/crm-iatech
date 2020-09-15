@@ -2,8 +2,10 @@ const db = require('./lib/dbConnect');
 const https = require('https');
 const fs = require('fs');
 
+
 const express = require('express');
 const morgan = require('morgan');
+
 
 //Initialization
 const app = express();
@@ -38,12 +40,12 @@ app.use((req,res,next)=>{
 //routes
 app.use('/api/customer',require('./routes/api/customer')),
 app.use('/api/billings',require('./routes/api/billings')),
-app.use('/api/tickets',require('./routes/api/tickets'))
+app.use('/api/tickets',require('./routes/api/tickets')),
+app.use('/api/register',require('./routes/api/register'))
 
 //start the server
 
 https.createServer(options, app).listen(4000);
-
 //app.listen(app.get('port'), () => {
 //    console.log(`Server On Port ${app.get('port')}`);
 //});

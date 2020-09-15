@@ -52,7 +52,7 @@ export default class Customerinfo extends Component {
                       </div>
                       <div className="marital-status">
                         <h3>Estado civil</h3>
-                        <p>{data.estado_civil}</p>
+                        <p>{this.state.api.data.estado_civil[data.estado_civil]}</p>
                       </div>
                     </div>
                   </li>

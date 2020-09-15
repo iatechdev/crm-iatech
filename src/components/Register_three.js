@@ -4,15 +4,62 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "../style/register.css";
 import "../style/modal.css";
+import * as moment from 'moment';
 import { Link } from "react-router-dom";
+import ApiExter from "../API/apiexter";
+import axios from 'axios';
+
+
+const validate = values => {
+  const errors = {}
+  if (!values.edades_c) {
+    errors.edades_c = 'campo obligatorio'
+  }
+  if (!values.ia_mall_id_c) {
+    errors.ia_mall_id_c = 'campo obligatorio'
+  }
+
+  if (!values.autoriza_tratamiento_datos_c) {
+    errors.autoriza_tratamiento_datos_c = 'campo obligatorio'
+  }
+
+  return errors
+}
 
 export default class Register_three extends Component {
   constructor() {
     super();
+    const data_one = JSON.parse(localStorage.getItem("data_one"))
+    const data_two = JSON.parse(localStorage.getItem("data_two"))
     this.state = {
       showButton: false,
       showButtonRegister: true,
-      startDate: new Date()
+      api: ApiExter,
+      name: data_one.name,
+      apellido_c: data_one.apellido_c,
+      email_address: data_one.email_address,
+      password_c: data_one.password_c,
+      tipo_identificacion_c: data_two.tipo_identificacion_c,
+      sic_code: data_two.sic_code,
+      phone_office: data_two.phone_office,
+      celular_c: data_two.celular_c,
+      genero_c: data_two.genero_c,
+      estadocivil_c: data_two.estadocivil_c,
+      pais_c: data_two.pais_c,
+      departamento_c: data_two.departamento_c,
+      ciudad_c: data_two.cities_select,
+      barrio_c: data_two.barrio_c,
+      cualbarrio_c: data_two.cualbarrio_c,
+      direccion_c: data_two.direccion_c,
+      habeasdata_c: data_two.habeasdata_c,
+      startDate: new Date(),
+      edades_c: '',
+      profesion_c: '',
+      otraprofesion_c: '',
+      redes_sociales_c: '',
+      ia_mall_id_c: '',
+      autoriza_tratamiento_datos_c: '',
+      errors: {}
     };
   }
 
@@ -22,13 +69,67 @@ export default class Register_three extends Component {
     });
   };
 
+  handleChangeValue = (e) => {
+    const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+
+    this.setState({ ...this.state, [e.target.name]: value })
+  }
+
   buttonShowRegister() {
     this.setState({
       showButtonRegister: !this.state.showButtonRegister,
       showButton: this.state.showButton
     });
   }
+
+  hadleSubmit = e => {
+    e.preventDefault();
+    const { errors, ...sinErrors } = this.state
+    const result = validate(sinErrors)
+
+    this.setState({ errors: result })
+    if (!Object.keys(result).length) {
+      axios.post(`https://master.iatech.com.co:4000/api/register/registerformtwo`,
+        {
+          name: this.state.name,
+          apellido_c: this.state.apellido_c,
+          email_address: this.state.email_address,
+          password_c: this.state.password_c,
+          tipo_identificacion_c: this.state.tipo_identificacion_c,
+          sic_code: this.state.sic_code,
+          phone_office: this.state.phone_office,
+          celular_c: this.state.celular_c,
+          genero_c: this.state.genero_c,
+          estadocivil_c: this.state.estadocivil_c,
+          pais_c: this.state.pais_c,
+          departamento_c: this.state.departamento_c,
+          ciudad_c: this.state.ciudad_c,
+          barrio_c: this.state.barrio_c,
+          cualbarrio_c: this.state.cualbarrio_c,
+          direccion_c: this.state.direccion_c,
+          habeasdata_c: this.state.habeasdata_c,
+          fecha_cumpleanos_c: moment(this.state.startDate).format('YYYY-MM-DD'),
+          edades_c: this.state.edades_c,
+          profesion_c: this.state.profesion_c,
+          otraprofesion_c: this.state.otraprofesion_c,
+          redes_sociales_c: this.state.redes_sociales_c,
+          ia_mall_id_c: this.state.ia_mall_id_c,
+          autoriza_tratamiento_datos_c: this.state.autoriza_tratamiento_datos_c
+
+        })
+        .then((response) => {
+          console.log(response)
+          this.props.history.push('/');
+          localStorage.clear();
+        }).catch((error) => {
+          console.log(error);
+        });
+    } else {
+      console.log('invalidate form')
+    }
+  }
   render() {
+    const { errors } = this.state
     return (
       <div className="container">
         <div className="row-container">
@@ -65,12 +166,12 @@ export default class Register_three extends Component {
                   ) : null}
                 </Link>
               </div>
-              <form className="form-login">
+              <form className="form-login" onSubmit={this.hadleSubmit}>
                 <div className="form-row">
-                <div>
-                  <h1>Registrarse</h1>
-                  <p>Regístrate con tu correo o red social</p>
-                </div>
+                  <div>
+                    <h1>Registrarse</h1>
+                    <p>Regístrate con tu correo o red social</p>
+                  </div>
                   <div className="icons-reds form-group">
                     <a href={`#`}>
                       <img src={require("../icons/google.png")} alt="" />
@@ -88,11 +189,12 @@ export default class Register_three extends Component {
                       selected={this.state.startDate}
                       onChange={this.handleChange}
                       locale="es-CO"
+
                     />
                   </div>
                   <div className="login-field col-md-6 form-group">
                     <label htmlFor="edad">Edad</label>
-                    <select>
+                    <select name="edades_c" onChange={this.handleChangeValue} value={this.state.value}>
                       <option value="">-</option>
                       <option value="18_24">18-24</option>
                       <option value="25_34">25-34</option>
@@ -100,21 +202,25 @@ export default class Register_three extends Component {
                       <option value="45_54">45-54</option>
                       <option value="55_64">55-64</option>
                       <option value="Mayores_65">Mayores de 65</option>
-                    </select>{" "}
+                    </select>
+                    {errors.edades_c && <span className='error-data'>{errors.edades_c}</span>}
                   </div>
                   <div className="login-field col-md-6 form-group">
                     <label htmlFor="profession">Profesión</label>
-                    <select>
+                    <select name="profesion_c" onChange={this.handleChangeValue} value={this.state.value}>
                       <option value="">-</option>
+                      {this.state.api.data.profesion.map((profesion, index) =>
+                        <option key={index} value={profesion.profesion}>{profesion.profesion}</option>
+                      )}
                     </select>
                   </div>
                   <div className="login-field col-md-6 form-group other_input">
                     <label htmlFor="otherprofession">Otra profesión</label>
-                    <input type="text" />
+                    <input type="text" name="otraprofesion_c" onChange={this.handleChangeValue} value={this.state.value} />
                   </div>
                   <div className="login-field col-md-6 form-group">
                     <label htmlFor="social_netword">Red social</label>
-                    <select>
+                    <select name="redes_sociales_c" onChange={this.handleChangeValue} value={this.state.value}>
                       <option value="">-</option>
                       <option value="facebook">Facebook</option>
                       <option value="twitter">Twitter</option>
@@ -124,14 +230,15 @@ export default class Register_three extends Component {
                   </div>
                   <div className="login-field col-md-6 form-group ">
                     <label htmlFor="centrocomercial">Centro Comercial</label>
-                    <select>
+                    <select name="ia_mall_id_c" onChange={this.handleChangeValue} value={this.state.value}>
                       <option value="">-</option>
-                      <option value="ia_mall_id_c">Aventura CC</option>
-                      
+                      <option value="7d0d0a3f-5d38-4fe0-f3e3-5d7aca3409af">Aventura CC</option>
+
                     </select>
+                    {errors.ia_mall_id_c && <span className='error-data'>{errors.ia_mall_id_c}</span>}
                   </div>
                   <div className="checkbox-register col-12">
-                    <input type="checkbox" required />
+                    <input type="checkbox" name="autoriza_tratamiento_datos_c" onChange={this.handleChangeValue} value={this.state.value} required />
                     <p>
                       Acepto
                       <span data-toggle="modal" data-target="#modalterm">
@@ -188,15 +295,17 @@ export default class Register_three extends Component {
                       </div>
                     </div>
                   </div>
+                  {errors.autoriza_tratamiento_datos_c && <span className='error-data'>{errors.autoriza_tratamiento_datos_c}</span>}
+
                 </div>
+                <button className="btn-submit-register-container">
+                  <img
+                    className="btn-submit-register"
+                    src={require("../icons/entrarboton.png")}
+                    alt="next"
+                  />
+                </button>
               </form>
-              <Link to="/customerinfo">
-                <img
-                  className="btn-submit-three"
-                  src={require("../icons/entrarboton.png")}
-                  alt="next"
-                />
-              </Link>
             </div>
           </div>
         </div>

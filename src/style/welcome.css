@@ -134,6 +134,15 @@ background-color: #5c556d00;
   padding: 5% 0% 0% 6%;
   width: 65%;}
 
+  .row-icons-logo img{
+    width: 30%;
+  }
+
+  .row-title-welcome{
+    margin-top: 20%;
+    padding: 0% 20% 0% 10%;
+  }
+
 /* .row-title-welcome {
   margin-top: 10%;
   padding: 0% 20% 0% 10%;
