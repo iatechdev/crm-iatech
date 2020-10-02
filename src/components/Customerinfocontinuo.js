@@ -80,7 +80,7 @@ export default class Customerinfocontinuo extends Component {
                 </button>
               </Link>
             </div>
-            <Sidebar className="container-sidebar" />
+            <Sidebar/>
           </div>
         </div>
       </div>

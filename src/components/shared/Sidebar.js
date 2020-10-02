@@ -1,22 +1,27 @@
 import React, { Component } from "react";
 import "../../style/sidebar.css";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 
-export default class Sidebar extends Component {
+
+export default class Sidebar extends Component{
+ 
+  onSubmit(){
+    localStorage.clear();
+  }
+
   render() {
     return (
-      <div className="col-xs-12 col-md-1 container-sidebar">
+      <div className="col-xs-12 col-md-1.5 container-sidebar">
         <div className="container-sidebar-menu">
           <Link to="/">
             <div className="container-sidebar-logo">
-              <img src={require("../../icons/logo.png")} alt="" />
+              <img src={require("../../icons/logo_AVENTURA.png")} alt="" />
             </div>
           </Link>
           <button className="btn-menu" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
             <img src={require("../../icons/menuicons.png")} alt="" />
           </button>
         </div>
-        
         <div className="container-sidebar-icons collapse" id="navbarToggleExternalContent">
           <Link to="/customerinfo">
             <div className="container-sidebar-item">
@@ -46,7 +51,7 @@ export default class Sidebar extends Component {
               <img src={require("../../icons/circle.png")} alt="" />
             </div>
           </Link>
-            <div className="container-sidebar-item">
+            {/* <div className="container-sidebar-item">
               <img src={require("../../icons/anuncios.png")} alt="" />
             </div>
             <div className="container-sidebar-item-circle">
@@ -83,7 +88,7 @@ export default class Sidebar extends Component {
             </div>
             <div className="container-sidebar-item-circle">
               <img src={require("../../icons/circle.png")} alt="" />
-            </div>
+            </div> */}
           <Link to="/ticket">
             <div className="container-sidebar-item">
               <img
@@ -98,8 +103,8 @@ export default class Sidebar extends Component {
               <img src={require("../../icons/circle.png")} alt="" />
             </div>
           </Link>
-          <Link to="/">
-            <div className="container-sidebar-item">
+          <Link to="/" onClick={this.onSubmit}>
+          <div className="container-sidebar-item" >
               <img
                 src={require("../../icons/logout.png")}
                 alt=""
@@ -108,12 +113,10 @@ export default class Sidebar extends Component {
                 title="Cerrar sesión"
               />
             </div>
-            <div className="container-sidebar-item-circle">
-              <img src={require("../../icons/circle.png")} alt="" />
-            </div>
           </Link>
+            
         </div>
-      </div>
+      </div>  
     );
   }
 }

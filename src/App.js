@@ -12,6 +12,7 @@ import Billing from './components/Billing';
 import Billing_two from './components/Billing_two';
 import Ticket from './components/Ticket';
 import TakePhoto from './components/shared/TakePhoto';
+import Siderbar from './components/shared/Sidebar'
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/billing_two" exact component={Billing_two}/>
         <Route path="/ticket" exact component={Ticket}/>
         <Route path="/takephoto" exact component={TakePhoto}/>
+        <Route path="/sidebar" exact component={Siderbar}/>
       </Switch>
     </BrowserRouter>
    

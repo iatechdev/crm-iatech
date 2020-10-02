@@ -11,14 +11,7 @@ const regexTlf= /^[0-9]{7}$/;
 
 const validate = values =>{
   const errors = {}
-  if(!values.tipo_identificacion__c){
-    errors.tipo_identificacion__c ='campo obligatorio'
-  }
-  if(!values.sic_code){
-    errors.sic_code ='campo obligatorio'
-  }else if(!regexSicCode.test(values.sic_code)){
-    errors.sic_code ='valor invalido'
-  }
+
   if(!values.pais_c){
     errors.pais_c ='campo obligatorio'
   }
@@ -53,8 +46,6 @@ export default class Register_two extends Component {
       departamento_c:'',
       deparment_name:'',
       ciudad_c:'',
-      tipo_identificacion_c:'',
-      sic_code:'',
       phone_office:'',
       celular_c:'',
       genero_c:'',
@@ -97,8 +88,6 @@ export default class Register_two extends Component {
     this.setState({errors:result})
     if(!Object.keys(result).length){
       const data_two = {
-        tipo_identificacion__c: this.state.tipo_identificacion__c,
-        sic_code: this.state.sic_code,
         phone_office: this.state.phone_office,
         celular_c: this.state.celular_c,
         genero_c: this.state.genero_c,
@@ -174,23 +163,6 @@ export default class Register_two extends Component {
                     <a href={`#`}>
                       <img src={require("../icons/twitter1.png")} alt="" />
                     </a>
-                  </div>
-                  <div className="login-field col-md-6 form-group ">
-                    <label htmlFor="typeidentificacion">Tipo de Identificación</label>
-                    <select name="tipo_identificacion__c" onChange={this.handleChange} value={this.state.value}  id="">
-                      <option value="">-</option>
-                      <option value="CC">Cédula de Ciudadanía</option>
-                      <option value="CEX">Cédula DE Extranjería</option>
-                      <option value="NIT">Nit</option>
-                      <option value="PAS">Pasaporte</option>
-                      <option value="NIUP">Registro Civil</option>
-                    </select>
-                    {errors.tipo_identificacion__c && <span className='error-data'>{errors.tipo_identificacion__c}</span>}
-                  </div>
-                  <div className="login-field col-md-6 form-group ">
-                    <label htmlFor="identificacion">Identificación</label>
-                    <input type="number" name="sic_code" onChange={this.handleChange} value={this.state.value}  placeholder="identificación" />
-                    {errors.sic_code && <span className='error-data'>{errors.sic_code}</span>}
                   </div>
                   <div className="login-field col-md-6 form-group">
                     <label htmlFor="phone">Teléfono Fijo</label>

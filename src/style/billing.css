@@ -14,6 +14,8 @@
 
 .customerinfo-billing-container{
     padding: 2% 0% 0% 3%;
+    min-height: 570px;
+    position: relative;
 }
 
 .billing-profile{
@@ -72,7 +74,7 @@
     align-items: center;
     border: 1px dashed #707070;
     border-radius: 20px;
-    padding: 2%;
+    padding: 1%;
     margin-bottom: 4%;
 }
 
@@ -124,7 +126,7 @@
     border: 1px solid #707070;
     background-position: 97% 50%;
     border-radius: 10px;
-    padding: 5%;
+    padding: 3% 0% 3% 1%;
     font-family:  "Helvetica Neue";
     font-weight: 400;
     color: #707070 !important;
@@ -331,8 +333,9 @@
     color: #fff;
     background-color: #F08377;
     border-radius: 8px 0px 0px 0px;
-    margin-left: 86%;
-    margin-top: 5%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
     display: flex;
     flex-direction: row;
 }
@@ -347,15 +350,32 @@
     margin-top: 2%;
 }
 
+.billing-field select.w-98{
+    appearance: none;
+    background-image: url('../icons/arrow.png');
+    background-repeat: no-repeat;
+    border: 1px solid #707070;
+    background-position: 97% 50%;
+    border-radius: 10px;
+    padding: 3% 0% 3% 1%;
+    font-family:  "Helvetica Neue";
+    font-weight: 400;
+    color: #707070 !important;
+    width: 98%;
+ }
+
 .btn-billing2-next{
 padding-bottom: 0;
 margin-bottom: 0;
+position: absolute;
+bottom: 0;
 }
+
 
 
 .btn-billing2-next img{
     background-color: #F08377;
-    margin-left: 0%;
+    margin-right: 6%;
     width: 55%;
     padding:0;
 }
@@ -381,6 +401,10 @@ margin-bottom: 0;
         margin-top: 3%;
 
     }
+
+    .w-98{
+        width: 98% !important;
+    }
 }
 @media (max-width: 767px){
     .container .row-container {
@@ -393,7 +417,7 @@ margin-bottom: 0;
         flex-direction: column;
     }
     .saved-gallery {
-        margin-bottom: 5%;
+        margin-bottom: 55px;
     }
 
     .saved-gallery,
@@ -420,8 +444,8 @@ margin-bottom: 0;
         color: #fff;
         background-color: #F08377;
         border-radius: 8px 0px 0px 0px;
-        margin-left: 33%;
-        margin-bottom: 5%;
+        right: 40%;
+        margin-bottom: 20px;
         margin-top: 5%;
         display: flex;
         flex-direction: row;
@@ -448,11 +472,15 @@ margin-bottom: 0;
         background-color: #FDF8ED;
         border-radius: 0px 20px 20px 0px;
     }
+    .btn-billing2-next  {
+        padding-bottom: 10px;
+        right: 18%;
+    }
 
      .btn-billing2-next img {
         background-color: #F08377;
         margin-left: 0%;
-        margin-right: 9%;
+        margin-right: 0%;
         width: 65%;
         margin-bottom: 5%;
         padding: 0;
@@ -463,4 +491,9 @@ margin-bottom: 0;
         margin-top: 2%;
         margin-bottom: 2%;
     }
+
+    #page-numbers {
+       margin-bottom: 45px;
+      }
+      
 }

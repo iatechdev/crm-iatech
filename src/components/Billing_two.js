@@ -169,8 +169,8 @@ export default class Billing_two extends Component {
                                       <label htmlFor="">{billing.name_cliente}</label>
                                     </div>
                                     <div className="modal-body-billing-two-one">
-                                      <h2>Centro Comercial</h2>
-                                      <label htmlFor="">{billing.name_mall}</label>
+                                      <h2>Almacen</h2>
+                                      <label htmlFor="">{billing.name_store}</label>
                                     </div>
                                     <div className="modal-body-billing-two-one">
                                       <h2>Sorteo</h2>
@@ -205,7 +205,7 @@ export default class Billing_two extends Component {
                 </button>
               </Link>
             </div>
-            <Sidebar />
+            <Sidebar/>
           </div>
         </div>
       </div>

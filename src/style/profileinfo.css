@@ -36,6 +36,7 @@
   background-color: #fdf7ed !important;
   border-radius: 45px;
   flex-direction: column;
+  margin-top: 50px;
 }
 
 .row-information > div,
@@ -112,9 +113,6 @@ hr {
 @media (max-width: 767px) {
   .row-icons {
     display: none;
-  }
-  .btn-customerinfo {
-    margin-left: 35%;
   }
 
   .container-profile {

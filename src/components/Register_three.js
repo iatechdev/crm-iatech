@@ -39,8 +39,8 @@ export default class Register_three extends Component {
       apellido_c: data_one.apellido_c,
       email_address: data_one.email_address,
       password_c: data_one.password_c,
-      tipo_identificacion_c: data_two.tipo_identificacion_c,
-      sic_code: data_two.sic_code,
+      tipo_identificacion_c: data_one.tipo_identificacion__c,
+      sic_code: data_one.sic_code,
       phone_office: data_two.phone_office,
       celular_c: data_two.celular_c,
       genero_c: data_two.genero_c,
@@ -81,6 +81,13 @@ export default class Register_three extends Component {
       showButton: this.state.showButton
     });
   }
+  aceptModal() {
+    let validModal = document.getElementById("autoriza_tratamiento_datos_c");
+    validModal= validModal.checked = true; 
+    let body = document.getElementById("button-close");
+    body.click();
+
+  }
 
   hadleSubmit = e => {
     e.preventDefault();
@@ -89,6 +96,7 @@ export default class Register_three extends Component {
 
     this.setState({ errors: result })
     if (!Object.keys(result).length) {
+      console.log(this.state)
       axios.post(`https://master.iatech.com.co:4000/api/register/registerformtwo`,
         {
           name: this.state.name,
@@ -131,7 +139,7 @@ export default class Register_three extends Component {
   render() {
     const { errors } = this.state
     return (
-      <div className="container">
+      <div className="container" id="register_three">
         <div className="row-container">
           <div className="col-container">
             <Welcome />
@@ -238,7 +246,7 @@ export default class Register_three extends Component {
                     {errors.ia_mall_id_c && <span className='error-data'>{errors.ia_mall_id_c}</span>}
                   </div>
                   <div className="checkbox-register col-12">
-                    <input type="checkbox" name="autoriza_tratamiento_datos_c" onChange={this.handleChangeValue} value={this.state.value} required />
+                    <input type="checkbox" name="autoriza_tratamiento_datos_c" id="autoriza_tratamiento_datos_c" onChange={this.handleChangeValue} value={this.state.value} required />
                     <p>
                       Acepto
                       <span data-toggle="modal" data-target="#modalterm">
@@ -264,13 +272,14 @@ export default class Register_three extends Component {
                               className="btn-close-term"
                               data-dismiss="modal"
                               aria-label="Close"
+                              id="button-close"
                             >
                               <img src={require("../icons/close.png")} alt="" />
                             </button>
                           </div>
                           <div className="modal-body modal-body-content-term">
                             <h2>Términos y condiciones</h2>
-                            <p>
+                            {/* <p>
                               Lorem ipsum, dolor sit amet consectetur
                               adipisicing elit. Rem suscipit, maiores
                               consectetur deserunt corrupti nostrum assumenda.
@@ -281,12 +290,23 @@ export default class Register_three extends Component {
                               Mollitia ducimus dignissimos fugiat dolorem error
                               consequatur, placeat, quasi non hic eius quae
                               officiis. Est assumenda nam tempore vitae cum.
-                            </p>
+                            </p> */}
+                            <div>
+                              <object
+                              data={require("../document/politicas.pdf")}
+                              type="application/pdf"
+                              className="pdf-modal"
+                              >
+
+                              </object>
+                            </div>
+                        
                           </div>
                           <div className="modal-footer">
                             <button
                               type="button"
                               className="btn btn-footer-profile"
+                              onClick={this.aceptModal}
                             >
                               Aceptar
                             </button>
